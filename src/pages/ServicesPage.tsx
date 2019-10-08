@@ -6,7 +6,7 @@ import React from 'react';
  */
 const ServicesPage: React.FC = () => {
   return (
-    <div className="App">
+    <div>
       <div>
         <h1>Wi-Fiサービス一覧</h1>
       </div>

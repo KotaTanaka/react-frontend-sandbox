@@ -6,14 +6,17 @@ import { Link } from "react-router-dom";
  * @author kotatanaka
  */
 const Navigation: React.FC = () => {
+  /** リンク */
+  const link = (path: string, label: string) => (
+    <li>
+      <Link to={path}>{label}</Link>
+    </li>
+  );
+
   return (
     <ul>
-      <li>
-        <Link to="/">ホーム</Link>
-      </li>
-      <li>
-        <Link to="/services">Wi-Fiサービス一覧</Link>
-      </li>
+      {link("/", "ホーム")}
+      {link("/services", "Wi-Fiサービス一覧")}
     </ul>
   );
 }

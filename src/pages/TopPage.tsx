@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // from app
 import { useDispatch, useGlobalState } from 'Store';
@@ -15,9 +15,21 @@ const TopPage: React.FC = () => {
   const [syobon, setSyobon] = useState<string>('');
 
   useEffect(() => {
-    console.log('count=' + count);
-    console.log('grobalCount=' + grobalCount);
+    console.log('count = ' + count);
+    console.log('grobalCount = ' + grobalCount);
   });
+
+  const handleCountUp = useCallback(() => {
+    setCount(count + 1);
+    count % 3 === 2 ? setSyobon('(´･ω･`)') : setSyobon('');
+  }, [count]);
+
+  const handleGlobalCountUp = useCallback(() => {
+    dispatch({
+      type: ActionType.SET_COUNT,
+      payload: count
+    });
+  }, [count]);
 
   return (
     <div>
@@ -25,24 +37,8 @@ const TopPage: React.FC = () => {
       <p>Global Count: {grobalCount}</p>
       <p>Count: {count}</p>
       <p>{syobon}</p>
-      <button
-        onClick={() => {
-          setCount(count + 1);
-          count % 3 === 2 ? setSyobon('(´･ω･`)') : setSyobon('');
-        }}
-      >
-        Click me
-      </button>
-      <button
-        onClick={() =>
-          dispatch({
-            type: ActionType.SET_COUNT,
-            payload: count
-          })
-        }
-      >
-        Save
-      </button>
+      <button onClick={handleCountUp}>Click me</button>
+      <button onClick={handleGlobalCountUp}>Save</button>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Navigation from 'components/Navigation';
 import TopPage from 'pages/TopPage';
 import ServicesPage from 'pages/ServicesPage';
 import ServiceDetailPage from 'pages/ServiceDetailPage';
+import CounterPage from 'pages/CounterPage';
 
 const App: React.FC = () => {
   return (
@@ -15,18 +16,18 @@ const App: React.FC = () => {
         <div>
           <Navigation />
           <Switch>
-            {/* Wi-Fiサービス詳細 */}
-            <Route path="/services/:serviceId">
-              <ServiceDetailPage />
-            </Route>
-            {/* Wi-Fiサービス一覧 */}
-            <Route path="/services">
-              <ServicesPage />
-            </Route>
             {/* トップページ */}
-            <Route path="/">
-              <TopPage />
-            </Route>
+            <Route exact path="/" component={TopPage} />
+            {/* Wi-Fiサービス一覧 */}
+            <Route exact path="/services" component={ServicesPage} />
+            {/* Wi-Fiサービス詳細 */}
+            <Route
+              exact
+              path="/services/:serviceId"
+              component={ServiceDetailPage}
+            />
+            {/* カウンターアプリ */}
+            <Route exact path="/counter" component={CounterPage} />
           </Switch>
         </div>
       </Router>

@@ -10,7 +10,7 @@ import { IServiceList } from 'interfaces/api/Service';
  * @author kotatanaka
  */
 const useGetServices = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [services, setServices] = useState<IServiceList>({
     serviceList: [],
     total: 0
@@ -18,32 +18,34 @@ const useGetServices = () => {
 
   useEffect(() => {
     const signal = axios.CancelToken.source();
-    setIsLoading(true);
-    getServiceList(signal);
+    fetchServiceList(signal);
     return () => {
       signal.cancel('Cleanup.');
     };
   }, []);
 
   /** Wi-Fiサービス一覧取得 */
-  const getServiceList = (signal: CancelTokenSource) => {
-    axios
-      .get(API_ENDPOINT.SERVICES, { cancelToken: signal.token })
-      .then((response: { data: IServiceList }) => {
-        setServices(Object.assign(response.data));
-        setIsLoading(false);
-      })
-      .catch(error => {
-        if (axios.isCancel(error)) {
-          console.log('Request Cancelled: ' + error.message);
-        } else {
-          // TODO エラーハンドリング
-        }
-        setIsLoading(false);
+  const fetchServiceList = async (
+    signal?: CancelTokenSource
+  ): Promise<void> => {
+    try {
+      const { data } = await axios.get(API_ENDPOINT.SERVICES, {
+        cancelToken: signal ? signal.token : axios.CancelToken.source().token
       });
+      setServices(Object.assign(data));
+    } catch (err) {
+      if (axios.isCancel(err)) {
+        console.log('Request Cancelled: ' + err.message);
+      } else {
+        // TODO エラーハンドリング
+        console.log(err);
+      }
+    }
+
+    setIsLoading(false);
   };
 
-  return { services, isLoading };
+  return { services, isLoading, fetchServiceList };
 };
 
 export default useGetServices;

@@ -3,7 +3,7 @@
  * @author kotatanaka
  */
 export interface IServiceList {
-  serviceList: Array<IService>;
+  serviceList: IService[];
   total: number;
 }
 

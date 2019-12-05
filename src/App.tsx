@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // from app
-import { Provider } from "Store";
+import { Provider } from 'Store';
 import Navigation from 'components/Navigation';
 import TopPage from 'pages/TopPage';
 import ServicesPage from 'pages/ServicesPage';
@@ -25,13 +25,13 @@ const App: React.FC = () => {
             </Route>
             {/* トップページ */}
             <Route path="/">
-                <TopPage />
+              <TopPage />
             </Route>
           </Switch>
         </div>
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;

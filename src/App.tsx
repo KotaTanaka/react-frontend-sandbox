@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // from app
 import { Provider } from 'Store';
-import Navigation from 'components/Navigation';
+import Header from 'components/Header';
 import TopPage from 'pages/TopPage';
 import ServicesPage from 'pages/ServicesPage';
 import ServiceDetailPage from 'pages/ServiceDetailPage';
@@ -14,7 +14,7 @@ const App: React.FC = () => {
     <Provider>
       <Router>
         <div>
-          <Navigation />
+          <Header />
           <Switch>
             {/* トップページ */}
             <Route exact path="/" component={TopPage} />

@@ -4,7 +4,7 @@ Find Wi-Fi フロントエンド [React]
 
 ## 技術要素
 
-- TypeScript `3.6.x`
+- TypeScript `3.7.x`
 - React `16.9.x`
 
 ## ローカル開発環境構築手順

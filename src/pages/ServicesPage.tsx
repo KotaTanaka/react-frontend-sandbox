@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 // from app
-import { IService } from "interfaces/api/Service";
-import useGetServices from "hooks/useGetServices";
+import { IService } from 'interfaces/api/Service';
+import useGetServices from 'hooks/useGetServices';
 
 /**
  * Wi-Fiサービス一覧ページ

@@ -1,7 +1,7 @@
-import React, { createContext, useReducer, useContext } from "react";
+import React, { createContext, useReducer, useContext } from 'react';
 
 // from app
-import Reducer, { State, Action } from "Reducer";
+import Reducer, { State, Action } from 'Reducer';
 
 const initialState: State = {
   count: 0
@@ -11,7 +11,7 @@ const StoreContext = createContext<State>(initialState);
 const DispatchContext = createContext<React.Dispatch<Action>>(() => true);
 
 /** Provider */
-const Provider = ({ children }: { children: any}) => {
+const Provider = ({ children }: { children: any }) => {
   const [state, dispatch] = useReducer(Reducer, initialState);
 
   return (

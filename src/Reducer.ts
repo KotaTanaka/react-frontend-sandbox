@@ -5,7 +5,7 @@ export interface State {
 
 /** アクション種別 */
 export enum ActionType {
-  SET_COUNT = "SET_COUNT",
+  SET_COUNT = 'SET_COUNT'
 }
 
 /** アクション */

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 // from app
-import { useDispatch, useGlobalState } from "Store";
-import { ActionType } from "Reducer";
+import { useDispatch, useGlobalState } from 'Store';
+import { ActionType } from 'Reducer';
 
 /**
  * 管理画面トップページ
@@ -10,13 +10,13 @@ import { ActionType } from "Reducer";
  */
 const TopPage: React.FC = () => {
   const dispatch = useDispatch();
-  const grobalCount = useGlobalState("count");
+  const grobalCount = useGlobalState('count');
   const [count, setCount] = useState<number>(0);
-  const [syobon, setSyobon] = useState<string>("");
+  const [syobon, setSyobon] = useState<string>('');
 
   useEffect(() => {
-    console.log("count=" + count);
-    console.log("grobalCount=" + grobalCount)
+    console.log('count=' + count);
+    console.log('grobalCount=' + grobalCount);
   });
 
   return (
@@ -28,9 +28,7 @@ const TopPage: React.FC = () => {
       <button
         onClick={() => {
           setCount(count + 1);
-          count % 3 === 2
-            ? setSyobon("(´･ω･`)")
-            : setSyobon("");
+          count % 3 === 2 ? setSyobon('(´･ω･`)') : setSyobon('');
         }}
       >
         Click me

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from "react-router";
+import { useParams } from 'react-router';
 
 /**
  * Wi-Fiサービス詳細ページ
@@ -16,6 +16,6 @@ const ServiceDetailPage: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default ServiceDetailPage;

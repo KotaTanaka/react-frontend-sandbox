@@ -1,6 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 
 // from app
+import PageHeading from 'components/PageHeading';
 import { IService } from 'interfaces/api/Service';
 import useGetServices from 'hooks/useGetServices';
 
@@ -12,8 +14,8 @@ const ServicesPage: React.FC = () => {
   const { services, isLoading } = useGetServices();
 
   return (
-    <div>
-      <h1>Wi-Fiサービス一覧</h1>
+    <Container>
+      <PageHeading heading="Wi-Fiサービス一覧" />
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -23,8 +25,14 @@ const ServicesPage: React.FC = () => {
           ))}
         </ul>
       )}
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default ServicesPage;

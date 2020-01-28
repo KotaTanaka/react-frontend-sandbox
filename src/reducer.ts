@@ -1,5 +1,5 @@
 /** Global State */
-export interface State {
+export interface IGlobalState {
   count: number;
 }
 
@@ -9,13 +9,13 @@ export enum ActionType {
 }
 
 /** アクション */
-export interface Action {
+export interface IAction {
   type: ActionType;
   payload: any;
 }
 
 /** Reducer */
-const Reducer = (state: State, action: Action) => {
+const reducer = (state: IGlobalState, action: IAction) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -29,4 +29,4 @@ const Reducer = (state: State, action: Action) => {
   }
 };
 
-export default Reducer;
+export default reducer;

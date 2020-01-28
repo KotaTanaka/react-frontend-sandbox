@@ -1,14 +1,14 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 // from app
-import reducer, { State, Action } from 'reducer';
+import reducer, { IGlobalState, IAction } from 'reducer';
 
-const initialState: State = {
+const initialState: IGlobalState = {
   count: 0
 };
 
-const StoreContext = createContext<State>(initialState);
-const DispatchContext = createContext<React.Dispatch<Action>>(() => true);
+const StoreContext = createContext<IGlobalState>(initialState);
+const DispatchContext = createContext<React.Dispatch<IAction>>(() => true);
 
 /** Provider */
 const Provider = ({ children }: { children: any }) => {
@@ -29,7 +29,7 @@ const useDispatch = () => {
 };
 
 /** GlobalState を参照するための関数 */
-const useGlobalState = <K extends keyof State>(property: K) => {
+const useGlobalState = <K extends keyof IGlobalState>(property: K) => {
   const state = useContext(StoreContext);
   return state[property];
 };

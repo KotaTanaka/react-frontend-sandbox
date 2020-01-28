@@ -11,20 +11,25 @@ import useGetServices from 'src/hooks/useGetServices';
  * @author kotatanaka
  */
 const ServicesPage: React.FC = () => {
-  const { services, isLoading } = useGetServices();
+  const { services, isServicesLoading } = useGetServices();
+
+  if (isServicesLoading) {
+    return (
+      <Container>
+        <PageHeading heading="Wi-Fiサービス一覧" />
+        <p>Loading...</p>
+      </Container>
+    );
+  }
 
   return (
     <Container>
       <PageHeading heading="Wi-Fiサービス一覧" />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {services.serviceList.map((service: IService) => (
-            <li key={service.serviceId}>{service.wifiName}</li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {services.serviceList.map((service: IService) => (
+          <li key={service.serviceId}>{service.wifiName}</li>
+        ))}
+      </ul>
     </Container>
   );
 };

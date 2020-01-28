@@ -3,6 +3,15 @@ import { useHistory } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    toolbar: {
+      flexGrow: 1
+    }
+  })
+);
 
 /**
  * 固定ヘッダー
@@ -11,6 +20,7 @@ import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 const Header: React.FC = () => {
   const location = useLocation();
   const history = useHistory();
+  const classes = useStyles();
 
   /** 画面が移動するたびに行う処理 */
   useEffect(() => {
@@ -21,39 +31,35 @@ const Header: React.FC = () => {
     }
   }, [location]);
 
-  const linkToHome = useCallback(() => {
+  const moveToHome = useCallback(() => {
     history.push('/');
   }, []);
 
-  const linkToServices = useCallback(() => {
+  const moveToServices = useCallback(() => {
     history.push('/services');
   }, []);
 
   return (
     <AppBar position="static">
-      <HeaderBar>
+      <Toolbar className={classes.toolbar}>
         <BarLeft>
-          <Title onClick={linkToHome}>
+          <Title onClick={moveToHome}>
             <Typography variant="h6">Find Wi-Fi</Typography>
           </Title>
         </BarLeft>
-        <LinkButton color="inherit" onClick={linkToServices}>
+        <Button color="inherit" onClick={moveToServices}>
           Wi-Fiサービス一覧
-        </LinkButton>
-      </HeaderBar>
+        </Button>
+      </Toolbar>
     </AppBar>
   );
 };
 
-const HeaderBar = styled(Toolbar)`
-  flex-grow: 1;
-`;
 const BarLeft = styled.div`
   flex-grow: 1;
 `;
-const Title = styled(Typography)`
+const Title = styled.div`
   cursor: pointer;
 `;
-const LinkButton = styled(Button)``;
 
 export default Header;

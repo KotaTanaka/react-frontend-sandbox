@@ -1,10 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 interface Props {
   heading: string;
 }
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    heading: {}
+  })
+);
 
 /**
  * ページタイトル
@@ -12,17 +19,19 @@ interface Props {
  */
 const PageHeading: React.FC<Props> = (props: Props) => {
   const { heading } = props;
+  const classes = useStyles();
 
   return (
     <Container>
-      <Heading variant="h3">{heading}</Heading>
+      <Typography variant="h3" className={classes.heading}>
+        {heading}
+      </Typography>
     </Container>
   );
 };
 
 const Container = styled.div`
-  margin: 50px 0 50px 0;
+  margin: 50px 0;
 `;
-const Heading = styled(Typography)``;
 
 export default PageHeading;

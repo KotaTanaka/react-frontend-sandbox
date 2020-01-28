@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // from app
-import { Provider } from 'Store';
-import Header from 'components/Header';
-import TopPage from 'pages/TopPage';
-import ServicesPage from 'pages/ServicesPage';
-import ServiceDetailPage from 'pages/ServiceDetailPage';
-import CounterPage from 'pages/CounterPage';
+import { Provider } from 'src/Store';
+import Header from 'src/components/Header';
+import TopPage from 'src/pages/TopPage';
+import ServicesPage from 'src/pages/ServicesPage';
+import ServiceDetailPage from 'src/pages/ServiceDetailPage';
+import CounterPage from 'src/pages/CounterPage';
 
 const App: React.FC = () => {
   return (
@@ -16,17 +16,10 @@ const App: React.FC = () => {
         <div>
           <Header />
           <Switch>
-            {/* トップページ */}
             <Route exact path="/" component={TopPage} />
-            {/* Wi-Fiサービス一覧 */}
             <Route exact path="/services" component={ServicesPage} />
-            {/* Wi-Fiサービス詳細 */}
-            <Route
-              exact
-              path="/services/:serviceId"
-              component={ServiceDetailPage}
-            />
-            {/* カウンターアプリ */}
+            {/* prettier-ignore */}
+            <Route exact path="/services/:serviceId" component={ServiceDetailPage} />
             <Route exact path="/counter" component={CounterPage} />
           </Switch>
         </div>

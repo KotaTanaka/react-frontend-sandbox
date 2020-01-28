@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 // from app
-import PageHeading from 'components/PageHeading';
-import { IService } from 'interfaces/api/Service';
-import useGetServices from 'hooks/useGetServices';
+import PageHeading from 'src/components/PageHeading';
+import { IService } from 'src/interfaces/api/Service';
+import useGetServices from 'src/hooks/useGetServices';
 
 /**
  * Wi-Fiサービス一覧ページ

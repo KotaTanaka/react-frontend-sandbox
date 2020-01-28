@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // from app
-import PageHeading from 'components/PageHeading';
+import PageHeading from 'src/components/PageHeading';
 
 /**
  * 管理画面トップページ

@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 // from app
-import reducer, { IGlobalState, IAction } from 'reducer';
+import reducer, { IGlobalState, IAction } from 'src/reducer';
 
 const initialState: IGlobalState = {
   count: 0

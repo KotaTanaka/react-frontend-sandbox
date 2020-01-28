@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 // from app
-import { useDispatch, useGlobalState } from 'Store';
-import { ActionType } from 'reducer';
+import { useDispatch, useGlobalState } from 'src/Store';
+import { ActionType } from 'src/reducer';
 
 /**
  * カウンターアプリ

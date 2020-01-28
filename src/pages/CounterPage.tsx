@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 // from app
 import { useDispatch, useGlobalState } from 'Store';
-import { ActionType } from 'Reducer';
+import { ActionType } from 'reducer';
 
 /**
  * カウンターアプリ

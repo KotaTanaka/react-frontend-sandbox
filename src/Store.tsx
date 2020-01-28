@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 // from app
-import Reducer, { State, Action } from 'Reducer';
+import reducer, { State, Action } from 'reducer';
 
 const initialState: State = {
   count: 0
@@ -12,7 +12,7 @@ const DispatchContext = createContext<React.Dispatch<Action>>(() => true);
 
 /** Provider */
 const Provider = ({ children }: { children: any }) => {
-  const [state, dispatch] = useReducer(Reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <StoreContext.Provider value={state}>

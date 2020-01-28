@@ -1,13 +1,19 @@
 # find-wifi-front
 
-Find Wi-Fi フロントエンド [React]
+## About
 
-## 技術要素
+Find Wi-Fi 管理コンソールフロントエンド
+
+*[バックエンドリポジトリ find-wifi-api](https://github.com/KotaTanaka/find-wifi-api)*
+
+## Technology
 
 - TypeScript `3.7.x`
-- React `16.12.x`
+- React `16.12.0`
+- react-scripts `3.3.0` (create-react-app)
+- styled-components `5.0.0`
 
-## ローカル開発環境構築手順
+## Getting Started
 
 - リポジトリのクローン
 
@@ -28,4 +34,4 @@ $ yarn
 $ yarn start
 ```
 
-→ http://localhost:3010 でアプリケーションが起動します。
+→ http://localhost:3010

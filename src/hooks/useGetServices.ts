@@ -27,6 +27,7 @@ const useGetServices = (): IUseGetServicesProps => {
     return () => {
       signal.cancel('Cleanup.');
     };
+    // eslint-disable-next-line
   }, []);
 
   /**

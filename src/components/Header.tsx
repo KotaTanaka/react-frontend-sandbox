@@ -33,11 +33,11 @@ const Header: React.FC = () => {
 
   const moveToHome = useCallback(() => {
     history.push('/');
-  }, []);
+  }, [history]);
 
   const moveToServices = useCallback(() => {
     history.push('/services');
-  }, []);
+  }, [history]);
 
   return (
     <AppBar position="static">

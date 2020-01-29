@@ -29,7 +29,7 @@ const CounterPage: React.FC = () => {
       type: ActionType.SET_COUNT,
       payload: count
     });
-  }, [count]);
+  }, [count, dispatch]);
 
   return (
     <div>

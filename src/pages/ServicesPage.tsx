@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PageHeading from 'src/components/PageHeading';
 import { IService } from 'src/interfaces/api/Service';
 import useGetServices from 'src/hooks/useGetServices';
+import { flexColumnCenter } from 'src/styles/mixin';
 
 /**
  * Wi-Fiサービス一覧ページ
@@ -35,9 +36,7 @@ const ServicesPage: React.FC = () => {
 };
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${flexColumnCenter};
 `;
 
 export default ServicesPage;

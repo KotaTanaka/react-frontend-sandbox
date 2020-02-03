@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 // from app
 import PageHeading from 'src/components/PageHeading';
+import { flexColumnCenter } from 'src/styles/mixin';
 
 /**
  * 管理画面トップページ
@@ -17,9 +18,7 @@ const TopPage: React.FC = () => {
 };
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${flexColumnCenter};
 `;
 
 export default TopPage;

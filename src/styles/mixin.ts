@@ -12,3 +12,10 @@ export const flexCentering = css`
   justify-content: center;
   align-items: center;
 `;
+
+/** 垂直方向中央配置 */
+export const flexColumnCenter = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

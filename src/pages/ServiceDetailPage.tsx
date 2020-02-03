@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
+import { flexColumnCenter } from 'src/styles/mixin';
 
 // from app
 import PageHeading from 'src/components/PageHeading';
@@ -21,9 +22,7 @@ const ServiceDetailPage: React.FC = () => {
 };
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${flexColumnCenter};
 `;
 
 export default ServiceDetailPage;

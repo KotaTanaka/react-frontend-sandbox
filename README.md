@@ -2,16 +2,15 @@
 
 ## About
 
-Find Wi-Fi 管理コンソールフロントエンド
+Find Wi-Fi フロントエンド
 
 *[バックエンドリポジトリ find-wifi-api](https://github.com/KotaTanaka/find-wifi-api)*
 
 ## Technology
 
-- TypeScript `3.7.x`
-- React `16.12.0`
-- react-scripts `3.3.0` (create-react-app)
-- styled-components `5.0.0`
+- TypeScript `3.8.x`
+- React `16.13.x`
+- react-scripts `3.4.x` (create-react-app)
 
 ## Getting Started
 

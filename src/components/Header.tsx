@@ -8,9 +8,9 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     toolbar: {
-      flexGrow: 1
-    }
-  })
+      flexGrow: 1,
+    },
+  }),
 );
 
 /**

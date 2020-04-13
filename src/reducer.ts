@@ -5,7 +5,7 @@ export interface IGlobalState {
 
 /** アクション種別 */
 export enum ActionType {
-  SET_COUNT = 'SET_COUNT'
+  SET_COUNT = 'SET_COUNT',
 }
 
 /** アクション */
@@ -22,7 +22,7 @@ const reducer = (state: IGlobalState, action: IAction) => {
     case ActionType.SET_COUNT:
       return {
         ...state,
-        count: payload
+        count: payload,
       };
     default:
       return state;

@@ -9,8 +9,8 @@ interface Props {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    heading: {}
-  })
+    heading: {},
+  }),
 );
 
 /**

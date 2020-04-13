@@ -27,7 +27,7 @@ const CounterPage: React.FC = () => {
   const handleGlobalCountUp = useCallback(() => {
     dispatch({
       type: ActionType.SET_COUNT,
-      payload: count
+      payload: count,
     });
   }, [count, dispatch]);
 

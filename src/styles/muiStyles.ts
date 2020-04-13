@@ -6,6 +6,6 @@ export const muiBaseFont = { fontSize: 12, letterSpacing: '0.1rem' };
 /** 共通スタイル */
 const useCommonStyles = makeStyles((theme: Theme) =>
   createStyles({
-    text: muiBaseFont
-  })
+    text: muiBaseFont,
+  }),
 );

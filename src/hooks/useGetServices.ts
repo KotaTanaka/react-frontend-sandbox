@@ -38,7 +38,7 @@ const useGetServices = (): IUseGetServicesProps => {
     async (signal?: CancelTokenSource): Promise<void> => {
       try {
         const response = await axios.get(API_ENDPOINT.SERVICES, {
-          cancelToken: signal ? signal.token : axios.CancelToken.source().token
+          cancelToken: signal ? signal.token : axios.CancelToken.source().token,
         });
 
         setServices(response.data);
@@ -53,7 +53,7 @@ const useGetServices = (): IUseGetServicesProps => {
 
       setIsServicesLoading(false);
     },
-    []
+    [],
   );
 
   return { services, isServicesLoading, fetchServiceList };

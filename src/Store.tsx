@@ -4,7 +4,7 @@ import React, { createContext, useReducer, useContext } from 'react';
 import reducer, { IGlobalState, IAction } from 'src/reducer';
 
 const initialState: IGlobalState = {
-  count: 0
+  count: 0,
 };
 
 const StoreContext = createContext<IGlobalState>(initialState);

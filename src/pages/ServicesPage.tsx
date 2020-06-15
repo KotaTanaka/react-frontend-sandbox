@@ -32,6 +32,7 @@ const ServicesPage: React.FC = () => {
   );
 };
 
+// styles
 const Container = styled.div`
   ${flexColumnCenter};
 `;

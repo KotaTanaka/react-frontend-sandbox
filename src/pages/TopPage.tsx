@@ -14,6 +14,7 @@ const TopPage: React.FC = () => {
   );
 };
 
+// styles
 const Container = styled.div`
   ${flexColumnCenter};
 `;

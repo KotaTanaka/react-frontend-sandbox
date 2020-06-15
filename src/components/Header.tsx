@@ -5,14 +5,6 @@ import styled from 'styled-components';
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    toolbar: {
-      flexGrow: 1,
-    },
-  }),
-);
-
 /** 固定ヘッダー */
 const Header: React.FC = () => {
   const location = useLocation();
@@ -52,6 +44,14 @@ const Header: React.FC = () => {
   );
 };
 
+// styles
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    toolbar: {
+      flexGrow: 1,
+    },
+  }),
+);
 const BarLeft = styled.div`
   flex-grow: 1;
 `;

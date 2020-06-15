@@ -7,12 +7,6 @@ interface Props {
   heading: string;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    heading: {},
-  }),
-);
-
 /** ページタイトル */
 const PageHeading: React.FC<Props> = (props: Props) => {
   const { heading } = props;
@@ -27,6 +21,12 @@ const PageHeading: React.FC<Props> = (props: Props) => {
   );
 };
 
+// styles
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    heading: {},
+  }),
+);
 const Container = styled.div`
   margin: 50px 0;
 `;

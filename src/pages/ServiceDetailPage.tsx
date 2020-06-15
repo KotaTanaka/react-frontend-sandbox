@@ -18,6 +18,7 @@ const ServiceDetailPage: React.FC = () => {
   );
 };
 
+// styles
 const Container = styled.div`
   ${flexColumnCenter};
 `;

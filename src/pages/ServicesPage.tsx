@@ -7,10 +7,7 @@ import { IService } from 'src/interfaces/api/Service';
 import useGetServices from 'src/hooks/useGetServices';
 import { flexColumnCenter } from 'src/styles/mixin';
 
-/**
- * Wi-Fiサービス一覧ページ
- * @author kotatanaka
- */
+/** Wi-Fiサービス一覧ページ */
 const ServicesPage: React.FC = () => {
   const { services, isServicesLoading } = useGetServices();
 

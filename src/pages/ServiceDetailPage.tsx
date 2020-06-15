@@ -6,10 +6,7 @@ import { flexColumnCenter } from 'src/styles/mixin';
 // from app
 import PageHeading from 'src/components/PageHeading';
 
-/**
- * Wi-Fiサービス詳細ページ
- * @author kotatanaka
- */
+/** Wi-Fiサービス詳細ページ */
 const ServiceDetailPage: React.FC = () => {
   const { serviceId } = useParams();
 

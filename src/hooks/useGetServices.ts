@@ -11,10 +11,7 @@ interface IUseGetServicesProps {
   fetchServiceList: (signal?: CancelTokenSource) => Promise<void>;
 }
 
-/**
- * Wi-Fiサービス一覧取得カスタムフック
- * @author kotatanaka
- */
+/** Wi-Fiサービス一覧取得カスタムフック */
 const useGetServices = (): IUseGetServicesProps => {
   const [isServicesLoading, setIsServicesLoading] = useState<boolean>(true);
   // prettier-ignore

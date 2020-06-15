@@ -5,10 +5,7 @@ import styled from 'styled-components';
 import PageHeading from 'src/components/PageHeading';
 import { flexColumnCenter } from 'src/styles/mixin';
 
-/**
- * 管理画面トップページ
- * @author kotatanaka
- */
+/** 管理画面トップページ */
 const TopPage: React.FC = () => {
   return (
     <Container>

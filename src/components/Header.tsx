@@ -13,10 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-/**
- * 固定ヘッダー
- * @author kotatanaka
- */
+/** 固定ヘッダー */
 const Header: React.FC = () => {
   const location = useLocation();
   const history = useHistory();

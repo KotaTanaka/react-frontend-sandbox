@@ -4,10 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useGlobalState } from 'src/Store';
 import { ActionType } from 'src/reducer';
 
-/**
- * カウンターアプリ
- * @author kotatanaka
- */
+/** カウンターアプリ */
 const CounterPage: React.FC = () => {
   const dispatch = useDispatch();
   const grobalCount = useGlobalState('count');

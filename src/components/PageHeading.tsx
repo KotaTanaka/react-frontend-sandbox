@@ -13,10 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-/**
- * ページタイトル
- * @author kotatanaka
- */
+/** ページタイトル */
 const PageHeading: React.FC<Props> = (props: Props) => {
   const { heading } = props;
   const classes = useStyles();

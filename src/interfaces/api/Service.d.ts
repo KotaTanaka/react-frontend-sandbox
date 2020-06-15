@@ -1,16 +1,10 @@
-/**
- * Wi-Fiサービス一リスト
- * @author kotatanaka
- */
+/** Wi-Fiサービス一リスト */
 export interface IServiceList {
   serviceList: IService[];
   total: number;
 }
 
-/**
- * Wi-Fiサービス一リスト要素
- * @author kotatanaka
- */
+/** Wi-Fiサービス一リスト要素 */
 export interface IService {
   serviceId: number;
   wifiName: string;

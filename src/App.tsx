@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // from app
 import { Provider } from 'src/Store';
+import { PAGES } from 'src/constants/page';
 import Header from 'src/components/Header';
 import SideBar from 'src/components/SideBar';
 import TopPage from 'src/pages/TopPage';
@@ -20,10 +21,17 @@ const App: React.FC = () => {
           <SideBar />
           <Body>
             <Switch>
-              <Route exact path="/" component={TopPage} />
-              <Route exact path="/services" component={ServicesPage} />
-              {/* prettier-ignore */}
-              <Route exact path="/services/detail/:serviceId" component={ServiceDetailPage} />
+              <Route exact path={PAGES.HOME.path} component={TopPage} />
+              <Route
+                exact
+                path={PAGES.SERVICES.path}
+                component={ServicesPage}
+              />
+              <Route
+                exact
+                path={PAGES.SERVICES_DETAIL.path}
+                component={ServiceDetailPage}
+              />
               <Route exact path="/counter" component={CounterPage} />
             </Switch>
           </Body>

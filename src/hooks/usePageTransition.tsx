@@ -1,7 +1,10 @@
 import { useCallback } from 'react';
 import { useHistory } from 'react-router';
 
-interface IUserPageTransitionProps {
+// from app
+import { PAGES } from 'src/constants/page';
+
+interface IUserPAGESTransitionProps {
   moveToHome: () => void;
   moveToServiceList: () => void;
   moveToRegisterService: () => void;
@@ -11,37 +14,37 @@ interface IUserPageTransitionProps {
 }
 
 /** ページ遷移カスタムフック */
-const usePageTransition = (): IUserPageTransitionProps => {
+const usePAGESTransition = (): IUserPAGESTransitionProps => {
   const history = useHistory();
 
   /** ホーム */
   const moveToHome = useCallback(() => {
-    history.push('/');
+    history.push(PAGES.HOME.path);
   }, [history]);
 
   /** Wi-Fiサービス一覧 */
   const moveToServiceList = useCallback(() => {
-    history.push('/services');
+    history.push(PAGES.SERVICES.path);
   }, [history]);
 
   /** Wi-Fiサービス登録 */
   const moveToRegisterService = useCallback(() => {
-    history.push('/services/register');
+    history.push(PAGES.SERVICES_REGISTER.path);
   }, [history]);
 
   /** 店舗一覧 */
   const moveToShopList = useCallback(() => {
-    history.push('/shops');
+    history.push(PAGES.SHOPS.path);
   }, [history]);
 
   /** 店舗登録 */
   const moveToRegisterShop = useCallback(() => {
-    history.push('/shops/register');
+    history.push(PAGES.SHOPS_REGISTER.path);
   }, [history]);
 
   /** レビュー一覧 */
   const moveToReviewList = useCallback(() => {
-    history.push('/reviews');
+    history.push(PAGES.REVIEWS.path);
   }, [history]);
 
   return {
@@ -54,4 +57,4 @@ const usePageTransition = (): IUserPageTransitionProps => {
   };
 };
 
-export default usePageTransition;
+export default usePAGESTransition;

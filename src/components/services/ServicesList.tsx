@@ -1,17 +1,32 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@material-ui/core';
 
 // from app
-import { IService, IServiceList } from 'src/interfaces/api/Service';
+import usePageTransition from 'src/hooks/usePageTransition';
+import { IServiceList } from 'src/interfaces/api/Service';
 
 interface Props {
-  services: IServiceList;
+  data: IServiceList;
   loading: boolean;
 }
 
 /** Wi-Fiサービスリスト */
 const ServicesList: React.FC<Props> = (props: Props) => {
-  const { services, loading } = props;
+  const { data, loading } = props;
+  const classes = useStyles();
+
+  const { moveToServiceDetail } = usePageTransition();
 
   if (loading) {
     return <p>Loading...</p>;
@@ -19,16 +34,49 @@ const ServicesList: React.FC<Props> = (props: Props) => {
 
   return (
     <Container>
-      <ul>
-        {services.serviceList.map((service: IService) => (
-          <li key={service.serviceId}>{service.wifiName}</li>
-        ))}
-      </ul>
+      <TableContainer component={Paper}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>サービス名</TableCell>
+              <TableCell>リンク</TableCell>
+              <TableCell>店舗数</TableCell>
+              <TableCell />
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.serviceList.map((service) => (
+              <TableRow key={service.serviceId}>
+                <TableCell>{service.wifiName}</TableCell>
+                <TableCell>{service.link}</TableCell>
+                <TableCell>{service.shopCount}</TableCell>
+                <TableCell>
+                  <Button
+                    color="primary"
+                    className={classes.button}
+                    onClick={() => moveToServiceDetail(service.serviceId)}
+                  >
+                    詳細
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Container>
   );
 };
 
 // styles
+const useStyles = makeStyles({
+  table: {
+    minWidth: 640,
+  },
+  button: {
+    padding: 0,
+  },
+});
 const Container = styled.div``;
 
 export default ServicesList;

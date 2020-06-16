@@ -1,15 +1,33 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Button, FormControl, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { Save } from '@material-ui/icons';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {}
+// from app
+import { IRegisterServiceBody } from 'src/interfaces/api/request/Service';
+
+interface Props {
+  params: IRegisterServiceBody;
+  onChangeWifiName: (value: string) => void;
+  onChangeLink: (value: string) => void;
+  onSave: () => Promise<void>;
+}
 
 /** Wi-Fiサービスリスト */
 const ServiceRegisterForm: React.FC<Props> = (props: Props) => {
+  const { params, onChangeWifiName, onChangeLink, onSave } = props;
   const classes = useStyles();
+
+  // prettier-ignore
+  const handleChangeWifiName = useCallback((e) => {
+    onChangeWifiName(e.target.value);
+  }, [onChangeWifiName]);
+
+  // prettier-ignore
+  const handleChangeLink = useCallback((e) => {
+    onChangeLink(e.target.value);
+  }, [onChangeLink]);
 
   return (
     <Container>
@@ -19,12 +37,16 @@ const ServiceRegisterForm: React.FC<Props> = (props: Props) => {
           variant="outlined"
           className={classes.textField}
           helperText="Wi-Fiのサービス名称を入力"
+          value={params.wifiName}
+          onChange={handleChangeWifiName}
         />
         <TextField
           label="リンク"
           variant="outlined"
           className={classes.textField}
           helperText="公式サイトのURL等を入力"
+          value={params.link}
+          onChange={handleChangeLink}
         />
         <Button
           variant="contained"
@@ -32,6 +54,7 @@ const ServiceRegisterForm: React.FC<Props> = (props: Props) => {
           size="large"
           startIcon={<Save />}
           className={classes.button}
+          onClick={onSave}
         >
           登録する
         </Button>

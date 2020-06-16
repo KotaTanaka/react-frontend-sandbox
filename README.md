@@ -1,8 +1,8 @@
-***find-wifi-frontend***
+***find-wifi-console-app***
 
 ## About
 
-Find Wi-Fi フロントエンド
+Find Wi-Fi 管理コンソール
 
 *[Backend - find-wifi-backend](https://github.com/KotaTanaka/find-wifi-backend)*
 
@@ -20,8 +20,8 @@ Find Wi-Fi フロントエンド
 - Install
 
 ```bash
-$ git clone git@github.com:KotaTanaka/find-wifi-frontend.git
-$ cd find-wifi-frontend
+$ git clone git@github.com:KotaTanaka/find-wifi-console-app.git
+$ cd find-wifi-console-app
 $ yarn
 ```
 

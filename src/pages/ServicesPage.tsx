@@ -2,32 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 // from app
-import PageHeading from 'src/components/partials/PageHeading';
-import { IService } from 'src/interfaces/api/Service';
 import useGetServices from 'src/hooks/useGetServices';
+import PageHeading from 'src/components/partials/PageHeading';
+import ServiceList from 'src/components/services/ServicesList';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス一覧ページ */
 const ServicesPage: React.FC = () => {
   const { services, isServicesLoading } = useGetServices();
 
-  if (isServicesLoading) {
-    return (
-      <Container>
-        <PageHeading heading="Wi-Fiサービス一覧" />
-        <p>Loading...</p>
-      </Container>
-    );
-  }
-
   return (
     <Container>
       <PageHeading heading="Wi-Fiサービス一覧" />
-      <ul>
-        {services.serviceList.map((service: IService) => (
-          <li key={service.serviceId}>{service.wifiName}</li>
-        ))}
-      </ul>
+      <ServiceList services={services} loading={isServicesLoading} />
     </Container>
   );
 };

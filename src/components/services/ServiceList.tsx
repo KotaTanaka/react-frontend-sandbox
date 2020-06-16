@@ -14,7 +14,7 @@ import {
 
 // from app
 import usePageTransition from 'src/hooks/usePageTransition';
-import { IServiceList } from 'src/interfaces/api/Service';
+import { IServiceList } from 'src/interfaces/api/response/Service';
 
 interface Props {
   data: IServiceList;

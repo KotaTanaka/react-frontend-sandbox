@@ -3,7 +3,7 @@ import axios, { CancelTokenSource } from 'axios';
 
 // from app
 import { API_ENDPOINT } from 'src/constants/api';
-import { IServiceList } from 'src/interfaces/api/Service';
+import { IServiceList } from 'src/interfaces/api/response/Service';
 
 interface IUseGetServicesProps {
   services: IServiceList;

@@ -1,37 +1,56 @@
-import { useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useHistory } from 'react-router';
-import { useLocation } from 'react-router-dom';
 
 interface IUserPageTransitionProps {
   moveToHome: () => void;
-  moveToServices: () => void;
+  moveToServiceList: () => void;
+  moveToRegisterService: () => void;
+  moveToShopList: () => void;
+  moveToRegisterShop: () => void;
+  moveToReviewList: () => void;
 }
 
 /** ページ遷移カスタムフック */
 const usePageTransition = (): IUserPageTransitionProps => {
-  const location = useLocation();
   const history = useHistory();
 
-  /** 画面が移動するたびに行う処理 */
-  useEffect(() => {
-    const { pathname, search } = location;
-    console.log(pathname);
-    if (search) {
-      console.log(search);
-    }
-  }, [location]);
-
+  /** ホーム */
   const moveToHome = useCallback(() => {
     history.push('/');
   }, [history]);
 
-  const moveToServices = useCallback(() => {
+  /** Wi-Fiサービス一覧 */
+  const moveToServiceList = useCallback(() => {
     history.push('/services');
+  }, [history]);
+
+  /** Wi-Fiサービス登録 */
+  const moveToRegisterService = useCallback(() => {
+    history.push('/services/register');
+  }, [history]);
+
+  /** 店舗一覧 */
+  const moveToShopList = useCallback(() => {
+    history.push('/shops');
+  }, [history]);
+
+  /** 店舗登録 */
+  const moveToRegisterShop = useCallback(() => {
+    history.push('/shops/register');
+  }, [history]);
+
+  /** レビュー一覧 */
+  const moveToReviewList = useCallback(() => {
+    history.push('/reviews');
   }, [history]);
 
   return {
     moveToHome,
-    moveToServices,
+    moveToServiceList,
+    moveToRegisterService,
+    moveToShopList,
+    moveToRegisterShop,
+    moveToReviewList,
   };
 };
 

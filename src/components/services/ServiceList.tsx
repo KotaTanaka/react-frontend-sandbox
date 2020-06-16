@@ -22,7 +22,7 @@ interface Props {
 }
 
 /** Wi-Fiサービスリスト */
-const ServicesList: React.FC<Props> = (props: Props) => {
+const ServiceList: React.FC<Props> = (props: Props) => {
   const { data, loading } = props;
   const classes = useStyles();
 
@@ -79,4 +79,4 @@ const useStyles = makeStyles({
 });
 const Container = styled.div``;
 
-export default ServicesList;
+export default ServiceList;

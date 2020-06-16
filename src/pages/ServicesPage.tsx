@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // from app
 import useGetServices from 'src/hooks/useGetServices';
 import PageHeading from 'src/components/partials/PageHeading';
-import ServiceList from 'src/components/services/ServicesList';
+import ServiceList from 'src/components/services/ServiceList';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス一覧ページ */

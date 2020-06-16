@@ -9,5 +9,5 @@ export interface IService {
   serviceId: number;
   wifiName: string;
   link: string;
-  count: number;
+  shopCount: number;
 }

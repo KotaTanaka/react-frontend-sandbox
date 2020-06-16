@@ -14,7 +14,7 @@ const ServicesPage: React.FC = () => {
   return (
     <Container>
       <PageHeading heading="Wi-Fiサービス一覧" />
-      <ServiceList services={services} loading={isServicesLoading} />
+      <ServiceList data={services} loading={isServicesLoading} />
     </Container>
   );
 };

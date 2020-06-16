@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // from app
+import { PAGES } from 'src/constants/page';
 import useGetServices from 'src/hooks/useGetServices';
 import PageHeading from 'src/components/partials/PageHeading';
 import ServiceList from 'src/components/services/ServiceList';
@@ -13,7 +14,7 @@ const ServicesPage: React.FC = () => {
 
   return (
     <Container>
-      <PageHeading heading="Wi-Fiサービス一覧" />
+      <PageHeading heading={PAGES.SERVICES.name} />
       <ServiceList data={services} loading={isServicesLoading} />
     </Container>
   );

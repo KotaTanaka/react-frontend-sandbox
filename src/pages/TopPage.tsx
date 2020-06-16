@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // from app
-import PageHeading from 'src/components/PageHeading';
+import PageHeading from 'src/components/partials/PageHeading';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 管理画面トップページ */

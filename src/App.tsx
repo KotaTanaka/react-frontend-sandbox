@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // from app
 import { Provider } from 'src/Store';
 import { PAGES } from 'src/constants/page';
-import Header from 'src/components/Header';
-import SideBar from 'src/components/SideBar';
+import Header from 'src/components/partials/Header';
+import SideBar from 'src/components/partials/SideBar';
 import TopPage from 'src/pages/TopPage';
 import ServicesPage from 'src/pages/ServicesPage';
 import ServiceDetailPage from 'src/pages/ServiceDetailPage';

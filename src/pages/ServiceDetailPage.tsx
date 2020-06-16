@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 // from app
-import PageHeading from 'src/components/PageHeading';
+import PageHeading from 'src/components/partials/PageHeading';
 
 /** Wi-Fiサービス詳細ページ */
 const ServiceDetailPage: React.FC = () => {

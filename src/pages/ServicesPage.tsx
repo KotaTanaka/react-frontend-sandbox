@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // from app
-import PageHeading from 'src/components/PageHeading';
+import PageHeading from 'src/components/partials/PageHeading';
 import { IService } from 'src/interfaces/api/Service';
 import useGetServices from 'src/hooks/useGetServices';
 import { flexColumnCenter } from 'src/styles/mixin';

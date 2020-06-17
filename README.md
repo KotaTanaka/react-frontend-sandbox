@@ -1,4 +1,4 @@
-***find-wifi-console-app***
+***find-wifi-console-ui***
 
 ## About
 
@@ -20,8 +20,8 @@ Find Wi-Fi 管理コンソール
 - Install
 
 ```bash
-$ git clone git@github.com:KotaTanaka/find-wifi-console-app.git
-$ cd find-wifi-console-app
+$ git clone git@github.com:KotaTanaka/find-wifi-console-ui.git
+$ cd find-wifi-console-ui
 $ yarn
 ```
 

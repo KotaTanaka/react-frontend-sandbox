@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import axios, { CancelTokenSource } from 'axios';
+import { useCallback, useState } from 'react';
+import axios from 'axios';
 
 // from app
 import { API_ENDPOINT } from 'src/constants/api';

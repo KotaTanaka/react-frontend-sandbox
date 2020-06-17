@@ -11,6 +11,7 @@ import TopPage from 'src/pages/TopPage';
 import ServicesPage from 'src/pages/ServicesPage';
 import ServiceRegisterPage from 'src/pages/ServiceRegisterPage';
 import ServiceDetailPage from 'src/pages/ServiceDetailPage';
+import ShopRegisterPage from 'src/pages/ShopRegisterPage';
 import CounterPage from 'src/pages/CounterPage';
 
 const App: React.FC = () => {
@@ -37,6 +38,11 @@ const App: React.FC = () => {
                 exact
                 path={PAGES.SERVICES_DETAIL.path}
                 component={ServiceDetailPage}
+              />
+              <Route
+                exact
+                path={PAGES.SHOPS_REGISTER.path}
+                component={ShopRegisterPage}
               />
               <Route exact path="/counter" component={CounterPage} />
             </Switch>

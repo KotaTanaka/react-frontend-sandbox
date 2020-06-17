@@ -14,7 +14,7 @@ interface Props {
   onSave: () => Promise<void>;
 }
 
-/** Wi-Fiサービスリスト */
+/** Wi-Fiサービス登録フォーム */
 const ServiceRegisterForm: React.FC<Props> = (props: Props) => {
   const { params, onChangeWifiName, onChangeLink, onSave } = props;
   const classes = useStyles();

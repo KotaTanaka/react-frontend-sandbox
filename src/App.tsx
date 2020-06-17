@@ -11,7 +11,10 @@ import TopPage from 'src/pages/TopPage';
 import ServicesPage from 'src/pages/ServicesPage';
 import ServiceRegisterPage from 'src/pages/ServiceRegisterPage';
 import ServiceDetailPage from 'src/pages/ServiceDetailPage';
+import ShopsPage from 'src/pages/ShopsPage';
 import ShopRegisterPage from 'src/pages/ShopRegisterPage';
+import ShopDetailPage from 'src/pages/ShopDetailPage';
+import ReviewsPage from 'src/pages/ReviewsPage';
 import CounterPage from 'src/pages/CounterPage';
 
 const App: React.FC = () => {
@@ -39,11 +42,18 @@ const App: React.FC = () => {
                 path={PAGES.SERVICES_DETAIL.path}
                 component={ServiceDetailPage}
               />
+              <Route exact path={PAGES.SHOPS.path} component={ShopsPage} />
               <Route
                 exact
                 path={PAGES.SHOPS_REGISTER.path}
                 component={ShopRegisterPage}
               />
+              <Route
+                exact
+                path={PAGES.SHOPS_DETAIL.path}
+                component={ShopDetailPage}
+              />
+              <Route exact path={PAGES.REVIEWS.path} component={ReviewsPage} />
               <Route exact path="/counter" component={CounterPage} />
             </Switch>
           </Body>

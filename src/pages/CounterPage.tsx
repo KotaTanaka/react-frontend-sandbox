@@ -7,13 +7,13 @@ import { ActionType } from 'src/reducer';
 /** カウンターアプリ */
 const CounterPage: React.FC = () => {
   const dispatch = useDispatch();
-  const grobalCount = useGlobalState('count');
+  const globalCount = useGlobalState('count');
   const [count, setCount] = useState<number>(0);
   const [syobon, setSyobon] = useState<string>('');
 
   useEffect(() => {
     console.log('[Counter] count = ' + count);
-    console.log('[Counter] grobalCount = ' + grobalCount);
+    console.log('[Counter] globalCount = ' + globalCount);
   });
 
   const handleCountUp = useCallback(() => {
@@ -31,7 +31,7 @@ const CounterPage: React.FC = () => {
   return (
     <div>
       <h1>Counter</h1>
-      <p>Global Count: {grobalCount}</p>
+      <p>Global Count: {globalCount}</p>
       <p>Count: {count}</p>
       <p>{syobon}</p>
       <button onClick={handleCountUp}>Click me</button>

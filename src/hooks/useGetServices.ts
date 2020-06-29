@@ -4,6 +4,7 @@ import axios, { CancelTokenSource } from 'axios';
 // from app
 import { API_ENDPOINT } from 'src/constants/api';
 import { IServiceList } from 'src/interfaces/api/response/Service';
+import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseGetServicesProps {
   services: IServiceList;
@@ -21,9 +22,7 @@ const useGetServices = (): IUseGetServicesProps => {
   useEffect(() => {
     const signal = axios.CancelToken.source();
     fetchServiceList(signal);
-    return () => {
-      signal.cancel('Cleanup.');
-    };
+    return () => signal.cancel('Cleanup.');
     // eslint-disable-next-line
   }, []);
 
@@ -40,12 +39,7 @@ const useGetServices = (): IUseGetServicesProps => {
 
         setServices(response.data);
       } catch (err) {
-        if (axios.isCancel(err)) {
-          console.error('Request Cancelled: ' + err.message);
-        } else {
-          // TODO エラーハンドリング
-          console.error(err);
-        }
+        handleError(err);
       }
 
       setIsServicesLoading(false);

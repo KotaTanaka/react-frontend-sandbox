@@ -1,10 +1,10 @@
-/** Wi-Fiサービス一リスト */
+/** Wi-Fiサービスリスト */
 export interface IServiceList {
   serviceList: IService[];
   total: number;
 }
 
-/** Wi-Fiサービス一リスト要素 */
+/** Wi-Fiサービスリスト要素 */
 export interface IService {
   serviceId: number;
   wifiName: string;

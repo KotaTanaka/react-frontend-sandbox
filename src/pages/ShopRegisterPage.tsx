@@ -14,11 +14,12 @@ const ShopRegisterPage: React.FC = () => {
   const {
     registerShopParams,
     changeServiceId,
-    changeArea,
-    changeSSID,
     changeShopName,
+    changeArea,
     changeDescription,
     changeAddress,
+    changeAccess,
+    changeSSID,
     changeShopType,
     changeOpeningHours,
     changeSeatsNum,
@@ -34,11 +35,12 @@ const ShopRegisterPage: React.FC = () => {
       <ShopRegisterForm
         params={registerShopParams}
         onChangeServiceId={changeServiceId}
-        onChangeArea={changeArea}
-        onChangeSSID={changeSSID}
         onChangeShopName={changeShopName}
+        onChangeArea={changeArea}
         onChangeDescription={changeDescription}
         onChangeAddress={changeAddress}
+        onChangeAccess={changeAccess}
+        onChangeSSID={changeSSID}
         onChangeShopType={changeShopType}
         onChangeOpeningHours={changeOpeningHours}
         onChangeSeatsNum={changeSeatsNum}

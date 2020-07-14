@@ -8,11 +8,12 @@ import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
 interface IUseRegisterShopProps {
   registerShopParams: IRegisterShopBody;
   changeServiceId: (value: number) => void;
-  changeArea: (value: string) => void;
-  changeSSID: (value: string) => void;
   changeShopName: (value: string) => void;
+  changeArea: (value: string) => void;
   changeDescription: (value: string) => void;
   changeAddress: (value: string) => void;
+  changeAccess: (value: string) => void;
+  changeSSID: (value: string) => void;
   changeShopType: (value: string) => void;
   changeOpeningHours: (value: string) => void;
   changeSeatsNum: (value: number) => void;
@@ -27,11 +28,12 @@ const useRegisterShop = (): IUseRegisterShopProps => {
   // prettier-ignore
   const [registerShopParams, setRegisterShopParams] = useState<IRegisterShopBody>({
     serviceId: 0,
-    area: '',
-    ssid: '',
     shopName: '',
+    area: '',
     description: '',
     address: '',
+    access: '',
+    ssid: [],
     shopType: '',
     openingHours: '',
     seatsNum: 0,
@@ -48,24 +50,17 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
-  const changeArea = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      area: value,
-    }));
-  }, []);
-
-  const changeSSID = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      ssid: value,
-    }));
-  }, []);
-
   const changeShopName = useCallback((value: string): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
       shopName: value,
+    }));
+  }, []);
+
+  const changeArea = useCallback((value: string): void => {
+    setRegisterShopParams((currentState) => ({
+      ...currentState,
+      area: value,
     }));
   }, []);
 
@@ -80,6 +75,20 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
       address: value,
+    }));
+  }, []);
+
+  const changeAccess = useCallback((value: string): void => {
+    setRegisterShopParams((currentState) => ({
+      ...currentState,
+      access: value,
+    }));
+  }, []);
+
+  const changeSSID = useCallback((value: string): void => {
+    setRegisterShopParams((currentState) => ({
+      ...currentState,
+      ssid: [value],
     }));
   }, []);
 
@@ -118,11 +127,12 @@ const useRegisterShop = (): IUseRegisterShopProps => {
 
       setRegisterShopParams({
         serviceId: 0,
-        area: '',
-        ssid: '',
         shopName: '',
+        area: '',
         description: '',
         address: '',
+        access: '',
+        ssid: [],
         shopType: '',
         openingHours: '',
         seatsNum: 0,
@@ -142,11 +152,12 @@ const useRegisterShop = (): IUseRegisterShopProps => {
   return {
     registerShopParams,
     changeServiceId,
-    changeArea,
-    changeSSID,
     changeShopName,
+    changeArea,
     changeDescription,
     changeAddress,
+    changeAccess,
+    changeSSID,
     changeShopType,
     changeOpeningHours,
     changeSeatsNum,

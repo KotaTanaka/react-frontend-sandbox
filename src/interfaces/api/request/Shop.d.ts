@@ -1,11 +1,12 @@
 /** 店舗登録リクエストボディ */
 export interface IRegisterShopBody {
   serviceId: number;
-  area: string;
-  ssid: string;
   shopName: string;
+  area: string;
   description: string;
   address: string;
+  access: string;
+  ssid: string[];
   shopType: string;
   openingHours: string;
   seatsNum: number;

@@ -10,11 +10,12 @@ import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
 interface Props {
   params: IRegisterShopBody;
   onChangeServiceId: (value: number) => void;
-  onChangeArea: (value: string) => void;
-  onChangeSSID: (value: string) => void;
   onChangeShopName: (value: string) => void;
+  onChangeArea: (value: string) => void;
   onChangeDescription: (value: string) => void;
   onChangeAddress: (value: string) => void;
+  onChangeAccess: (value: string) => void;
+  onChangeSSID: (value: string) => void;
   onChangeShopType: (value: string) => void;
   onChangeOpeningHours: (value: string) => void;
   onChangeSeatsNum: (value: number) => void;
@@ -27,11 +28,12 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
   const {
     params,
     onChangeServiceId,
-    onChangeArea,
-    onChangeSSID,
     onChangeShopName,
+    onChangeArea,
     onChangeDescription,
     onChangeAddress,
+    onChangeAccess,
+    onChangeSSID,
     onChangeShopType,
     onChangeOpeningHours,
     onChangeSeatsNum,
@@ -46,19 +48,14 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
   }, [onChangeServiceId]);
 
   // prettier-ignore
-  const handleChangeArea = useCallback((e) => {
-    onChangeArea(e.target.value);
-  }, [onChangeArea]);
-
-  // prettier-ignore
-  const handleChangeSSID = useCallback((e) => {
-    onChangeSSID(e.target.value);
-  }, [onChangeSSID]);
-
-  // prettier-ignore
   const handleChangeShopName = useCallback((e) => {
     onChangeShopName(e.target.value);
   }, [onChangeShopName]);
+
+  // prettier-ignore
+  const handleChangeArea = useCallback((e) => {
+    onChangeArea(e.target.value);
+  }, [onChangeArea]);
 
   // prettier-ignore
   const handleChangeDescription = useCallback((e) => {
@@ -69,6 +66,16 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
   const handleChangeAddress = useCallback((e) => {
     onChangeAddress(e.target.value);
   }, [onChangeAddress]);
+
+  // prettier-ignore
+  const handleChangeAccess = useCallback((e) => {
+    onChangeAccess(e.target.value);
+  }, [onChangeAccess]);
+
+  // prettier-ignore
+  const handleChangeSSID = useCallback((e) => {
+    onChangeSSID(e.target.value);
+  }, [onChangeSSID]);
 
   // prettier-ignore
   const handleChangeShopType = useCallback((e) => {
@@ -103,6 +110,14 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
           value={params.serviceId}
           onChange={handleChangeServiceId}
         />
+        <TextField
+          label="店舗名"
+          variant="outlined"
+          className={classes.textField}
+          helperText="店舗名称を入力"
+          value={params.shopName}
+          onChange={handleChangeShopName}
+        />
         {/** TODO Picker */}
         <TextField
           label="地域"
@@ -111,22 +126,6 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
           helperText="地域を選択"
           value={params.area}
           onChange={handleChangeArea}
-        />
-        <TextField
-          label="SSID"
-          variant="outlined"
-          className={classes.textField}
-          helperText="SSIDを入力"
-          value={params.ssid}
-          onChange={handleChangeSSID}
-        />
-        <TextField
-          label="店舗名"
-          variant="outlined"
-          className={classes.textField}
-          helperText="店舗名称を入力"
-          value={params.shopName}
-          onChange={handleChangeShopName}
         />
         <TextField
           label="店舗説明"
@@ -143,6 +142,22 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
           helperText="店舗住所を入力"
           value={params.address}
           onChange={handleChangeAddress}
+        />
+        <TextField
+          label="アクセス"
+          variant="outlined"
+          className={classes.textField}
+          helperText="店舗アクセスを入力"
+          value={params.access}
+          onChange={handleChangeAccess}
+        />
+        <TextField
+          label="SSID"
+          variant="outlined"
+          className={classes.textField}
+          helperText="SSIDを入力"
+          value={params.ssid}
+          onChange={handleChangeSSID}
         />
         <TextField
           label="店舗種別"

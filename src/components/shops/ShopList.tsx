@@ -13,7 +13,9 @@ import {
 } from '@material-ui/core';
 
 // from app
+import { PAGES } from 'src/constants/page';
 import usePageTransition from 'src/hooks/usePageTransition';
+import EmptyContent from 'src/components/partials/EmptyContent';
 import { IShopList } from 'src/interfaces/api/response/Shop';
 
 interface Props {
@@ -30,6 +32,10 @@ const ShopList: React.FC<Props> = (props: Props) => {
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (data.shopList.length === 0) {
+    return <EmptyContent link={PAGES.SHOPS_REGISTER.path} />;
   }
 
   return (

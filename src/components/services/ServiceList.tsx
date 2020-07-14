@@ -13,7 +13,9 @@ import {
 } from '@material-ui/core';
 
 // from app
+import { PAGES } from 'src/constants/page';
 import usePageTransition from 'src/hooks/usePageTransition';
+import EmptyContent from 'src/components/partials/EmptyContent';
 import { IServiceList } from 'src/interfaces/api/response/Service';
 
 interface Props {
@@ -30,6 +32,10 @@ const ServiceList: React.FC<Props> = (props: Props) => {
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (data.serviceList.length === 0) {
+    return <EmptyContent link={PAGES.SERVICES_REGISTER.path} />;
   }
 
   return (

@@ -4,7 +4,8 @@ import { useHistory } from 'react-router';
 // from app
 import { PAGES } from 'src/constants/page';
 
-interface IUserPAGESTransitionProps {
+interface IUserPageTransitionProps {
+  moveTo: (to: string) => void;
   moveToHome: () => void;
   moveToAreaList: () => void;
   moveToRegisterArea: () => void;
@@ -18,8 +19,16 @@ interface IUserPAGESTransitionProps {
 }
 
 /** ページ遷移カスタムフック */
-const usePAGESTransition = (): IUserPAGESTransitionProps => {
+const usePageTransition = (): IUserPageTransitionProps => {
   const history = useHistory();
+
+  /** 指定したパス */
+  const moveTo = useCallback(
+    (to: string) => {
+      history.push(to);
+    },
+    [history],
+  );
 
   /** ホーム */
   const moveToHome = useCallback(() => {
@@ -78,6 +87,7 @@ const usePAGESTransition = (): IUserPAGESTransitionProps => {
   }, [history]);
 
   return {
+    moveTo,
     moveToHome,
     moveToAreaList,
     moveToRegisterArea,
@@ -91,4 +101,4 @@ const usePAGESTransition = (): IUserPAGESTransitionProps => {
   };
 };
 
-export default usePAGESTransition;
+export default usePageTransition;

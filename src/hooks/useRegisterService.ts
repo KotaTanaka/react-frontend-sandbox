@@ -10,6 +10,8 @@ interface IUseRegisterServiceProps {
   changeWifiName: (value: string) => void;
   changeLink: (value: string) => void;
   requestRegisterService: () => Promise<void>;
+  isShowSuccessPopup: boolean;
+  closeSuccessPopup: () => void;
 }
 
 /** Wi-Fiサービス登録カスタムフック */
@@ -19,6 +21,8 @@ const useRegisterService = (): IUseRegisterServiceProps => {
     wifiName: '',
     link: ''
   });
+
+  const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
   const changeWifiName = useCallback((value: string): void => {
     setRegisterServiceParams((currentState) => ({
@@ -43,16 +47,24 @@ const useRegisterService = (): IUseRegisterServiceProps => {
         wifiName: '',
         link: '',
       });
+
+      setIsShowSuccessPopup(true);
     } catch (err) {
       console.error(err);
     }
   }, [registerServiceParams]);
+
+  const closeSuccessPopup = useCallback(() => {
+    setIsShowSuccessPopup(false);
+  }, []);
 
   return {
     registerServiceParams,
     changeWifiName,
     changeLink,
     requestRegisterService,
+    isShowSuccessPopup,
+    closeSuccessPopup,
   };
 };
 

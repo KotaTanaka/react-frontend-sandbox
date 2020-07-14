@@ -18,6 +18,8 @@ interface IUseRegisterShopProps {
   changeSeatsNum: (value: number) => void;
   changeHasPower: (value: boolean) => void;
   requestRegisterShop: () => Promise<void>;
+  isShowSuccessPopup: boolean;
+  closeSuccessPopup: () => void;
 }
 
 /** 店舗登録カスタムフック */
@@ -35,6 +37,8 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     seatsNum: 0,
     hasPower: false,
   });
+
+  const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
   const changeServiceId = useCallback((value: number): void => {
     console.log(value);
@@ -124,10 +128,16 @@ const useRegisterShop = (): IUseRegisterShopProps => {
         seatsNum: 0,
         hasPower: false,
       });
+
+      setIsShowSuccessPopup(true);
     } catch (err) {
       console.error(err);
     }
   }, [registerShopParams]);
+
+  const closeSuccessPopup = useCallback(() => {
+    setIsShowSuccessPopup(false);
+  }, []);
 
   return {
     registerShopParams,
@@ -142,6 +152,8 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     changeSeatsNum,
     changeHasPower,
     requestRegisterShop,
+    isShowSuccessPopup,
+    closeSuccessPopup,
   };
 };
 

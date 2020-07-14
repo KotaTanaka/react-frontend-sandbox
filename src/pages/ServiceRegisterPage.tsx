@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { PAGES } from 'src/constants/page';
 import useRegisterService from 'src/hooks/useRegisterService';
 import PageHeading from 'src/components/partials/PageHeading';
+import SuccessPopup from 'src/components/partials/SuccessPopup';
 import ServiceRegisterForm from 'src/components/services/ServiceRegisterForm';
 import { flexColumnCenter } from 'src/styles/mixin';
 
@@ -15,6 +16,8 @@ const ServiceRegisterPage: React.FC = () => {
     changeWifiName,
     changeLink,
     requestRegisterService,
+    isShowSuccessPopup,
+    closeSuccessPopup,
   } = useRegisterService();
 
   return (
@@ -25,6 +28,11 @@ const ServiceRegisterPage: React.FC = () => {
         onChangeWifiName={changeWifiName}
         onChangeLink={changeLink}
         onSave={requestRegisterService}
+      />
+      <SuccessPopup
+        open={isShowSuccessPopup}
+        onClose={closeSuccessPopup}
+        message="Wi-Fiサービスの登録に成功しました。"
       />
     </Container>
   );

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { PAGES } from 'src/constants/page';
 import useRegisterShop from 'src/hooks/useRegisterShop';
 import PageHeading from 'src/components/partials/PageHeading';
+import SuccessPopup from 'src/components/partials/SuccessPopup';
 import ShopRegisterForm from 'src/components/shops/ShopRegisterForm';
 import { flexColumnCenter } from 'src/styles/mixin';
 
@@ -23,6 +24,8 @@ const ShopRegisterPage: React.FC = () => {
     changeSeatsNum,
     changeHasPower,
     requestRegisterShop,
+    isShowSuccessPopup,
+    closeSuccessPopup,
   } = useRegisterShop();
 
   return (
@@ -41,6 +44,11 @@ const ShopRegisterPage: React.FC = () => {
         onChangeSeatsNum={changeSeatsNum}
         onChangeHasPower={changeHasPower}
         onSave={requestRegisterShop}
+      />
+      <SuccessPopup
+        open={isShowSuccessPopup}
+        onClose={closeSuccessPopup}
+        message="店舗の登録に成功しました。"
       />
     </Container>
   );

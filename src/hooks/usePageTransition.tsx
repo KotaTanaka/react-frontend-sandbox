@@ -6,6 +6,8 @@ import { PAGES } from 'src/constants/page';
 
 interface IUserPAGESTransitionProps {
   moveToHome: () => void;
+  moveToAreaList: () => void;
+  moveToRegisterArea: () => void;
   moveToServiceList: () => void;
   moveToServiceDetail: (id: number) => void;
   moveToRegisterService: () => void;
@@ -22,6 +24,16 @@ const usePAGESTransition = (): IUserPAGESTransitionProps => {
   /** ホーム */
   const moveToHome = useCallback(() => {
     history.push(PAGES.HOME.path);
+  }, [history]);
+
+  /** エリア一覧 */
+  const moveToAreaList = useCallback(() => {
+    history.push(PAGES.AREAS.path);
+  }, [history]);
+
+  /** エリア登録 */
+  const moveToRegisterArea = useCallback(() => {
+    history.push(PAGES.AREAS_REGISTER.path);
   }, [history]);
 
   /** Wi-Fiサービス一覧 */
@@ -67,6 +79,8 @@ const usePAGESTransition = (): IUserPAGESTransitionProps => {
 
   return {
     moveToHome,
+    moveToAreaList,
+    moveToRegisterArea,
     moveToServiceList,
     moveToServiceDetail,
     moveToRegisterService,

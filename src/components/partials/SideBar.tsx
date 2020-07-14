@@ -18,6 +18,8 @@ const SideBar: React.FC = () => {
   const classes = useStyles();
 
   const {
+    moveToAreaList,
+    moveToRegisterArea,
     moveToServiceList,
     moveToRegisterService,
     moveToShopList,
@@ -29,6 +31,15 @@ const SideBar: React.FC = () => {
     <Drawer variant="permanent" classes={{ paper: classes.drawerPaper }}>
       <Toolbar />
       <div>
+        <List>
+          <ListItem button onClick={moveToAreaList}>
+            <ListItemText primary={PAGES.AREAS.name} />
+          </ListItem>
+          <ListItem button onClick={moveToRegisterArea}>
+            <ListItemText primary={PAGES.AREAS_REGISTER.name} />
+          </ListItem>
+        </List>
+        <Divider />
         <List>
           <ListItem button onClick={moveToServiceList}>
             <ListItemText primary={PAGES.SERVICES.name} />

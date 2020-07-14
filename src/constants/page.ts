@@ -4,6 +4,14 @@ export const PAGES = {
     name: 'トップ',
     path: '/',
   },
+  AREAS: {
+    name: 'エリア一覧',
+    path: '/areas',
+  },
+  AREAS_REGISTER: {
+    name: 'エリア登録',
+    path: '/areas/register',
+  },
   SERVICES: {
     name: 'Wi-Fiサービス一覧',
     path: '/services',

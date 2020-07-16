@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
 // from app
-import { useDispatch, useGlobalState } from 'src/Store';
-import { ActionType } from 'src/reducer';
+import { useDispatch, useGlobalState } from 'src/Context';
+import { ActionType } from 'src/constants/enums';
 
 /** カウンターアプリ */
 const CounterPage: React.FC = () => {
-  const dispatch = useDispatch();
-  const globalCount = useGlobalState('count');
+  const { dispatchCounter } = useDispatch();
+  const globalCounterState = useGlobalState('counter');
   const [count, setCount] = useState<number>(0);
   const [syobon, setSyobon] = useState<string>('');
 
   useEffect(() => {
     console.log('[Counter] count = ' + count);
-    console.log('[Counter] globalCount = ' + globalCount);
+    console.log('[Counter] globalCount = ' + globalCounterState.count);
   });
 
   const handleCountUp = useCallback(() => {
@@ -22,16 +22,16 @@ const CounterPage: React.FC = () => {
   }, [count]);
 
   const handleGlobalCountUp = useCallback(() => {
-    dispatch({
+    dispatchCounter({
       type: ActionType.SET_COUNT,
       payload: count,
     });
-  }, [count, dispatch]);
+  }, [count, dispatchCounter]);
 
   return (
     <div>
       <h1>Counter</h1>
-      <p>Global Count: {globalCount}</p>
+      <p>Global Count: {globalCounterState.count}</p>
       <p>Count: {count}</p>
       <p>{syobon}</p>
       <button onClick={handleCountUp}>Click me</button>

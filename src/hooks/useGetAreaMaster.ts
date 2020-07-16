@@ -44,7 +44,7 @@ const useGetAreaMaster = (): IUseGetAreaMasterProps => {
 
         dispatchArea({
           type: ActionType.SET_AREA_LIST,
-          payload: response.data.areaList,
+          payload: response.data,
         });
       } catch (err) {
         handleError(err);

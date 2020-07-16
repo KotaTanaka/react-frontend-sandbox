@@ -26,7 +26,7 @@ const AreaReducer = (state: IAreaState, action: IAreaAction) => {
     case ActionType.SET_AREA_LIST:
       return {
         ...state,
-        areaList: payload,
+        areaList: payload.areaList,
       };
     default:
       return state;

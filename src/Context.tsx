@@ -11,6 +11,11 @@ import serviceReducer, {
   IServiceAction,
   serviceInitialState,
 } from 'src/reducers/ServiceReducer';
+import shopReducer, {
+  IShopState,
+  IShopAction,
+  shopInitialState,
+} from 'src/reducers/ShopReducer';
 import counterReducer, {
   ICounterState,
   ICounterAction,
@@ -21,6 +26,7 @@ import counterReducer, {
 export interface IGlobalAction {
   area: IAreaAction;
   service: IServiceAction;
+  shop: IShopAction;
   counter: ICounterAction;
 }
 
@@ -28,6 +34,7 @@ export interface IGlobalAction {
 export interface IGlobalState {
   area: IAreaState;
   service: IServiceState;
+  shop: IShopState;
   counter: ICounterState;
 }
 
@@ -35,6 +42,7 @@ export interface IGlobalState {
 const StoreContext = createContext<IGlobalState>({
   area: areaInitialState,
   service: serviceInitialState,
+  shop: shopInitialState,
   counter: counterInitialState,
 });
 
@@ -42,33 +50,37 @@ const StoreContext = createContext<IGlobalState>({
 const DispatchContext = createContext<{
   dispatchArea: React.Dispatch<IAreaAction>;
   dispatchService: React.Dispatch<IServiceAction>;
+  dispatchShop: React.Dispatch<IShopAction>;
   dispatchCounter: React.Dispatch<ICounterAction>;
 }>({
   dispatchArea: () => true,
   dispatchService: () => true,
+  dispatchShop: () => true,
   dispatchCounter: () => true,
 });
 
 /** Provider */
+// prettier-ignore
 const Provider = ({ children }: { children: any }) => {
   const [areaState, areaDispatch] = useReducer(areaReducer, areaInitialState);
-  const [serviceState, serviceDispatch] = useReducer(
-    serviceReducer,
-    serviceInitialState,
-  );
-  const [counterState, counterDispatch] = useReducer(
-    counterReducer,
-    counterInitialState,
-  );
+  const [serviceState, serviceDispatch] = useReducer(serviceReducer, serviceInitialState);
+  const [shopState, shopDispatch] = useReducer(shopReducer, shopInitialState);
+  const [counterState, counterDispatch] = useReducer(counterReducer, counterInitialState);
 
   return (
     <StoreContext.Provider
-      value={{ area: areaState, service: serviceState, counter: counterState }}
+      value={{
+        area: areaState,
+        service: serviceState,
+        shop: shopState,
+        counter: counterState,
+      }}
     >
       <DispatchContext.Provider
         value={{
           dispatchArea: areaDispatch,
           dispatchService: serviceDispatch,
+          dispatchShop: shopDispatch,
           dispatchCounter: counterDispatch,
         }}
       >

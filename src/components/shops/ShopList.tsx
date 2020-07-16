@@ -13,28 +13,27 @@ import {
 } from '@material-ui/core';
 
 // from app
+import { useGlobalState } from 'src/Context';
 import { PAGES } from 'src/constants/page';
 import usePageTransition from 'src/hooks/usePageTransition';
 import EmptyContent from 'src/components/partials/EmptyContent';
-import { IShopList } from 'src/interfaces/api/response/Shop';
 
 interface Props {
-  data: IShopList;
   loading: boolean;
 }
 
 /** 店舗リスト */
 const ShopList: React.FC<Props> = (props: Props) => {
-  const { data, loading } = props;
+  const { loading } = props;
   const classes = useStyles();
-
+  const { shopList } = useGlobalState('shop');
   const { moveToShopDetail } = usePageTransition();
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  if (data.shopList.length === 0) {
+  if (shopList.length === 0) {
     return <EmptyContent link={PAGES.SHOPS_REGISTER.path} />;
   }
 
@@ -54,7 +53,7 @@ const ShopList: React.FC<Props> = (props: Props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.shopList.map((shop) => (
+            {shopList.map((shop) => (
               <TableRow key={shop.shopId}>
                 <TableCell>{shop.shopName}</TableCell>
                 <TableCell>{shop.wifiName}</TableCell>

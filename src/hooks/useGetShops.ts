@@ -2,21 +2,21 @@ import { useCallback, useEffect, useState } from 'react';
 import axios, { CancelTokenSource } from 'axios';
 
 // from app
+import { useDispatch } from 'src/Context';
 import { API_ENDPOINT } from 'src/constants/api';
+import { ActionType } from 'src/constants/enums';
 import { IShopList } from 'src/interfaces/api/response/Shop';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseGetShopsProps {
-  shops: IShopList;
   isShopsLoading: boolean;
   fetchShopList: (signal?: CancelTokenSource) => Promise<void>;
 }
 
 /** 店舗一覧取得カスタムフック */
 const useGetShops = (): IUseGetShopsProps => {
+  const { dispatchShop } = useDispatch();
   const [isShopsLoading, setIsShopsLoading] = useState<boolean>(true);
-  // prettier-ignore
-  const [shops, setShops] = useState<IShopList>({ shopList: [], total: 0 });
 
   /** ページ描画時に取得 */
   useEffect(() => {
@@ -33,19 +33,22 @@ const useGetShops = (): IUseGetShopsProps => {
   // prettier-ignore
   const fetchShopList = useCallback(async (signal?: CancelTokenSource): Promise<void> => {
     try {
-      const response = await axios.get(API_ENDPOINT.SHOPS, {
+      const response = await axios.get<IShopList>(API_ENDPOINT.SHOPS, {
         cancelToken: signal ? signal.token : axios.CancelToken.source().token,
       });
 
-      setShops(response.data);
+      dispatchShop({
+        type: ActionType.SET_SHOP_LIST,
+        payload: response.data,
+      });
     } catch (err) {
       handleError(err);
     }
 
     setIsShopsLoading(false);
-  }, []);
+  }, [dispatchShop]);
 
-  return { shops, isShopsLoading, fetchShopList };
+  return { isShopsLoading, fetchShopList };
 };
 
 export default useGetShops;

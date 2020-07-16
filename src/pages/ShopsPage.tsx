@@ -10,12 +10,12 @@ import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 店舗一覧ページ */
 const ShopsPage: React.FC = () => {
-  const { shops, isShopsLoading } = useGetShops();
+  const { isShopsLoading } = useGetShops();
 
   return (
     <Container>
       <PageHeading heading={PAGES.SHOPS.name} />
-      <ShopList data={shops} loading={isShopsLoading} />
+      <ShopList loading={isShopsLoading} />
     </Container>
   );
 };

@@ -16,7 +16,7 @@ const EmptyContent: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
 
   const { moveTo } = usePageTransition();
-  const handleClickLink = useCallback(() => moveTo(link), [link]);
+  const handleClickLink = useCallback(() => moveTo(link), [moveTo, link]);
 
   return (
     <Container>

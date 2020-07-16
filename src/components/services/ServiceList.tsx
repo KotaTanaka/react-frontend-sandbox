@@ -13,28 +13,27 @@ import {
 } from '@material-ui/core';
 
 // from app
+import { useGlobalState } from 'src/Context';
 import { PAGES } from 'src/constants/page';
 import usePageTransition from 'src/hooks/usePageTransition';
 import EmptyContent from 'src/components/partials/EmptyContent';
-import { IServiceList } from 'src/interfaces/api/response/Service';
 
 interface Props {
-  data: IServiceList;
   loading: boolean;
 }
 
 /** Wi-Fiサービスリスト */
 const ServiceList: React.FC<Props> = (props: Props) => {
-  const { data, loading } = props;
+  const { loading } = props;
   const classes = useStyles();
-
+  const { serviceList } = useGlobalState('service');
   const { moveToServiceDetail } = usePageTransition();
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  if (data.serviceList.length === 0) {
+  if (serviceList.length === 0) {
     return <EmptyContent link={PAGES.SERVICES_REGISTER.path} />;
   }
 
@@ -51,7 +50,7 @@ const ServiceList: React.FC<Props> = (props: Props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.serviceList.map((service) => (
+            {serviceList.map((service) => (
               <TableRow key={service.serviceId}>
                 <TableCell>{service.wifiName}</TableCell>
                 <TableCell>{service.link}</TableCell>

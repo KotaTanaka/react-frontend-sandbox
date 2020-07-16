@@ -10,12 +10,12 @@ import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス一覧ページ */
 const ServicesPage: React.FC = () => {
-  const { services, isServicesLoading } = useGetServices();
+  const { isServicesLoading } = useGetServices();
 
   return (
     <Container>
       <PageHeading heading={PAGES.SERVICES.name} />
-      <ServiceList data={services} loading={isServicesLoading} />
+      <ServiceList loading={isServicesLoading} />
     </Container>
   );
 };

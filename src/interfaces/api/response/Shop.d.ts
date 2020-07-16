@@ -1,14 +1,6 @@
-/** 店舗リスト */
-export interface IShopList {
-  shopList: IShop[];
-  total: number;
-}
-
-/** 店舗リスト要素 */
+/** 店舗情報 */
 export interface IShop {
   shopId: number;
-  serviceId: number;
-  wifiName: string;
   shopName: string;
   area: string;
   description: string;
@@ -21,4 +13,16 @@ export interface IShop {
   hasPower: boolean;
   reviewCount: number;
   average: number;
+}
+
+/** 店舗リスト */
+export interface IShopList {
+  shopList: IShopListElement[];
+  total: number;
+}
+
+/** 店舗リスト要素情報 */
+export interface IShopListElement extends IShop {
+  serviceId: number;
+  wifiName: string;
 }

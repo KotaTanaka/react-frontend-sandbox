@@ -1,6 +1,6 @@
 // from app
 import { ActionType } from 'src/constants/enums';
-import { IShop } from 'src/interfaces/api/response/Shop';
+import { IShopListElement } from 'src/interfaces/api/response/Shop';
 
 /** Action */
 export interface IShopAction {
@@ -10,7 +10,7 @@ export interface IShopAction {
 
 /** State */
 export interface IShopState {
-  shopList: IShop[];
+  shopList: IShopListElement[];
   total: number;
 }
 

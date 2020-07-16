@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // from app
-import { Provider } from 'src/Store';
+import { Provider } from 'src/Context';
 import { PAGES } from 'src/constants/page';
 import Header from 'src/components/partials/Header';
 import SideBar from 'src/components/partials/SideBar';

@@ -1,3 +1,6 @@
+// from app
+import { IReview } from 'src/interfaces/api/response/Review';
+
 /** 店舗情報 */
 export interface IShop {
   shopId: number;
@@ -25,4 +28,14 @@ export interface IShopList {
 export interface IShopListElement extends IShop {
   serviceId: number;
   wifiName: string;
+}
+
+/** 店舗情報詳細 */
+export interface IShopDetail extends IShop {
+  serviceId: number;
+  wifiName: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string;
+  reviewList: IReview[];
 }

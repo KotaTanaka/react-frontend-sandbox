@@ -1,5 +1,5 @@
+// from app
 import { IShop } from 'src/interfaces/api/response/Shop';
-import { IsoSharp } from '@material-ui/icons';
 
 /** Wi-Fiサービス情報 */
 export interface IService {

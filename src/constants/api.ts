@@ -12,6 +12,10 @@ export const API_ENDPOINT = {
   // 店舗一覧取得
   // 店舗登録
   SHOPS: `${HOST}/admin/shops`,
+  // 店舗詳細取得
+  // 店舗編集
+  // 店舗削除
+  SHOP: `${HOST}/admin/shops/$id`,
 };
 
 /** クライアントAPIエンドポイント */

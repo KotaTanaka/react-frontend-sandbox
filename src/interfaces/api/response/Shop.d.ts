@@ -24,7 +24,7 @@ export interface IShopList {
   total: number;
 }
 
-/** 店舗リスト要素情報 */
+/** 店舗リスト要素 */
 export interface IShopListElement extends IShop {
   serviceId: number;
   wifiName: string;

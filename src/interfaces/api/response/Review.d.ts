@@ -8,3 +8,16 @@ export interface IReview {
   updatedAt: string;
   deletedAt: string;
 }
+
+/** レビューリスト */
+export interface IReviewList {
+  reviewList: IReviewListElement[];
+  total: number;
+}
+/** レビューリスト要素 */
+export interface IReviewListElement extends IReview {
+  shopId: string;
+  shopName: string;
+  serviceId: string;
+  wifiName: string;
+}

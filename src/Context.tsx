@@ -16,6 +16,11 @@ import shopReducer, {
   IShopAction,
   shopInitialState,
 } from 'src/reducers/ShopReducer';
+import reviewReducer, {
+  IReviewState,
+  IReviewAction,
+  reviewInitialState,
+} from 'src/reducers/ReviewReducer';
 import counterReducer, {
   ICounterState,
   ICounterAction,
@@ -27,6 +32,7 @@ export interface IGlobalAction {
   area: IAreaAction;
   service: IServiceAction;
   shop: IShopAction;
+  review: IReviewAction;
   counter: ICounterAction;
 }
 
@@ -35,6 +41,7 @@ export interface IGlobalState {
   area: IAreaState;
   service: IServiceState;
   shop: IShopState;
+  review: IReviewState;
   counter: ICounterState;
 }
 
@@ -43,6 +50,7 @@ const StoreContext = createContext<IGlobalState>({
   area: areaInitialState,
   service: serviceInitialState,
   shop: shopInitialState,
+  review: reviewInitialState,
   counter: counterInitialState,
 });
 
@@ -51,11 +59,13 @@ const DispatchContext = createContext<{
   dispatchArea: React.Dispatch<IAreaAction>;
   dispatchService: React.Dispatch<IServiceAction>;
   dispatchShop: React.Dispatch<IShopAction>;
+  dispatchReview: React.Dispatch<IReviewAction>;
   dispatchCounter: React.Dispatch<ICounterAction>;
 }>({
   dispatchArea: () => true,
   dispatchService: () => true,
   dispatchShop: () => true,
+  dispatchReview: () => true,
   dispatchCounter: () => true,
 });
 
@@ -65,6 +75,7 @@ const Provider = ({ children }: { children: any }) => {
   const [areaState, areaDispatch] = useReducer(areaReducer, areaInitialState);
   const [serviceState, serviceDispatch] = useReducer(serviceReducer, serviceInitialState);
   const [shopState, shopDispatch] = useReducer(shopReducer, shopInitialState);
+  const [reviewState, reviewDispatch] = useReducer(reviewReducer, reviewInitialState);
   const [counterState, counterDispatch] = useReducer(counterReducer, counterInitialState);
 
   return (
@@ -73,6 +84,7 @@ const Provider = ({ children }: { children: any }) => {
         area: areaState,
         service: serviceState,
         shop: shopState,
+        review: reviewState,
         counter: counterState,
       }}
     >
@@ -81,6 +93,7 @@ const Provider = ({ children }: { children: any }) => {
           dispatchArea: areaDispatch,
           dispatchService: serviceDispatch,
           dispatchShop: shopDispatch,
+          dispatchReview: reviewDispatch,
           dispatchCounter: counterDispatch,
         }}
       >

@@ -2,6 +2,8 @@ const HOST = process.env.REACT_APP_API_HOST;
 
 /** 管理APIエンドポイント */
 export const API_ENDPOINT = {
+  // エリア登録
+  AREAS: `${HOST}/admin/areas`,
   // Wi-Fiサービス一覧取得
   // Wi-Fiサービス登録
   SERVICES: `${HOST}/admin/services`,

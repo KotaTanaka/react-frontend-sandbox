@@ -4,6 +4,7 @@ import axios from 'axios';
 // from app
 import { API_ENDPOINT } from 'src/constants/api';
 import { IRegisterServiceBody } from 'src/interfaces/api/request/Service';
+import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseRegisterServiceProps {
   registerServiceParams: IRegisterServiceBody;
@@ -50,7 +51,7 @@ const useRegisterService = (): IUseRegisterServiceProps => {
 
       setIsShowSuccessPopup(true);
     } catch (err) {
-      console.error(err);
+      handleError(err);
     }
   }, [registerServiceParams]);
 

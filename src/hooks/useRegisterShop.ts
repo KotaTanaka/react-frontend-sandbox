@@ -4,6 +4,7 @@ import axios from 'axios';
 // from app
 import { API_ENDPOINT } from 'src/constants/api';
 import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
+import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseRegisterShopProps {
   registerShopParams: IRegisterShopBody;
@@ -43,7 +44,6 @@ const useRegisterShop = (): IUseRegisterShopProps => {
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
   const changeServiceId = useCallback((value: number): void => {
-    console.log(value);
     setRegisterShopParams((currentState) => ({
       ...currentState,
       serviceId: value,
@@ -141,7 +141,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
 
       setIsShowSuccessPopup(true);
     } catch (err) {
-      console.error(err);
+      handleError(err);
     }
   }, [registerShopParams]);
 

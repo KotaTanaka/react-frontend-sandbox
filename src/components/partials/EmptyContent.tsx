@@ -7,7 +7,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import usePageTransition from 'src/hooks/usePageTransition';
 
 interface Props {
-  link: string;
+  link?: string;
 }
 
 /** 項目なし(リスト空)の表示 */
@@ -16,7 +16,9 @@ const EmptyContent: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
 
   const { moveTo } = usePageTransition();
-  const handleClickLink = useCallback(() => moveTo(link), [moveTo, link]);
+  const handleClickLink = useCallback(() => {
+    if (link) moveTo(link);
+  }, [moveTo, link]);
 
   return (
     <Container>
@@ -25,9 +27,11 @@ const EmptyContent: React.FC<Props> = (props: Props) => {
           項目がありません
         </Typography>
       </TextWrapper>
-      <Link onClick={handleClickLink} className={classes.link}>
-        作成する
-      </Link>
+      {link && (
+        <Link onClick={handleClickLink} className={classes.link}>
+          作成する
+        </Link>
+      )}
     </Container>
   );
 };

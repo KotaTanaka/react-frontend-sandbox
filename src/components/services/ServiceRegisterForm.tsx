@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Button, FormControl, TextField } from '@material-ui/core';
+import { Button, FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Save } from '@material-ui/icons';
 
 // from app
+import FormInput from 'src/components/partials/FormInput';
 import { IRegisterServiceBody } from 'src/interfaces/api/request/Service';
 
 interface Props {
@@ -19,34 +20,20 @@ const ServiceRegisterForm: React.FC<Props> = (props: Props) => {
   const { params, onChangeWifiName, onChangeLink, onSave } = props;
   const classes = useStyles();
 
-  // prettier-ignore
-  const handleChangeWifiName = useCallback((e) => {
-    onChangeWifiName(e.target.value);
-  }, [onChangeWifiName]);
-
-  // prettier-ignore
-  const handleChangeLink = useCallback((e) => {
-    onChangeLink(e.target.value);
-  }, [onChangeLink]);
-
   return (
     <Container>
       <FormControl className={classes.form}>
-        <TextField
+        <FormInput
           label="サービス名"
-          variant="outlined"
-          className={classes.textField}
-          helperText="Wi-Fiのサービス名称を入力"
+          help="Wi-Fiのサービス名称を入力"
           value={params.wifiName}
-          onChange={handleChangeWifiName}
+          onChange={onChangeWifiName}
         />
-        <TextField
+        <FormInput
           label="リンク"
-          variant="outlined"
-          className={classes.textField}
-          helperText="公式サイトのURL等を入力"
+          help="公式サイトのURL等を入力"
           value={params.link}
-          onChange={handleChangeLink}
+          onChange={onChangeLink}
         />
         <Button
           variant="contained"
@@ -67,10 +54,6 @@ const ServiceRegisterForm: React.FC<Props> = (props: Props) => {
 const useStyles = makeStyles({
   form: {
     alignItems: 'center',
-  },
-  textField: {
-    width: 320,
-    marginBottom: 16,
   },
   button: {
     width: 240,

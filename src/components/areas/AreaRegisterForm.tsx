@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Button, FormControl, TextField } from '@material-ui/core';
+import { Button, FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Save } from '@material-ui/icons';
 
 // from app
+import FormInput from 'src/components/partials/FormInput';
 import { IRegisterAreaBody } from 'src/interfaces/api/request/Area';
 
 interface Props {
@@ -19,34 +20,20 @@ const AreaRegisterForm: React.FC<Props> = (props: Props) => {
   const { params, onChangeAreaKey, onChangeAreaName, onSave } = props;
   const classes = useStyles();
 
-  // prettier-ignore
-  const handleChangeAreaKey = useCallback((e) => {
-    onChangeAreaKey(e.target.value);
-  }, [onChangeAreaKey]);
-
-  // prettier-ignore
-  const handleChangeAreaName = useCallback((e) => {
-    onChangeAreaName(e.target.value);
-  }, [onChangeAreaName]);
-
   return (
     <Container>
       <FormControl className={classes.form}>
-        <TextField
+        <FormInput
           label="エリアキー"
-          variant="outlined"
-          className={classes.textField}
-          helperText="エリアキーを入力"
+          help="エリアキーを入力"
           value={params.areaKey}
-          onChange={handleChangeAreaKey}
+          onChange={onChangeAreaKey}
         />
-        <TextField
+        <FormInput
           label="エリア名"
-          variant="outlined"
-          className={classes.textField}
-          helperText="エリア名称を入力"
+          help="エリア名称を入力"
           value={params.areaName}
-          onChange={handleChangeAreaName}
+          onChange={onChangeAreaName}
         />
         <Button
           variant="contained"
@@ -67,10 +54,6 @@ const AreaRegisterForm: React.FC<Props> = (props: Props) => {
 const useStyles = makeStyles({
   form: {
     alignItems: 'center',
-  },
-  textField: {
-    width: 320,
-    marginBottom: 16,
   },
   button: {
     width: 240,

@@ -17,8 +17,9 @@ const FormInput: React.FC<Props> = (props: Props) => {
 
   // prettier-ignore
   const handleChange = useCallback((e) => {
-    onChange(e.target.value);
-  }, [onChange]);
+    const value = e.target.value as unknown;
+    onChange(type === 'number' ? Number(value) : value);
+  }, [type, onChange]);
 
   return (
     <TextField

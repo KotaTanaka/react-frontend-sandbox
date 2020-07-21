@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FormControl } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import { Save } from '@material-ui/icons';
 
 // from app
 import FormInput from 'src/components/partials/Form/FormInput';
+import FormSelect from 'src/components/partials/Form/FormSelect';
 import FormSwitch from 'src/components/partials/Form/FormSwitch';
 import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
 import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
+import { flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
   params: IRegisterShopBody;
@@ -30,7 +30,7 @@ interface Props {
 const ShopRegisterForm: React.FC<Props> = (props: Props) => {
   const {
     params,
-    // onChangeServiceId,
+    onChangeServiceId,
     onChangeShopName,
     onChangeArea,
     onChangeDescription,
@@ -43,80 +43,82 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
     onChangeHasPower,
     onSave,
   } = props;
-  const classes = useStyles();
+
+  console.log(params);
 
   return (
     <Container>
-      <FormControl className={classes.form}>
-        {/** TODO サービスID Picker */}
-        <FormInput
-          label="店舗名"
-          help="店舗名称を入力"
-          value={params.shopName}
-          onChange={onChangeShopName}
-        />
-        {/** TODO Area Picker */}
-        <FormInput
-          label="地域"
-          help="地域を選択"
-          value={params.area}
-          onChange={onChangeArea}
-        />
-        <FormInput
-          label="店舗説明"
-          help="店舗の説明を入力"
-          value={params.description}
-          onChange={onChangeDescription}
-        />
-        <FormInput
-          label="住所"
-          help="店舗住所を入力"
-          value={params.address}
-          onChange={onChangeAddress}
-        />
-        <FormInput
-          label="アクセス"
-          help="店舗アクセスを入力"
-          value={params.access}
-          onChange={onChangeAccess}
-        />
-        {/** TODO SSID 複数入力 */}
-        <FormInput
-          label="店舗種別"
-          help="店舗種別を入力"
-          value={params.shopType}
-          onChange={onChangeShopType}
-        />
-        <FormInput
-          label="営業時間"
-          help="営業時間を入力"
-          value={params.openingHours}
-          onChange={onChangeOpeningHours}
-        />
-        <FormInput
-          label="座席数"
-          help="座席数を入力"
-          type="number"
-          value={params.seatsNum}
-          onChange={onChangeSeatsNum}
-        />
-        <FormSwitch
-          label="電源の有無"
-          on={params.hasPower}
-          onChange={onChangeHasPower}
-        />
-        <ButtonPrimary label="登録する" icon={<Save />} onClick={onSave} />
-      </FormControl>
+      <FormSelect
+        help="サービスIDを選択"
+        // TODO Wi-Fiサービス一覧から取得
+        items={[0, 1, 2]}
+        value={params.serviceId}
+        onChange={onChangeServiceId}
+      />
+      <FormInput
+        label="店舗名"
+        help="店舗名称を入力"
+        value={params.shopName}
+        onChange={onChangeShopName}
+      />
+      <FormSelect
+        help="地域を選択"
+        // TODO エリアマスタから取得
+        items={['shibuya', 'shinjuku']}
+        value={params.area}
+        onChange={onChangeArea}
+      />
+      <FormInput
+        label="店舗説明"
+        help="店舗の説明を入力"
+        value={params.description}
+        onChange={onChangeDescription}
+      />
+      <FormInput
+        label="住所"
+        help="店舗住所を入力"
+        value={params.address}
+        onChange={onChangeAddress}
+      />
+      <FormInput
+        label="アクセス"
+        help="店舗アクセスを入力"
+        value={params.access}
+        onChange={onChangeAccess}
+      />
+      {/** TODO SSID 複数入力 */}
+      <FormInput
+        label="店舗種別"
+        help="店舗種別を入力"
+        value={params.shopType}
+        onChange={onChangeShopType}
+      />
+      <FormInput
+        label="営業時間"
+        help="営業時間を入力"
+        value={params.openingHours}
+        onChange={onChangeOpeningHours}
+      />
+      <FormInput
+        label="座席数"
+        help="座席数を入力"
+        type="number"
+        value={params.seatsNum}
+        onChange={onChangeSeatsNum}
+      />
+      <FormSwitch
+        label="電源の有無"
+        on={params.hasPower}
+        onChange={onChangeHasPower}
+      />
+      <ButtonPrimary label="登録する" icon={<Save />} onClick={onSave} />
     </Container>
   );
 };
 
 // styles
-const useStyles = makeStyles({
-  form: {
-    alignItems: 'center',
-  },
-});
-const Container = styled.div``;
+const Container = styled.div`
+  ${flexColumnCenter};
+`;
 
 export default ShopRegisterForm;

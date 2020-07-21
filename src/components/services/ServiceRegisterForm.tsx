@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Save } from '@material-ui/icons';
 
 // from app
-import FormInput from 'src/components/partials/FormInput';
-import ButtonPrimary from 'src/components/partials/ButtonPrimary';
+import FormInput from 'src/components/partials/Form/FormInput';
+import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
 import { IRegisterServiceBody } from 'src/interfaces/api/request/Service';
 
 interface Props {

@@ -5,9 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Save } from '@material-ui/icons';
 
 // from app
-import FormInput from 'src/components/partials/FormInput';
-import ButtonPrimary from 'src/components/partials/ButtonPrimary';
-import FormSwitch from 'src/components/partials/FormSwitch';
+import FormInput from 'src/components/partials/Form/FormInput';
+import FormSwitch from 'src/components/partials/Form/FormSwitch';
+import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
 import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
 
 interface Props {

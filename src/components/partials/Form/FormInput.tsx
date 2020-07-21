@@ -5,28 +5,28 @@ import { makeStyles } from '@material-ui/core/styles';
 interface Props {
   label: string;
   help: string;
-  type?: string;
+  number?: boolean;
   value: string | number;
   onChange: (value: any) => void;
 }
 
 /** 入力フォーム */
 const FormInput: React.FC<Props> = (props: Props) => {
-  const { label, help, type, value, onChange } = props;
+  const { label, help, number, value, onChange } = props;
   const classes = useStyles();
 
   // prettier-ignore
-  const handleChange = useCallback((e) => {
-    const value = e.target.value as unknown;
-    onChange(type === 'number' ? Number(value) : value);
-  }, [type, onChange]);
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    onChange(number ? Number(value) : value);
+  }, [number, onChange]);
 
   return (
     <TextField
       label={label}
       helperText={help}
       variant="outlined"
-      type={type}
+      type={number ? 'number' : undefined}
       className={classes.textField}
       value={value}
       onChange={handleChange}

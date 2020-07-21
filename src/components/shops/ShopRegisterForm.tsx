@@ -44,8 +44,6 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
     onSave,
   } = props;
 
-  console.log(params);
-
   return (
     <Container>
       <FormSelect
@@ -102,7 +100,7 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
       <FormInput
         label="座席数"
         help="座席数を入力"
-        type="number"
+        number
         value={params.seatsNum}
         onChange={onChangeSeatsNum}
       />

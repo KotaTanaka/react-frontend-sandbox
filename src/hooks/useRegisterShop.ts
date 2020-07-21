@@ -18,7 +18,7 @@ interface IUseRegisterShopProps {
   changeShopType: (value: string) => void;
   changeOpeningHours: (value: string) => void;
   changeSeatsNum: (value: number) => void;
-  changeHasPower: (value: boolean) => void;
+  changeHasPower: () => void;
   requestRegisterShop: () => Promise<void>;
   isShowSuccessPopup: boolean;
   closeSuccessPopup: () => void;
@@ -113,10 +113,10 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
-  const changeHasPower = useCallback((value: boolean): void => {
+  const changeHasPower = useCallback((): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
-      hasPower: value,
+      hasPower: !currentState.hasPower,
     }));
   }, []);
 

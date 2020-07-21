@@ -7,6 +7,7 @@ import { Save } from '@material-ui/icons';
 // from app
 import FormInput from 'src/components/partials/FormInput';
 import ButtonPrimary from 'src/components/partials/ButtonPrimary';
+import FormSwitch from 'src/components/partials/FormSwitch';
 import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
 
 interface Props {
@@ -21,7 +22,7 @@ interface Props {
   onChangeShopType: (value: string) => void;
   onChangeOpeningHours: (value: string) => void;
   onChangeSeatsNum: (value: number) => void;
-  onChangeHasPower: (value: boolean) => void;
+  onChangeHasPower: () => void;
   onSave: () => Promise<void>;
 }
 
@@ -39,7 +40,7 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
     onChangeShopType,
     onChangeOpeningHours,
     onChangeSeatsNum,
-    // onChangeHasPower,
+    onChangeHasPower,
     onSave,
   } = props;
   const classes = useStyles();
@@ -99,7 +100,11 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
           value={params.seatsNum}
           onChange={onChangeSeatsNum}
         />
-        {/** TODO 電源有無 Radio */}
+        <FormSwitch
+          label="電源の有無"
+          on={params.hasPower}
+          onChange={onChangeHasPower}
+        />
         <ButtonPrimary label="登録する" icon={<Save />} onClick={onSave} />
       </FormControl>
     </Container>

@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, FormControl } from '@material-ui/core';
+import { FormControl } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Save } from '@material-ui/icons';
 
 // from app
 import FormInput from 'src/components/partials/FormInput';
+import ButtonPrimary from 'src/components/partials/ButtonPrimary';
 import { IRegisterServiceBody } from 'src/interfaces/api/request/Service';
 
 interface Props {
@@ -35,16 +36,7 @@ const ServiceRegisterForm: React.FC<Props> = (props: Props) => {
           value={params.link}
           onChange={onChangeLink}
         />
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          startIcon={<Save />}
-          className={classes.button}
-          onClick={onSave}
-        >
-          登録する
-        </Button>
+        <ButtonPrimary label="登録する" icon={<Save />} onClick={onSave} />
       </FormControl>
     </Container>
   );
@@ -54,10 +46,6 @@ const ServiceRegisterForm: React.FC<Props> = (props: Props) => {
 const useStyles = makeStyles({
   form: {
     alignItems: 'center',
-  },
-  button: {
-    width: 240,
-    marginTop: 64,
   },
 });
 const Container = styled.div``;

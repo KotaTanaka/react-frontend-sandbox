@@ -20,7 +20,7 @@ const FormSelect: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
 
   // prettier-ignore
-  const handleChange = useCallback((e) => {
+  const handleChange = useCallback((e: React.ChangeEvent<{ name?: string; value: unknown}>) => {
     onChange(e.target.value);
   }, [onChange]);
 

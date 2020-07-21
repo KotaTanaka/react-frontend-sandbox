@@ -16,7 +16,7 @@ const FormInput: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
 
   // prettier-ignore
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = e.target.value;
     onChange(number ? Number(value) : value);
   }, [number, onChange]);

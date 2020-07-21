@@ -5,6 +5,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 // from app
 import usePageTransition from 'src/hooks/usePageTransition';
+import { flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
   link?: string;
@@ -48,9 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${flexColumnCenter};
   margin: 50px 0;
 `;
 const TextWrapper = styled.div`

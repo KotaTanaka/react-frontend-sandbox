@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import { Chip } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 // from app
 import { IArea } from 'src/interfaces/api/response/Area';

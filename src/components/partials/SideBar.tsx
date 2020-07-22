@@ -30,7 +30,7 @@ const SideBar: React.FC = () => {
   return (
     <Drawer variant="permanent" classes={{ paper: classes.drawerPaper }}>
       <Toolbar />
-      <div>
+      <>
         <List>
           <ListItem button onClick={moveToAreaList}>
             <ListItemText primary={PAGES.AREAS.name} />
@@ -63,7 +63,7 @@ const SideBar: React.FC = () => {
             <ListItemText primary={PAGES.REVIEWS.name} />
           </ListItem>
         </List>
-      </div>
+      </>
     </Drawer>
   );
 };

@@ -17,7 +17,6 @@ const ShopDetailPage: React.FC = () => {
   return (
     <Container>
       <PageHeading heading={PAGES.SHOPS_DETAIL.name} />
-      <p>店舗ID: {shopId}</p>
       <ShopDetail loading={isShopDetailLoading} />
     </Container>
   );
@@ -26,6 +25,7 @@ const ShopDetailPage: React.FC = () => {
 // styles
 const Container = styled.div`
   ${flexColumnCenter};
+  padding-bottom: 64px;
 `;
 
 export default ShopDetailPage;

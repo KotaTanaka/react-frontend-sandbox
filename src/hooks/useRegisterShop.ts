@@ -8,6 +8,7 @@ import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseRegisterShopProps {
   registerShopParams: IRegisterShopBody;
+  ssidValue: string;
   changeServiceId: (value: number) => void;
   changeShopName: (value: string) => void;
   changeArea: (value: string) => void;
@@ -41,6 +42,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     hasPower: false,
   });
 
+  const [ssidValue, setSsidValue] = useState<string>('');
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
   const changeServiceId = useCallback((value: number): void => {
@@ -86,10 +88,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
   }, []);
 
   const changeSSID = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      ssid: [value],
-    }));
+    setSsidValue(value);
   }, []);
 
   const changeShopType = useCallback((value: string): void => {
@@ -123,8 +122,12 @@ const useRegisterShop = (): IUseRegisterShopProps => {
   /** 店舗登録APIリクエスト */
   const requestRegisterShop = useCallback(async (): Promise<void> => {
     try {
-      await axios.post(API_ENDPOINT.SHOPS, registerShopParams);
+      await axios.post(API_ENDPOINT.SHOPS, {
+        ...registerShopParams,
+        ssid: ssidValue.split(','),
+      } as IRegisterShopBody);
 
+      setSsidValue('');
       setRegisterShopParams({
         serviceId: 0,
         shopName: '',
@@ -143,7 +146,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     } catch (err) {
       handleError(err);
     }
-  }, [registerShopParams]);
+  }, [registerShopParams, ssidValue]);
 
   const closeSuccessPopup = useCallback(() => {
     setIsShowSuccessPopup(false);
@@ -151,6 +154,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
 
   return {
     registerShopParams,
+    ssidValue,
     changeServiceId,
     changeShopName,
     changeArea,

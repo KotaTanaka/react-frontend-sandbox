@@ -14,6 +14,7 @@ import { flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
   params: IRegisterShopBody;
+  ssid: string;
   onChangeServiceId: (value: number) => void;
   onChangeShopName: (value: string) => void;
   onChangeArea: (value: string) => void;
@@ -32,13 +33,14 @@ interface Props {
 const ShopRegisterForm: React.FC<Props> = (props: Props) => {
   const {
     params,
+    ssid,
     onChangeServiceId,
     onChangeShopName,
     onChangeArea,
     onChangeDescription,
     onChangeAddress,
     onChangeAccess,
-    // onChangeSSID,
+    onChangeSSID,
     onChangeShopType,
     onChangeOpeningHours,
     onChangeSeatsNum,
@@ -101,7 +103,12 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
         value={params.access}
         onChange={onChangeAccess}
       />
-      {/** TODO SSID 複数入力 */}
+      <FormInput
+        label="SSID"
+        help="SSIDを入力（複数登録する場合はカンマ区切り）"
+        value={ssid}
+        onChange={onChangeSSID}
+      />
       <FormInput
         label="店舗種別"
         help="店舗種別を入力"

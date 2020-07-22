@@ -15,6 +15,7 @@ import { flexColumnCenter } from 'src/styles/mixin';
 const ShopRegisterPage: React.FC = () => {
   const {
     registerShopParams,
+    ssidValue,
     changeServiceId,
     changeShopName,
     changeArea,
@@ -40,6 +41,7 @@ const ShopRegisterPage: React.FC = () => {
       <PageHeading heading={PAGES.SHOPS_REGISTER.name} />
       <ShopRegisterForm
         params={registerShopParams}
+        ssid={ssidValue}
         onChangeServiceId={changeServiceId}
         onChangeShopName={changeShopName}
         onChangeArea={changeArea}

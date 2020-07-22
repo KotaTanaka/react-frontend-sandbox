@@ -17,7 +17,6 @@ const ServiceDetailPage: React.FC = () => {
   return (
     <Container>
       <PageHeading heading={PAGES.SERVICES_DETAIL.name} />
-      <p>サービスID: {serviceId}</p>
       <ServiceDetail loading={isServiceDetailLoading} />
     </Container>
   );

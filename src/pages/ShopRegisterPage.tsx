@@ -4,6 +4,8 @@ import styled from 'styled-components';
 // from app
 import { PAGES } from 'src/constants/page';
 import useRegisterShop from 'src/hooks/useRegisterShop';
+import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
+import useGetServices from 'src/hooks/useGetServices';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import ShopRegisterForm from 'src/components/shops/ShopRegisterForm';
@@ -28,6 +30,10 @@ const ShopRegisterPage: React.FC = () => {
     isShowSuccessPopup,
     closeSuccessPopup,
   } = useRegisterShop();
+
+  // 選択プルダウンリスト用
+  useGetAreaMaster();
+  useGetServices();
 
   return (
     <Container>

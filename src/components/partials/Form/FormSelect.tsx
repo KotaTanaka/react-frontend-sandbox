@@ -7,9 +7,12 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+// from app
+import { IFormSelectMenuItem } from 'src/interfaces/View';
+
 interface Props {
   help: string;
-  items: any[]; // string[] or number[]
+  items: IFormSelectMenuItem[];
   value: string | number;
   onChange: (value: any) => void;
 }
@@ -25,9 +28,9 @@ const FormSelect: React.FC<Props> = (props: Props) => {
   }, [onChange]);
 
   /** プルダウンリスト要素 */
-  const SelectMenuItem = (itemValue: any): JSX.Element => (
-    <MenuItem key={itemValue} value={itemValue}>
-      {itemValue}
+  const SelectMenuItem = (itemValue: IFormSelectMenuItem): JSX.Element => (
+    <MenuItem key={itemValue.value} value={itemValue.value}>
+      {itemValue.label}
     </MenuItem>
   );
 

@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { Save } from '@material-ui/icons';
 
 // from app
+import { useGlobalState } from 'src/Context';
 import FormInput from 'src/components/partials/Form/FormInput';
 import FormSelect from 'src/components/partials/Form/FormSelect';
 import FormSwitch from 'src/components/partials/Form/FormSwitch';
 import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
 import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
+import { IFormSelectMenuItem } from 'src/interfaces/View';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
@@ -44,13 +46,29 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
     onSave,
   } = props;
 
+  const { serviceList } = useGlobalState('service');
+  const { areaList } = useGlobalState('area');
+
+  /** サービスプルダウンリスト */
+  const serviceMenuList = useMemo((): IFormSelectMenuItem[] => {
+    return serviceList.map(({ serviceId, wifiName }) => {
+      return { label: wifiName, value: serviceId } as IFormSelectMenuItem;
+    });
+  }, [serviceList]);
+
+  /** エリアプルダウンリスト */
+  const areaMenuList = useMemo((): IFormSelectMenuItem[] => {
+    return areaList.map(({ areaKey }) => {
+      return { label: areaKey, value: areaKey } as IFormSelectMenuItem;
+    });
+  }, [areaList]);
+
   return (
     <Container>
       <FormSelect
-        help="サービスIDを選択"
-        // TODO Wi-Fiサービス一覧から取得
-        items={[0, 1, 2]}
-        value={params.serviceId}
+        help="サービスを選択"
+        items={serviceMenuList}
+        value={params.serviceId || ''}
         onChange={onChangeServiceId}
       />
       <FormInput
@@ -60,9 +78,8 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
         onChange={onChangeShopName}
       />
       <FormSelect
-        help="地域を選択"
-        // TODO エリアマスタから取得
-        items={['shibuya', 'shinjuku']}
+        help="エリアを選択"
+        items={areaMenuList}
         value={params.area}
         onChange={onChangeArea}
       />

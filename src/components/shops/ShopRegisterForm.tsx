@@ -10,7 +10,7 @@ import FormSwitch from 'src/components/partials/Form/FormSwitch';
 import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
 import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
 import { IFormSelectMenuItem } from 'src/interfaces/View';
-import { flexColumnCenter } from 'src/styles/mixin';
+import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
   params: IRegisterShopBody;
@@ -141,6 +141,7 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
 // styles
 const Container = styled.div`
   ${flexColumnCenter};
+  ${baseContainer};
 `;
 
 export default ShopRegisterForm;

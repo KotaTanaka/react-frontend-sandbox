@@ -67,6 +67,7 @@ const ShopRegisterPage: React.FC = () => {
 // styles
 const Container = styled.div`
   ${flexColumnCenter};
+  padding-bottom: 64px;
 `;
 
 export default ShopRegisterPage;

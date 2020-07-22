@@ -6,7 +6,7 @@ import { Save } from '@material-ui/icons';
 import FormInput from 'src/components/partials/Form/FormInput';
 import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
 import { IRegisterAreaBody } from 'src/interfaces/api/request/Area';
-import { flexColumnCenter } from 'src/styles/mixin';
+import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
   params: IRegisterAreaBody;
@@ -41,6 +41,7 @@ const AreaRegisterForm: React.FC<Props> = (props: Props) => {
 // styles
 const Container = styled.div`
   ${flexColumnCenter};
+  ${baseContainer};
 `;
 
 export default AreaRegisterForm;

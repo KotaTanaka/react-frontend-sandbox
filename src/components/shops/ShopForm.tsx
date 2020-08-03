@@ -4,16 +4,21 @@ import { Save } from '@material-ui/icons';
 
 // from app
 import { useGlobalState } from 'src/Context';
+import { FormType } from 'src/constants/enums';
 import FormInput from 'src/components/partials/Form/FormInput';
 import FormSelect from 'src/components/partials/Form/FormSelect';
 import FormSwitch from 'src/components/partials/Form/FormSwitch';
 import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
-import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
+import {
+  IRegisterShopBody,
+  IUpdateShopBody,
+} from 'src/interfaces/api/request/Shop';
 import { IFormSelectMenuItem } from 'src/interfaces/View';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
-  params: IRegisterShopBody;
+  formType: FormType;
+  params: IRegisterShopBody | IUpdateShopBody;
   ssid: string;
   onChangeServiceId: (value: number) => void;
   onChangeShopName: (value: string) => void;
@@ -30,8 +35,9 @@ interface Props {
 }
 
 /** 店舗登録フォーム */
-const ShopRegisterForm: React.FC<Props> = (props: Props) => {
+const ShopForm: React.FC<Props> = (props: Props) => {
   const {
+    formType,
     params,
     ssid,
     onChangeServiceId,
@@ -65,6 +71,18 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
     });
   }, [areaList]);
 
+  /** ボタンラベル */
+  const buttonLabel = useMemo(() => {
+    switch (formType) {
+      case FormType.REGISTER:
+        return '登録する';
+      case FormType.UPDATE:
+        return '更新する';
+      default:
+        return '送信する';
+    }
+  }, [formType]);
+
   return (
     <Container>
       <FormSelect
@@ -76,31 +94,31 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
       <FormInput
         label="店舗名"
         help="店舗名称を入力"
-        value={params.shopName}
+        value={params.shopName || ''}
         onChange={onChangeShopName}
       />
       <FormSelect
         help="エリアを選択"
         items={areaMenuList}
-        value={params.area}
+        value={params.area || ''}
         onChange={onChangeArea}
       />
       <FormInput
         label="店舗説明"
         help="店舗の説明を入力"
-        value={params.description}
+        value={params.description || ''}
         onChange={onChangeDescription}
       />
       <FormInput
         label="住所"
         help="店舗住所を入力"
-        value={params.address}
+        value={params.address || ''}
         onChange={onChangeAddress}
       />
       <FormInput
         label="アクセス"
         help="店舗アクセスを入力"
-        value={params.access}
+        value={params.access || ''}
         onChange={onChangeAccess}
       />
       <FormInput
@@ -112,28 +130,28 @@ const ShopRegisterForm: React.FC<Props> = (props: Props) => {
       <FormInput
         label="店舗種別"
         help="店舗種別を入力"
-        value={params.shopType}
+        value={params.shopType || ''}
         onChange={onChangeShopType}
       />
       <FormInput
         label="営業時間"
         help="営業時間を入力"
-        value={params.openingHours}
+        value={params.openingHours || ''}
         onChange={onChangeOpeningHours}
       />
       <FormInput
         label="座席数"
         help="座席数を入力"
         number
-        value={params.seatsNum}
+        value={params.seatsNum || 0}
         onChange={onChangeSeatsNum}
       />
       <FormSwitch
         label="電源の有無"
-        on={params.hasPower}
+        on={params.hasPower || false}
         onChange={onChangeHasPower}
       />
-      <ButtonPrimary label="登録する" icon={<Save />} onClick={onSave} />
+      <ButtonPrimary label={buttonLabel} icon={<Save />} onClick={onSave} />
     </Container>
   );
 };
@@ -144,4 +162,4 @@ const Container = styled.div`
   ${baseContainer};
 `;
 
-export default ShopRegisterForm;
+export default ShopForm;

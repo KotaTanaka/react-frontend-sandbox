@@ -12,3 +12,6 @@ export interface IRegisterShopBody {
   seatsNum: number;
   hasPower: boolean;
 }
+
+/** 店舗編集リクエストボディ */
+export type IUpdateShopBody = Partial<IRegisterShopBody>;

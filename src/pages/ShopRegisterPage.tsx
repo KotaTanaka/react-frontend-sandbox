@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 // from app
 import { PAGES } from 'src/constants/page';
+import { FormType } from 'src/constants/enums';
 import useRegisterShop from 'src/hooks/useRegisterShop';
 import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
 import useGetServices from 'src/hooks/useGetServices';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
-import ShopRegisterForm from 'src/components/shops/ShopRegisterForm';
+import ShopForm from 'src/components/shops/ShopForm';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 店舗登録ページ */
@@ -39,7 +40,8 @@ const ShopRegisterPage: React.FC = () => {
   return (
     <Container>
       <PageHeading heading={PAGES.SHOPS_REGISTER.name} />
-      <ShopRegisterForm
+      <ShopForm
+        formType={FormType.REGISTER}
         params={registerShopParams}
         ssid={ssidValue}
         onChangeServiceId={changeServiceId}

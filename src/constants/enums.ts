@@ -8,3 +8,9 @@ export enum ActionType {
   SET_REVIEW_LIST = 'SET_REVIEW_LIST',
   SET_COUNT = 'SET_COUNT',
 }
+
+/** フォーム種別 */
+export enum FormType {
+  REGISTER = 'register',
+  UPDATE = 'update',
+}

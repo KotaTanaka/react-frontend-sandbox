@@ -10,7 +10,7 @@ import useUpdateService from 'src/hooks/useUpdateService';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import ServiceDetail from 'src/components/services/ServiceDetail';
-import ServiceUpdateFormModal from 'src/components/services/ServiceUpdateFormModal';
+import ServiceEditModal from 'src/components/services/ServiceEditModal';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス詳細ページ */
@@ -45,7 +45,7 @@ const ServiceDetailPage: React.FC = () => {
       <Button onClick={openEditModal} color="primary">
         編集する
       </Button>
-      <ServiceUpdateFormModal
+      <ServiceEditModal
         isOpen={isEditing}
         params={updateServiceParams}
         onChangeWifiName={changeWifiName}

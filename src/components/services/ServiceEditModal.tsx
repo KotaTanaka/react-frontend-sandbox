@@ -16,7 +16,7 @@ interface Props {
 }
 
 /** Wi-Fiサービス編集フォームモーダル */
-const ServiceUpdateFormModal: React.FC<Props> = (props: Props) => {
+const ServiceEditModal: React.FC<Props> = (props: Props) => {
   const {
     isOpen,
     params,
@@ -39,4 +39,4 @@ const ServiceUpdateFormModal: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default ServiceUpdateFormModal;
+export default ServiceEditModal;

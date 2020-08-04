@@ -17,6 +17,7 @@ import { useGlobalState } from 'src/Context';
 import useDeleteReview from 'src/hooks/useDeleteReview';
 import EmptyContent from 'src/components/partials/EmptyContent';
 import ConfirmDialog from 'src/components/partials/ConfirmDialog';
+import SuccessPopup from 'src/components/partials/SuccessPopup';
 
 interface Props {
   loading: boolean;
@@ -28,7 +29,12 @@ const ReviewList: React.FC<Props> = (props: Props) => {
   const { loading, refetch } = props;
   const classes = useStyles();
   const { reviewList } = useGlobalState('review');
-  const { requestDeleteReview } = useDeleteReview();
+
+  const {
+    requestDeleteReview,
+    isShowSuccessDeletedPopup,
+    closeSuccessDeletedPopup,
+  } = useDeleteReview();
 
   const [targetDeleteReviewId, setTargetDeleteReviewId] = useState<number>();
   // prettier-ignore
@@ -39,7 +45,6 @@ const ReviewList: React.FC<Props> = (props: Props) => {
   /** レビュー削除 */
   const deleteReview = useCallback(async () => {
     if (targetDeleteReviewId === undefined) return;
-
     await requestDeleteReview(targetDeleteReviewId);
     await refetch();
     closeDeleteDialog();
@@ -94,6 +99,11 @@ const ReviewList: React.FC<Props> = (props: Props) => {
         message="削除しますか？"
         onSubmit={deleteReview}
         onCancel={closeDeleteDialog}
+      />
+      <SuccessPopup
+        open={isShowSuccessDeletedPopup}
+        onClose={closeSuccessDeletedPopup}
+        message="レビューの削除に成功しました。"
       />
     </Container>
   );

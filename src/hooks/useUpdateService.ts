@@ -11,16 +11,13 @@ interface IUseUpdateServiceProps {
   updateServiceParams: IUpdateServiceBody;
   changeWifiName: (value: string) => void;
   changeLink: (value: string) => void;
-  requestUpdateService: () => Promise<void>;
+  requestUpdateService: (id: number) => Promise<void>;
   isShowSuccessPopup: boolean;
   closeSuccessPopup: () => void;
 }
 
-/**
- * Wi-Fiサービス編集カスタムフック
- * @param id サービスID
- */
-const useUpdateService = (id: number): IUseUpdateServiceProps => {
+/** Wi-Fiサービス編集カスタムフック */
+const useUpdateService = (): IUseUpdateServiceProps => {
   // prettier-ignore
   const [updateServiceParams, setUpdateServiceParams] = useState<IUpdateServiceBody>({
     wifiName: '',
@@ -52,24 +49,30 @@ const useUpdateService = (id: number): IUseUpdateServiceProps => {
     }));
   }, []);
 
-  /** Wi-Fiサービス登録APIリクエスト */
-  const requestUpdateService = useCallback(async (): Promise<void> => {
-    try {
-      await axios.put(
-        API_ENDPOINT.SERVICE.replace('$id', `${id}`),
-        updateServiceParams,
-      );
+  /**
+   * Wi-Fiサービス編集APIリクエスト
+   * @param id サービスID
+   */
+  const requestUpdateService = useCallback(
+    async (id: number): Promise<void> => {
+      try {
+        await axios.put(
+          API_ENDPOINT.SERVICE.replace('$id', `${id}`),
+          updateServiceParams,
+        );
 
-      setUpdateServiceParams({
-        wifiName: '',
-        link: '',
-      });
+        setUpdateServiceParams({
+          wifiName: '',
+          link: '',
+        });
 
-      setIsShowSuccessPopup(true);
-    } catch (err) {
-      handleError(err);
-    }
-  }, [id, updateServiceParams]);
+        setIsShowSuccessPopup(true);
+      } catch (err) {
+        handleError(err);
+      }
+    },
+    [updateServiceParams],
+  );
 
   const closeSuccessPopup = useCallback(() => {
     setIsShowSuccessPopup(false);

@@ -5,10 +5,13 @@ import { Button } from '@material-ui/core';
 
 // from app
 import { PAGES } from 'src/constants/page';
+import usePageTransition from 'src/hooks/usePageTransition';
 import useGetServiceDetail from 'src/hooks/useGetServiceDetail';
 import useUpdateService from 'src/hooks/useUpdateService';
+import useDeleteService from 'src/hooks/useDeleteService';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
+import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 import ServiceDetail from 'src/components/services/ServiceDetail';
 import ServiceEditModal from 'src/components/services/ServiceEditModal';
 import { flexColumnCenter } from 'src/styles/mixin';
@@ -16,6 +19,7 @@ import { flexColumnCenter } from 'src/styles/mixin';
 /** Wi-Fiサービス詳細ページ */
 const ServiceDetailPage: React.FC = () => {
   const { serviceId } = useParams();
+  const { moveToServiceList } = usePageTransition();
 
   // prettier-ignore
   const { isServiceDetailLoading, fetchServiceDetail } = useGetServiceDetail(serviceId);
@@ -26,17 +30,30 @@ const ServiceDetailPage: React.FC = () => {
     requestUpdateService,
     isShowSuccessPopup,
     closeSuccessPopup,
-  } = useUpdateService(serviceId);
+  } = useUpdateService();
+  const { requestDeleteService } = useDeleteService();
 
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-  const openEditModal = useCallback(() => setIsEditing(true), []);
-  const closeEditModal = useCallback(() => setIsEditing(false), []);
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState<boolean>(false);
 
+  const openEditModal = useCallback(() => setIsEditModalOpen(true), []);
+  const closeEditModal = useCallback(() => setIsEditModalOpen(false), []);
+  const openDeleteDialog = useCallback(() => setIsDeleteDialogOpen(true), []);
+  const closeDeleteDialog = useCallback(() => setIsDeleteDialogOpen(false), []);
+
+  /** Wi-Fiサービス更新 */
   const updateService = useCallback(async () => {
-    await requestUpdateService();
+    await requestUpdateService(serviceId);
     await fetchServiceDetail();
     closeEditModal();
-  }, [requestUpdateService, fetchServiceDetail, closeEditModal]);
+  }, [serviceId, requestUpdateService, fetchServiceDetail, closeEditModal]);
+
+  /** Wi-Fiサービス削除 */
+  const deleteService = useCallback(async () => {
+    await requestDeleteService(serviceId);
+    closeDeleteDialog();
+    moveToServiceList();
+  }, [serviceId, requestDeleteService, closeDeleteDialog, moveToServiceList]);
 
   return (
     <Container>
@@ -45,13 +62,22 @@ const ServiceDetailPage: React.FC = () => {
       <Button onClick={openEditModal} color="primary">
         編集する
       </Button>
+      <Button onClick={openDeleteDialog} color="primary">
+        削除する
+      </Button>
       <ServiceEditModal
-        isOpen={isEditing}
+        isOpen={isEditModalOpen}
         params={updateServiceParams}
         onChangeWifiName={changeWifiName}
         onChangeLink={changeLink}
         onSave={updateService}
         onCancel={closeEditModal}
+      />
+      <ConfirmDialog
+        isOpen={isDeleteDialogOpen}
+        message="削除しますか？"
+        onSubmit={deleteService}
+        onCancel={closeDeleteDialog}
       />
       <SuccessPopup
         open={isShowSuccessPopup}

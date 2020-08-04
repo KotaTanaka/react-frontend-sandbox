@@ -32,7 +32,7 @@ const AreaRegisterPage: React.FC = () => {
       <SuccessPopup
         open={isShowSuccessPopup}
         onClose={closeSuccessPopup}
-        message="エリアの登録に成功しました。"
+        message="エリアを登録しました。"
       />
     </Container>
   );

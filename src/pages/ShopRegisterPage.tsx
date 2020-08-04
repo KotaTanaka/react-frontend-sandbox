@@ -60,7 +60,7 @@ const ShopRegisterPage: React.FC = () => {
       <SuccessPopup
         open={isShowSuccessPopup}
         onClose={closeSuccessPopup}
-        message="店舗の登録に成功しました。"
+        message="店舗を登録しました。"
       />
     </Container>
   );

@@ -107,7 +107,7 @@ const ShopDetailPage: React.FC = () => {
       <SuccessPopup
         open={isShowSuccessPopup}
         onClose={closeSuccessPopup}
-        message="店舗の更新に成功しました。"
+        message="店舗情報を更新しました。"
       />
     </Container>
   );

@@ -66,7 +66,7 @@ const AreaList: React.FC<Props> = (props: Props) => {
       <SuccessPopup
         open={isShowSuccessDeletedPopup}
         onClose={closeSuccessDeletedPopup}
-        message="エリアの削除に成功しました。"
+        message="エリアを削除しました。"
       />
     </Container>
   );

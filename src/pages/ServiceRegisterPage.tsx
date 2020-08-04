@@ -34,7 +34,7 @@ const ServiceRegisterPage: React.FC = () => {
       <SuccessPopup
         open={isShowSuccessPopup}
         onClose={closeSuccessPopup}
-        message="Wi-Fiサービスの登録に成功しました。"
+        message="Wi-Fiサービスを登録しました。"
       />
     </Container>
   );

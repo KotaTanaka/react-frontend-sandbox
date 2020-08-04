@@ -82,7 +82,7 @@ const ServiceDetailPage: React.FC = () => {
       <SuccessPopup
         open={isShowSuccessPopup}
         onClose={closeSuccessPopup}
-        message="Wi-Fiサービスの更新に成功しました。"
+        message="Wi-Fiサービスを更新しました。"
       />
     </Container>
   );

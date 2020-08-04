@@ -103,7 +103,7 @@ const ReviewList: React.FC<Props> = (props: Props) => {
       <SuccessPopup
         open={isShowSuccessDeletedPopup}
         onClose={closeSuccessDeletedPopup}
-        message="レビューの削除に成功しました。"
+        message="レビューを削除しました。"
       />
     </Container>
   );

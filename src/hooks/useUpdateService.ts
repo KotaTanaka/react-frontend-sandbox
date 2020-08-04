@@ -35,6 +35,7 @@ const useUpdateService = (): IUseUpdateServiceProps => {
     });
   }, [serviceDetail.wifiName, serviceDetail.link]);
 
+  /** サービス名を変更する */
   const changeWifiName = useCallback((value: string): void => {
     setUpdateServiceParams((currentState) => ({
       ...currentState,
@@ -42,6 +43,7 @@ const useUpdateService = (): IUseUpdateServiceProps => {
     }));
   }, []);
 
+  /** リンクを変更する */
   const changeLink = useCallback((value: string): void => {
     setUpdateServiceParams((currentState) => ({
       ...currentState,
@@ -74,6 +76,7 @@ const useUpdateService = (): IUseUpdateServiceProps => {
     [updateServiceParams],
   );
 
+  /** ポップアップを閉じる */
   const closeSuccessPopup = useCallback(() => {
     setIsShowSuccessPopup(false);
   }, []);

@@ -9,7 +9,6 @@ import usePageTransition from 'src/hooks/usePageTransition';
 /** 固定ヘッダー */
 const Header: React.FC = () => {
   const classes = useStyles();
-
   const { moveToHome } = usePageTransition();
 
   return (

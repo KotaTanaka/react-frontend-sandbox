@@ -15,8 +15,9 @@ interface Props {
 const EmptyContent: React.FC<Props> = (props: Props) => {
   const { link } = props;
   const classes = useStyles();
-
   const { moveTo } = usePageTransition();
+
+  /** リンク押下時の処理 */
   const handleClickLink = useCallback(() => {
     if (link) moveTo(link);
   }, [moveTo, link]);

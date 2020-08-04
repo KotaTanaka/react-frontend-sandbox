@@ -20,6 +20,7 @@ const ServiceDetail: React.FC<Props> = (props: Props) => {
 
   const { serviceDetail } = useGlobalState('service');
 
+  /** 詳細データ */
   const informationGridItems = useMemo((): IInformationGridItem[] => {
     const { serviceId, link, shopCount, createdAt, updatedAt } = serviceDetail;
 

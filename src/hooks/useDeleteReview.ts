@@ -30,6 +30,7 @@ const useDeleteReview = (): IUseDeleteReviewProps => {
     }
   }, []);
 
+  /** ポップアップを閉じる */
   const closeSuccessDeletedPopup = useCallback(() => {
     setIsShowSuccessDeletedPopup(false);
   }, []);

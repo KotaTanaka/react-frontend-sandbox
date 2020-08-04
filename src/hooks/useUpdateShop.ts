@@ -76,6 +76,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     shopDetail.hasPower,
   ]);
 
+  /** サービスIDを変更する */
   const changeServiceId = useCallback((value: number): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -83,6 +84,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** 店舗名を変更する */
   const changeShopName = useCallback((value: string): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -90,6 +92,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** エリアを変更する */
   const changeArea = useCallback((value: string): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -97,6 +100,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** 説明を変更する */
   const changeDescription = useCallback((value: string): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -104,6 +108,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** 住所を変更する */
   const changeAddress = useCallback((value: string): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -111,6 +116,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** アクセスを変更する */
   const changeAccess = useCallback((value: string): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -118,10 +124,12 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** SSIDを変更する */
   const changeSSID = useCallback((value: string): void => {
     setSsidValue(value);
   }, []);
 
+  /** 店舗種別を変更する */
   const changeShopType = useCallback((value: string): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -129,6 +137,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** 営業時間を変更する */
   const changeOpeningHours = useCallback((value: string): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -136,6 +145,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** 座席数を変更する */
   const changeSeatsNum = useCallback((value: number): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -143,6 +153,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     }));
   }, []);
 
+  /** 電源有無を変更する */
   const changeHasPower = useCallback((): void => {
     setUpdateShopParams((currentState) => ({
       ...currentState,
@@ -185,6 +196,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     [updateShopParams, ssidValue],
   );
 
+  /** ポップアップを閉じる */
   const closeSuccessPopup = useCallback(() => {
     setIsShowSuccessPopup(false);
   }, []);

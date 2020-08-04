@@ -31,6 +31,7 @@ const useDeleteService = (): IUseDeleteServiceProps => {
     }
   }, []);
 
+  /** ポップアップを閉じる */
   const closeSuccessDeletedPopup = useCallback(() => {
     setIsShowSuccessDeletedPopup(false);
   }, []);

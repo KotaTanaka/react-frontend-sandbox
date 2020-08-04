@@ -25,6 +25,7 @@ const useRegisterService = (): IUseRegisterServiceProps => {
 
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
+  /** サービス名を変更する */
   const changeWifiName = useCallback((value: string): void => {
     setRegisterServiceParams((currentState) => ({
       ...currentState,
@@ -32,6 +33,7 @@ const useRegisterService = (): IUseRegisterServiceProps => {
     }));
   }, []);
 
+  /** リンクを変更する */
   const changeLink = useCallback((value: string): void => {
     setRegisterServiceParams((currentState) => ({
       ...currentState,
@@ -55,6 +57,7 @@ const useRegisterService = (): IUseRegisterServiceProps => {
     }
   }, [registerServiceParams]);
 
+  /** ポップアップを閉じる */
   const closeSuccessPopup = useCallback(() => {
     setIsShowSuccessPopup(false);
   }, []);

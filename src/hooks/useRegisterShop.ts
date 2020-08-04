@@ -45,6 +45,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
   const [ssidValue, setSsidValue] = useState<string>('');
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
+  /** サービスIDを変更する */
   const changeServiceId = useCallback((value: number): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -52,6 +53,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** 店舗名を変更する */
   const changeShopName = useCallback((value: string): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -59,6 +61,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** エリアを変更する  */
   const changeArea = useCallback((value: string): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -66,6 +69,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** 説明を変更する */
   const changeDescription = useCallback((value: string): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -73,6 +77,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** 住所を変更する */
   const changeAddress = useCallback((value: string): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -80,6 +85,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** アクセスを変更する */
   const changeAccess = useCallback((value: string): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -87,10 +93,12 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** SSIDを変更する */
   const changeSSID = useCallback((value: string): void => {
     setSsidValue(value);
   }, []);
 
+  /** 店舗種別を変更する */
   const changeShopType = useCallback((value: string): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -98,6 +106,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** 営業時間を変更する */
   const changeOpeningHours = useCallback((value: string): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -105,6 +114,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** 座席数を変更する */
   const changeSeatsNum = useCallback((value: number): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -112,6 +122,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }));
   }, []);
 
+  /** 電源有無を変更する */
   const changeHasPower = useCallback((): void => {
     setRegisterShopParams((currentState) => ({
       ...currentState,
@@ -148,6 +159,7 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     }
   }, [registerShopParams, ssidValue]);
 
+  /** ポップアップを閉じる */
   const closeSuccessPopup = useCallback(() => {
     setIsShowSuccessPopup(false);
   }, []);

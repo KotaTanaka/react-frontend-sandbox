@@ -20,6 +20,7 @@ const ShopDetail: React.FC<Props> = (props: Props) => {
 
   const { shopDetail } = useGlobalState('shop');
 
+  /** 詳細データ */
   const informationGridItems = useMemo((): IInformationGridItem[] => {
     const {
       shopId,

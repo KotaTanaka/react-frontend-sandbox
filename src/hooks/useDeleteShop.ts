@@ -30,6 +30,7 @@ const useDeleteShop = (): IUseDeleteShopProps => {
     }
   }, []);
 
+  /** ポップアップを閉じる */
   const closeSuccessDeletedPopup = useCallback(() => {
     setIsShowSuccessDeletedPopup(false);
   }, []);

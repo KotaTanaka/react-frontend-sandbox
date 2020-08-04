@@ -25,6 +25,7 @@ const useRegisterArea = (): IUseRegisterAreaProps => {
 
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
+  /** エリアキーを変更する */
   const changeAreaKey = useCallback((value: string): void => {
     setRegisterAreaParams((currentState) => ({
       ...currentState,
@@ -32,6 +33,7 @@ const useRegisterArea = (): IUseRegisterAreaProps => {
     }));
   }, []);
 
+  /** エリア名を変更する */
   const changeAreaName = useCallback((value: string): void => {
     setRegisterAreaParams((currentState) => ({
       ...currentState,
@@ -55,6 +57,7 @@ const useRegisterArea = (): IUseRegisterAreaProps => {
     }
   }, [registerAreaParams]);
 
+  /** ポップアップを閉じる */
   const closeSuccessPopup = useCallback(() => {
     setIsShowSuccessPopup(false);
   }, []);

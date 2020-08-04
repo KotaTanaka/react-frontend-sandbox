@@ -8,6 +8,7 @@ interface Props {
   message: string;
 }
 
+/** 成功時ポップアップ中身 */
 const Alert: React.FC<AlertProps> = (props: AlertProps) => {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 };

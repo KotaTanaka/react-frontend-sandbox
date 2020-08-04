@@ -10,12 +10,12 @@ import { flexColumnCenter } from 'src/styles/mixin';
 
 /** レビュー一覧ページ */
 const ReviewsPage: React.FC = () => {
-  const { isReviewsLoading } = useGetReviews();
+  const { isReviewsLoading, fetchReviewList } = useGetReviews();
 
   return (
     <Container>
       <PageHeading heading={PAGES.REVIEWS.name} />
-      <ReviewList loading={isReviewsLoading} />
+      <ReviewList loading={isReviewsLoading} refetch={fetchReviewList} />
     </Container>
   );
 };

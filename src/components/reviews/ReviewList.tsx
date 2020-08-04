@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import {
+  Button,
   Paper,
   Table,
   TableBody,
@@ -13,17 +14,36 @@ import {
 
 // from app
 import { useGlobalState } from 'src/Context';
+import useDeleteReview from 'src/hooks/useDeleteReview';
 import EmptyContent from 'src/components/partials/EmptyContent';
+import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 
 interface Props {
   loading: boolean;
+  refetch: () => Promise<void>;
 }
 
 /** レビューリスト */
 const ReviewList: React.FC<Props> = (props: Props) => {
-  const { loading } = props;
+  const { loading, refetch } = props;
   const classes = useStyles();
   const { reviewList } = useGlobalState('review');
+  const { requestDeleteReview } = useDeleteReview();
+
+  const [targetDeleteReviewId, setTargetDeleteReviewId] = useState<number>();
+  // prettier-ignore
+  const openDeleteDialog = useCallback((id: number) => setTargetDeleteReviewId(id), []);
+  // prettier-ignore
+  const closeDeleteDialog = useCallback(() => setTargetDeleteReviewId(undefined), []);
+
+  /** レビュー削除 */
+  const deleteReview = useCallback(async () => {
+    if (targetDeleteReviewId === undefined) return;
+
+    await requestDeleteReview(targetDeleteReviewId);
+    await refetch();
+    closeDeleteDialog();
+  }, [targetDeleteReviewId, requestDeleteReview, refetch, closeDeleteDialog]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -44,6 +64,7 @@ const ReviewList: React.FC<Props> = (props: Props) => {
               <TableCell>コメント</TableCell>
               <TableCell>評価</TableCell>
               <TableCell>ステータス</TableCell>
+              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -54,11 +75,26 @@ const ReviewList: React.FC<Props> = (props: Props) => {
                 <TableCell>{review.comment}</TableCell>
                 <TableCell>{review.evaluation}</TableCell>
                 <TableCell>{review.status}</TableCell>
+                <TableCell>
+                  <Button
+                    color="primary"
+                    className={classes.button}
+                    onClick={() => openDeleteDialog(review.reviewId)}
+                  >
+                    削除
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <ConfirmDialog
+        isOpen={targetDeleteReviewId !== undefined}
+        message="削除しますか？"
+        onSubmit={deleteReview}
+        onCancel={closeDeleteDialog}
+      />
     </Container>
   );
 };

@@ -20,6 +20,9 @@ export const API_ENDPOINT = {
   SHOP: `${HOST}/admin/shops/$id`,
   // レビュー一覧取得
   REVIEWS: `${HOST}/admin/reviews`,
+  // レビューステータス変更
+  // レビュー削除
+  REVIEW: `${HOST}/admin/reviews/$id`,
 };
 
 /** クライアントAPIエンドポイント */

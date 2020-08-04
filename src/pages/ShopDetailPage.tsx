@@ -5,12 +5,15 @@ import { Button } from '@material-ui/core';
 
 // from app
 import { PAGES } from 'src/constants/page';
+import usePageTransition from 'src/hooks/usePageTransition';
 import useGetShopDetail from 'src/hooks/useGetShopDetail';
 import useUpdateShop from 'src/hooks/useUpdateShop';
+import useDeleteShop from 'src/hooks/useDeleteShop';
 import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
 import useGetServices from 'src/hooks/useGetServices';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
+import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 import ShopDetail from 'src/components/shops/ShopDetail';
 import ShopEditModal from 'src/components/shops/ShopEditModal';
 import { flexColumnCenter } from 'src/styles/mixin';
@@ -18,6 +21,7 @@ import { flexColumnCenter } from 'src/styles/mixin';
 /** 店舗詳細ページ */
 const ShopDetailPage: React.FC = () => {
   const { shopId } = useParams();
+  const { moveToShopList } = usePageTransition();
 
   const { isShopDetailLoading, fetchShopDetail } = useGetShopDetail(shopId);
   const {
@@ -37,21 +41,34 @@ const ShopDetailPage: React.FC = () => {
     requestUpdateShop,
     isShowSuccessPopup,
     closeSuccessPopup,
-  } = useUpdateShop(shopId);
+  } = useUpdateShop();
+  const { requestDeleteShop } = useDeleteShop();
 
   // 選択プルダウンリスト用
   useGetAreaMaster();
   useGetServices();
 
-  const [isEditing, setIsEditing] = useState<boolean>(false);
-  const openEditModal = useCallback(() => setIsEditing(true), []);
-  const closeEditModal = useCallback(() => setIsEditing(false), []);
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState<boolean>(false);
 
+  const openEditModal = useCallback(() => setIsEditModalOpen(true), []);
+  const closeEditModal = useCallback(() => setIsEditModalOpen(false), []);
+  const openDeleteDialog = useCallback(() => setIsDeleteDialogOpen(true), []);
+  const closeDeleteDialog = useCallback(() => setIsDeleteDialogOpen(false), []);
+
+  /** 店舗情報更新 */
   const updateShop = useCallback(async () => {
-    await requestUpdateShop();
+    await requestUpdateShop(shopId);
     await fetchShopDetail();
     closeEditModal();
-  }, [requestUpdateShop, fetchShopDetail, closeEditModal]);
+  }, [shopId, requestUpdateShop, fetchShopDetail, closeEditModal]);
+
+  /** 店舗削除 */
+  const deleteShop = useCallback(async () => {
+    await requestDeleteShop(shopId);
+    closeDeleteDialog();
+    moveToShopList();
+  }, [shopId, requestDeleteShop, closeDeleteDialog, moveToShopList]);
 
   return (
     <Container>
@@ -60,8 +77,11 @@ const ShopDetailPage: React.FC = () => {
       <Button onClick={openEditModal} color="primary">
         編集する
       </Button>
+      <Button onClick={openDeleteDialog} color="primary">
+        削除する
+      </Button>
       <ShopEditModal
-        isOpen={isEditing}
+        isOpen={isEditModalOpen}
         params={updateShopParams}
         ssid={ssidValue}
         onChangeServiceId={changeServiceId}
@@ -77,6 +97,12 @@ const ShopDetailPage: React.FC = () => {
         onChangeHasPower={changeHasPower}
         onSave={updateShop}
         onCancel={closeEditModal}
+      />
+      <ConfirmDialog
+        isOpen={isDeleteDialogOpen}
+        message="削除しますか？"
+        onSubmit={deleteShop}
+        onCancel={closeDeleteDialog}
       />
       <SuccessPopup
         open={isShowSuccessPopup}

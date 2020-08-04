@@ -21,16 +21,13 @@ interface IUseUpdateShopProps {
   changeOpeningHours: (value: string) => void;
   changeSeatsNum: (value: number) => void;
   changeHasPower: () => void;
-  requestUpdateShop: () => Promise<void>;
+  requestUpdateShop: (id: number) => Promise<void>;
   isShowSuccessPopup: boolean;
   closeSuccessPopup: () => void;
 }
 
-/**
- * 店舗編集カスタムフック
- * @param id 店舗ID
- */
-const useUpdateShop = (id: number): IUseUpdateShopProps => {
+/** 店舗編集カスタムフック */
+const useUpdateShop = (): IUseUpdateShopProps => {
   // prettier-ignore
   const [updateShopParams, setUpdateShopParams] = useState<IUpdateShopBody>({
     serviceId: 0,
@@ -153,34 +150,40 @@ const useUpdateShop = (id: number): IUseUpdateShopProps => {
     }));
   }, []);
 
-  /** 店舗登録APIリクエスト */
-  const requestUpdateShop = useCallback(async (): Promise<void> => {
-    try {
-      await axios.put(API_ENDPOINT.SHOP.replace('$id', `${id}`), {
-        ...updateShopParams,
-        ssid: ssidValue.split(','),
-      } as IUpdateShopBody);
+  /**
+   * 店舗登録APIリクエスト
+   * @param id 店舗ID
+   */
+  const requestUpdateShop = useCallback(
+    async (id: number): Promise<void> => {
+      try {
+        await axios.put(API_ENDPOINT.SHOP.replace('$id', `${id}`), {
+          ...updateShopParams,
+          ssid: ssidValue.split(','),
+        } as IUpdateShopBody);
 
-      setSsidValue('');
-      setUpdateShopParams({
-        serviceId: 0,
-        shopName: '',
-        area: '',
-        description: '',
-        address: '',
-        access: '',
-        ssid: [],
-        shopType: '',
-        openingHours: '',
-        seatsNum: 0,
-        hasPower: false,
-      });
+        setSsidValue('');
+        setUpdateShopParams({
+          serviceId: 0,
+          shopName: '',
+          area: '',
+          description: '',
+          address: '',
+          access: '',
+          ssid: [],
+          shopType: '',
+          openingHours: '',
+          seatsNum: 0,
+          hasPower: false,
+        });
 
-      setIsShowSuccessPopup(true);
-    } catch (err) {
-      handleError(err);
-    }
-  }, [id, updateShopParams, ssidValue]);
+        setIsShowSuccessPopup(true);
+      } catch (err) {
+        handleError(err);
+      }
+    },
+    [updateShopParams, ssidValue],
+  );
 
   const closeSuccessPopup = useCallback(() => {
     setIsShowSuccessPopup(false);

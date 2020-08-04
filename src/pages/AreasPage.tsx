@@ -10,12 +10,12 @@ import { flexColumnCenter } from 'src/styles/mixin';
 
 /** エリア一覧ページ */
 const AreasPage: React.FC = () => {
-  const { isAreaMasterLoading } = useGetAreaMaster();
+  const { isAreaMasterLoading, fetchAreaMaster } = useGetAreaMaster();
 
   return (
     <Container>
       <PageHeading heading={PAGES.AREAS.name} />
-      <AreaList loading={isAreaMasterLoading} />
+      <AreaList loading={isAreaMasterLoading} refetch={fetchAreaMaster} />
     </Container>
   );
 };

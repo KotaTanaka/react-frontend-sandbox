@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Chip, IconButton } from '@material-ui/core';
-import { DeleteOutline } from '@material-ui/icons';
+import { Chip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 // from app
+import DeleteButton from 'src/components/partials/Button/DeleteButton';
 import { IArea } from 'src/interfaces/api/response/Area';
 
 interface Props {
@@ -25,9 +25,7 @@ const AreaChip: React.FC<Props> = (props: Props) => {
           <AreaKeyText>{area.areaKey}</AreaKeyText>
           <ShopCountText>店舗数: {area.shopCount}</ShopCountText>
         </AreaInfo>
-        <IconButton onClick={onClickDelete} className={classes.deleteButton}>
-          <DeleteOutline />
-        </IconButton>
+        <DeleteButton onClick={onClickDelete} />
       </AreaContent>
     </Container>
   );
@@ -38,10 +36,6 @@ const useStyles = makeStyles({
   chip: {
     width: 120,
   },
-  deleteButton: {
-    padding: 0,
-    marginLeft: 8,
-  },
 });
 const Container = styled.div`
   margin: 8px;
@@ -51,7 +45,7 @@ const AreaContent = styled.div`
   align-items: center;
 `;
 const AreaInfo = styled.div`
-  margin-left: 8px;
+  margin: 0 8px;
 `;
 const AreaKeyText = styled.p`
   font-size: 8px;

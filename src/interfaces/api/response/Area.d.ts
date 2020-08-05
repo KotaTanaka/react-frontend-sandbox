@@ -1,5 +1,3 @@
-import { SpawnSyncOptionsWithStringEncoding } from 'child_process';
-
 /** エリアマスタ取得レスポンス */
 export interface IAreaMaster {
   areaList: IArea[];

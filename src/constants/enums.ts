@@ -14,3 +14,9 @@ export enum FormType {
   REGISTER = 'register',
   UPDATE = 'update',
 }
+
+/** アイコンボタンタイプ */
+export enum IconButtonType {
+  ICON = 'icon',
+  BADGE = 'badge',
+}

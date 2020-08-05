@@ -5,17 +5,22 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // from app
 import { useGlobalState } from 'src/Context';
+import { IconButtonType } from 'src/constants/enums';
 import InformationGrid from 'src/components/partials/InformationGrid';
+import EditButton from 'src/components/partials/Button/EditButton';
+import DeleteButton from 'src/components/partials/Button/DeleteButton';
 import { IInformationGridItem } from 'src/interfaces/View';
-import { baseContainer } from 'src/styles/mixin';
+import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
   loading: boolean;
+  onClickEdit: () => void;
+  onClickDelete: () => void;
 }
 
 /** 店舗詳細 */
 const ShopDetail: React.FC<Props> = (props: Props) => {
-  const { loading } = props;
+  const { loading, onClickEdit, onClickDelete } = props;
   const classes = useStyles();
 
   const { shopDetail } = useGlobalState('shop');
@@ -65,6 +70,10 @@ const ShopDetail: React.FC<Props> = (props: Props) => {
       <InformationContainer>
         <InformationGrid items={informationGridItems} />
       </InformationContainer>
+      <Buttons>
+        <EditButton type={IconButtonType.BADGE} onClick={onClickEdit} />
+        <DeleteButton type={IconButtonType.BADGE} onClick={onClickDelete} />
+      </Buttons>
     </Container>
   );
 };
@@ -76,7 +85,15 @@ const useStyles = makeStyles({
     padding: '16px 0',
   },
 });
-const Container = styled.div``;
+const Container = styled.div`
+  ${flexColumnCenter};
+`;
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 96px;
+  margin-top: 24px;
+`;
 const InformationContainer = styled.div`
   ${baseContainer};
 `;

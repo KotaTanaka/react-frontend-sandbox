@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
 
 // from app
 import { PAGES } from 'src/constants/page';
@@ -73,13 +72,11 @@ const ShopDetailPage: React.FC = () => {
   return (
     <Container>
       <PageHeading heading={PAGES.SHOPS_DETAIL.name} />
-      <ShopDetail loading={isShopDetailLoading} />
-      <Button onClick={openEditModal} color="primary">
-        編集する
-      </Button>
-      <Button onClick={openDeleteDialog} color="primary">
-        削除する
-      </Button>
+      <ShopDetail
+        loading={isShopDetailLoading}
+        onClickEdit={openEditModal}
+        onClickDelete={openDeleteDialog}
+      />
       <ShopEditModal
         isOpen={isEditModalOpen}
         params={updateShopParams}

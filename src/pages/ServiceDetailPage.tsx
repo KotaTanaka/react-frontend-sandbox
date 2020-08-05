@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
 
 // from app
 import { PAGES } from 'src/constants/page';
@@ -58,13 +57,11 @@ const ServiceDetailPage: React.FC = () => {
   return (
     <Container>
       <PageHeading heading={PAGES.SERVICES_DETAIL.name} />
-      <ServiceDetail loading={isServiceDetailLoading} />
-      <Button onClick={openEditModal} color="primary">
-        編集する
-      </Button>
-      <Button onClick={openDeleteDialog} color="primary">
-        削除する
-      </Button>
+      <ServiceDetail
+        loading={isServiceDetailLoading}
+        onClickEdit={openEditModal}
+        onClickDelete={openDeleteDialog}
+      />
       <ServiceEditModal
         isOpen={isEditModalOpen}
         params={updateServiceParams}

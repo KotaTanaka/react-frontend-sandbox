@@ -1,10 +1,11 @@
-***find-wifi-console-ui***
+***react-frontend-sandbox***
 
 ## About
 
-Find Wi-Fi 管理コンソール
+React (Create React App) + TypeScript + CSS in JS でのフロントエンド開発の実験場  
+Wi-Fi検索システム管理UI
 
-*[Backend - find-wifi-backend](https://github.com/KotaTanaka/find-wifi-backend)*
+*[Backend - echo-api-sandbox](https://github.com/KotaTanaka/echo-api-sandbox)*
 
 ## Technology
 
@@ -27,8 +28,6 @@ Find Wi-Fi 管理コンソール
 #### Install
 
 ```bash
-$ git clone git@github.com:KotaTanaka/find-wifi-console-ui.git
-$ cd find-wifi-console-ui
 $ yarn
 ```
 

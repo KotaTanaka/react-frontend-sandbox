@@ -15,20 +15,20 @@ const InformationGrid: React.FC<Props> = (props: Props) => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.gridContainer}>
-      {items.map((item) => {
+    <>
+      {items.map((item, i) => {
         return (
-          <>
+          <Grid className={classes.gridContainer} key={i}>
             <Grid item xs={6} className={classes.gridContent}>
               <Typography className={classes.rowTitle}>{item.title}</Typography>
             </Grid>
             <Grid item xs={6} className={classes.gridContent}>
               <Typography className={classes.rowValue}>{item.value}</Typography>
             </Grid>
-          </>
+          </Grid>
         );
       })}
-    </Grid>
+    </>
   );
 };
 
@@ -36,6 +36,7 @@ const InformationGrid: React.FC<Props> = (props: Props) => {
 const useStyles = makeStyles({
   gridContainer: {
     width: 480,
+    display: 'flex',
   },
   gridContent: {
     padding: '8px 0',

@@ -17,11 +17,11 @@ import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス詳細ページ */
 const ServiceDetailPage: React.FC = () => {
-  const { serviceId } = useParams();
+  const { serviceId } = useParams<{ serviceId: string }>();
   const { moveToServiceList } = usePageTransition();
 
   // prettier-ignore
-  const { isServiceDetailLoading, fetchServiceDetail } = useGetServiceDetail(serviceId);
+  const { isServiceDetailLoading, fetchServiceDetail } = useGetServiceDetail(Number(serviceId));
   const {
     updateServiceParams,
     changeWifiName,
@@ -42,14 +42,14 @@ const ServiceDetailPage: React.FC = () => {
 
   /** Wi-Fiサービス更新 */
   const updateService = useCallback(async () => {
-    await requestUpdateService(serviceId);
+    await requestUpdateService(Number(serviceId));
     await fetchServiceDetail();
     closeEditModal();
   }, [serviceId, requestUpdateService, fetchServiceDetail, closeEditModal]);
 
   /** Wi-Fiサービス削除 */
   const deleteService = useCallback(async () => {
-    await requestDeleteService(serviceId);
+    await requestDeleteService(Number(serviceId));
     closeDeleteDialog();
     moveToServiceList();
   }, [serviceId, requestDeleteService, closeDeleteDialog, moveToServiceList]);

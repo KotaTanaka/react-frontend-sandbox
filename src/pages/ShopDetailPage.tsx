@@ -19,10 +19,12 @@ import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 店舗詳細ページ */
 const ShopDetailPage: React.FC = () => {
-  const { shopId } = useParams();
+  const { shopId } = useParams<{ shopId: string }>();
   const { moveToShopList } = usePageTransition();
 
-  const { isShopDetailLoading, fetchShopDetail } = useGetShopDetail(shopId);
+  const { isShopDetailLoading, fetchShopDetail } = useGetShopDetail(
+    Number(shopId),
+  );
   const {
     updateShopParams,
     ssidValue,
@@ -57,14 +59,14 @@ const ShopDetailPage: React.FC = () => {
 
   /** 店舗情報更新 */
   const updateShop = useCallback(async () => {
-    await requestUpdateShop(shopId);
+    await requestUpdateShop(Number(shopId));
     await fetchShopDetail();
     closeEditModal();
   }, [shopId, requestUpdateShop, fetchShopDetail, closeEditModal]);
 
   /** 店舗削除 */
   const deleteShop = useCallback(async () => {
-    await requestDeleteShop(shopId);
+    await requestDeleteShop(Number(shopId));
     closeDeleteDialog();
     moveToShopList();
   }, [shopId, requestDeleteShop, closeDeleteDialog, moveToShopList]);

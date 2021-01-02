@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 // from app
 import { PAGES } from 'src/constants/page';
 
-interface IUserPageTransitionProps {
+interface IUsePageTransitionProps {
   moveTo: (to: string) => void;
   moveToHome: () => void;
   moveToAreaList: () => void;
@@ -19,7 +19,7 @@ interface IUserPageTransitionProps {
 }
 
 /** ページ遷移カスタムフック */
-const usePageTransition = (): IUserPageTransitionProps => {
+const usePageTransition = (): IUsePageTransitionProps => {
   const history = useHistory();
 
   /** 指定したパス */

@@ -3,7 +3,7 @@
 ## About
 
 React (Create React App) + TypeScript + CSS in JS でのフロントエンド開発の実験場  
-Wi-Fi検索システム管理UI
+Wi-Fi検索システムの管理UI
 
 *[Backend - echo-api-sandbox](https://github.com/KotaTanaka/echo-api-sandbox)*
 

@@ -18,6 +18,7 @@ import ShopRegisterPage from 'src/pages/ShopRegisterPage';
 import ShopDetailPage from 'src/pages/ShopDetailPage';
 import ReviewsPage from 'src/pages/ReviewsPage';
 import CounterPage from 'src/pages/CounterPage';
+import ConvertValuePage from 'src/pages/ConvertValuePage';
 
 const App: React.FC = () => {
   // prettier-ignore
@@ -40,6 +41,7 @@ const App: React.FC = () => {
               <Route exact path={PAGES.SHOPS_DETAIL.path} component={ShopDetailPage} />
               <Route exact path={PAGES.REVIEWS.path} component={ReviewsPage} />
               <Route exact path="/counter" component={CounterPage} />
+              <Route exact path="/convert" component={ConvertValuePage} />
             </Switch>
           </Body>
         </AppContainer>

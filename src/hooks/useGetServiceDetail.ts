@@ -19,9 +19,8 @@ interface IUseGetServiceDetailProps {
  */
 const useGetServiceDetail = (id: number): IUseGetServiceDetailProps => {
   const { dispatchService } = useDispatch();
-  const [isServiceDetailLoading, setIsServiceDetailLoading] = useState<boolean>(
-    true,
-  );
+  const [isServiceDetailLoading, setIsServiceDetailLoading] =
+    useState<boolean>(true);
 
   /** ページ描画時に取得 */
   useEffect(() => {

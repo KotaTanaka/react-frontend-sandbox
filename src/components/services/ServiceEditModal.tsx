@@ -17,14 +17,8 @@ interface Props {
 
 /** Wi-Fiサービス編集フォームモーダル */
 const ServiceEditModal: React.FC<Props> = (props: Props) => {
-  const {
-    isOpen,
-    params,
-    onChangeWifiName,
-    onChangeLink,
-    onSave,
-    onCancel,
-  } = props;
+  const { isOpen, params, onChangeWifiName, onChangeLink, onSave, onCancel } =
+    props;
 
   return (
     <Dialog open={isOpen} onClose={onCancel}>

@@ -2,7 +2,7 @@
 
 ## About
 
-React (Create React App) + TypeScript + CSS in JS でのフロントエンド開発の実験場  
+React (Create React App) + TypeScript + CSS in JS でのフロントエンド開発の素振り  
 Wi-Fi検索システムの管理UI
 
 *[Backend - echo-api-sandbox](https://github.com/KotaTanaka/echo-api-sandbox)*
@@ -11,16 +11,16 @@ Wi-Fi検索システムの管理UI
 
 | Dependency | Version |
 | --- | --- |
-| [TypeScript](https://www.typescriptlang.org) | `3.8.x` |
-| [React](https://ja.reactjs.org) | `16.13.x` |
-| react-scripts<br>([Create React App](https://create-react-app.dev/docs/getting-started)) | `3.4.x` |
+| [TypeScript](https://www.typescriptlang.org) | `4.1.x` |
+| [React](https://ja.reactjs.org) | `17.0.x` |
+| react-scripts<br>([Create React App](https://create-react-app.dev/docs/getting-started)) | `4.0.x` |
 | [React Router](https://reacttraining.com/react-router/web/guides/quick-start) | `5.1.x` |
-| [Material UI](https://material-ui.com) | `4.9.x` |
-| [Styled Components](https://styled-components.com) | `5.1.x` |
+| [Material UI](https://material-ui.com) | `4.11.x` |
+| [Styled Components](https://styled-components.com) | `5.2.x` |
 
 ## Requirement
 
-* Node `v12`
+* Node `v15`
 * Yarn
 
 ## Getting Started

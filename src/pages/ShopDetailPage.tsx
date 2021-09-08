@@ -13,8 +13,8 @@ import useGetServices from 'src/hooks/useGetServices';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import ConfirmDialog from 'src/components/partials/ConfirmDialog';
-import ShopDetail from 'src/components/shops/ShopDetail';
-import ShopEditModal from 'src/components/shops/ShopEditModal';
+import ShopDetail from 'src/components/pages/shops/ShopDetail';
+import ShopEditModal from 'src/components/pages/shops/ShopEditModal';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 店舗詳細ページ */

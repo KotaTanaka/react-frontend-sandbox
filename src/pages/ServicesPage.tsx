@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { PAGES } from 'src/constants/page';
 import useGetServices from 'src/hooks/useGetServices';
 import PageHeading from 'src/components/partials/PageHeading';
-import ServiceList from 'src/components/services/ServiceList';
+import ServiceList from 'src/components/pages/services/ServiceList';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス一覧ページ */

@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { PAGES } from 'src/constants/page';
 import useGetReviews from 'src/hooks/useGetReviews';
 import PageHeading from 'src/components/partials/PageHeading';
-import ReviewList from 'src/components/reviews/ReviewList';
+import ReviewList from 'src/components/pages/reviews/ReviewList';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** レビュー一覧ページ */

@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { PAGES } from 'src/constants/page';
 import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
 import PageHeading from 'src/components/partials/PageHeading';
-import AreaList from 'src/components/areas/AreaList';
+import AreaList from 'src/components/pages/areas/AreaList';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** エリア一覧ページ */

@@ -8,7 +8,7 @@ import useDeleteArea from 'src/hooks/useDeleteArea';
 import EmptyContent from 'src/components/partials/EmptyContent';
 import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
-import AreaChip from 'src/components/areas/AreaChip';
+import AreaChip from 'src/components/pages/areas/AreaChip';
 
 interface Props {
   loading: boolean;

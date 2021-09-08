@@ -11,8 +11,8 @@ import useDeleteService from 'src/hooks/useDeleteService';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import ConfirmDialog from 'src/components/partials/ConfirmDialog';
-import ServiceDetail from 'src/components/services/ServiceDetail';
-import ServiceEditModal from 'src/components/services/ServiceEditModal';
+import ServiceDetail from 'src/components/pages/services/ServiceDetail';
+import ServiceEditModal from 'src/components/pages/services/ServiceEditModal';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス詳細ページ */

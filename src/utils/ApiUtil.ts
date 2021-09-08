@@ -1,6 +1,4 @@
 import axios from 'axios';
-
-// from app
 import { IApiError } from 'src/interfaces/api/response/Error';
 
 /**

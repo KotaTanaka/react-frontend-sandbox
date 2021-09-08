@@ -1,11 +1,9 @@
-import { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Save } from '@material-ui/icons';
-
-// from app
-import { FormType } from 'src/constants/enums';
-import FormInput from 'src/components/partials/Form/FormInput';
+import { useMemo } from 'react';
 import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
+import FormInput from 'src/components/partials/Form/FormInput';
+import { FormType } from 'src/constants/enums';
 import {
   IRegisterServiceBody,
   IUpdateServiceBody,

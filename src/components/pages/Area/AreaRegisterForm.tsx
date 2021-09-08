@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 import { Save } from '@material-ui/icons';
-
-// from app
-import FormInput from 'src/components/partials/Form/FormInput';
 import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
+import FormInput from 'src/components/partials/Form/FormInput';
 import { IRegisterAreaBody } from 'src/interfaces/api/request/Area';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 

@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
-
-// from app
-import { useGlobalState } from 'src/Context';
+import { useCallback, useEffect, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
+import { useGlobalState } from 'src/Context';
 import { IUpdateShopBody } from 'src/interfaces/api/request/Shop';
 import { handleError } from 'src/utils/ApiUtil';
 

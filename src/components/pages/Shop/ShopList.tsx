@@ -1,4 +1,3 @@
-import { makeStyles } from '@material-ui/core/styles';
 import styled from '@emotion/styled';
 import {
   Button,
@@ -10,12 +9,11 @@ import {
   TableHead,
   TableRow,
 } from '@material-ui/core';
-
-// from app
-import { useGlobalState } from 'src/Context';
-import { PAGES } from 'src/constants/page';
-import usePageTransition from 'src/hooks/usePageTransition';
+import { makeStyles } from '@material-ui/core/styles';
 import EmptyContent from 'src/components/partials/EmptyContent';
+import { PAGES } from 'src/constants/page';
+import { useGlobalState } from 'src/Context';
+import usePageTransition from 'src/hooks/usePageTransition';
 
 interface Props {
   loading: boolean;

@@ -1,14 +1,12 @@
-import { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Save } from '@material-ui/icons';
-
-// from app
-import { useGlobalState } from 'src/Context';
-import { FormType } from 'src/constants/enums';
+import { useMemo } from 'react';
+import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
 import FormInput from 'src/components/partials/Form/FormInput';
 import FormSelect from 'src/components/partials/Form/FormSelect';
 import FormSwitch from 'src/components/partials/Form/FormSwitch';
-import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
+import { FormType } from 'src/constants/enums';
+import { useGlobalState } from 'src/Context';
 import {
   IRegisterShopBody,
   IUpdateShopBody,

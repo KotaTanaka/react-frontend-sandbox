@@ -1,6 +1,4 @@
 import { css } from '@emotion/react';
-
-// from app
 import { muiBaseFont } from 'src/styles/muiStyles';
 
 /** MaterialUI と Emotion で基本フォントを合わせる */

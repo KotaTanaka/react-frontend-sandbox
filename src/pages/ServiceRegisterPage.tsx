@@ -1,12 +1,10 @@
 import styled from '@emotion/styled';
-
-// from app
-import { PAGES } from 'src/constants/page';
-import { FormType } from 'src/constants/enums';
-import useRegisterService from 'src/hooks/useRegisterService';
+import ServiceForm from 'src/components/pages/Service/ServiceForm';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
-import ServiceForm from 'src/components/pages/Service/ServiceForm';
+import { FormType } from 'src/constants/enums';
+import { PAGES } from 'src/constants/page';
+import useRegisterService from 'src/hooks/useRegisterService';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス登録ページ */

@@ -1,8 +1,6 @@
 import { IconButton } from '@material-ui/core';
-import { DeleteOutline } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-
-// from app
+import { DeleteOutline } from '@material-ui/icons';
 import { IconButtonType } from 'src/constants/enums';
 
 interface Props {

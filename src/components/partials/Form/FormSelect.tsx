@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import {
   FormControl,
   FormHelperText,
@@ -6,8 +5,7 @@ import {
   Select,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-// from app
+import { useCallback } from 'react';
 import { IFormSelectMenuItem } from 'src/interfaces/View';
 
 interface Props {

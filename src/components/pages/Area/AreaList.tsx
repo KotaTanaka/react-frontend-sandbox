@@ -1,14 +1,12 @@
-import { useCallback, useState } from 'react';
 import styled from '@emotion/styled';
-
-// from app
-import { useGlobalState } from 'src/Context';
-import { PAGES } from 'src/constants/page';
-import useDeleteArea from 'src/hooks/useDeleteArea';
-import EmptyContent from 'src/components/partials/EmptyContent';
-import ConfirmDialog from 'src/components/partials/ConfirmDialog';
-import SuccessPopup from 'src/components/partials/SuccessPopup';
+import { useCallback, useState } from 'react';
 import AreaChip from 'src/components/pages/Area/AreaChip';
+import ConfirmDialog from 'src/components/partials/ConfirmDialog';
+import EmptyContent from 'src/components/partials/EmptyContent';
+import SuccessPopup from 'src/components/partials/SuccessPopup';
+import { PAGES } from 'src/constants/page';
+import { useGlobalState } from 'src/Context';
+import useDeleteArea from 'src/hooks/useDeleteArea';
 
 interface Props {
   loading: boolean;

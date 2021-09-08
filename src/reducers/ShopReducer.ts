@@ -1,8 +1,7 @@
-// from app
 import { ActionType } from 'src/constants/enums';
 import {
-  IShopListElement,
   IShopDetail,
+  IShopListElement,
 } from 'src/interfaces/api/response/Shop';
 
 /** Action */

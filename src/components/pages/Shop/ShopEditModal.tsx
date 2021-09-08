@@ -1,8 +1,6 @@
 import { Dialog } from '@material-ui/core';
-
-// from app
-import { FormType } from 'src/constants/enums';
 import ShopForm from 'src/components/pages/Shop/ShopForm';
+import { FormType } from 'src/constants/enums';
 import { IUpdateShopBody } from 'src/interfaces/api/request/Shop';
 
 interface Props {

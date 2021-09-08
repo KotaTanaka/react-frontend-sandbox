@@ -1,4 +1,3 @@
-// from app
 import { IReview } from 'src/interfaces/api/response/Review';
 
 /** 店舗情報 */

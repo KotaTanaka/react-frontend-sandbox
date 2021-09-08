@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-
-// from app
 import usePageTransition from 'src/hooks/usePageTransition';
 
 /** 固定ヘッダー */

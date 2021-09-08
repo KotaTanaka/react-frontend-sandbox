@@ -1,7 +1,5 @@
 import { useCallback } from 'react';
 import { useHistory } from 'react-router';
-
-// from app
 import { PAGES } from 'src/constants/page';
 
 interface IUsePageTransitionProps {

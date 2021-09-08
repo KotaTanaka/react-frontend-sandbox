@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
-
-// from app
+import AreaList from 'src/components/pages/Area/AreaList';
+import PageHeading from 'src/components/partials/PageHeading';
 import { PAGES } from 'src/constants/page';
 import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
-import PageHeading from 'src/components/partials/PageHeading';
-import AreaList from 'src/components/pages/Area/AreaList';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** エリア一覧ページ */

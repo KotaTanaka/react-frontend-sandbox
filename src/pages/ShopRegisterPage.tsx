@@ -1,14 +1,12 @@
 import styled from '@emotion/styled';
-
-// from app
-import { PAGES } from 'src/constants/page';
-import { FormType } from 'src/constants/enums';
-import useRegisterShop from 'src/hooks/useRegisterShop';
-import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
-import useGetServices from 'src/hooks/useGetServices';
+import ShopForm from 'src/components/pages/Shop/ShopForm';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
-import ShopForm from 'src/components/pages/Shop/ShopForm';
+import { FormType } from 'src/constants/enums';
+import { PAGES } from 'src/constants/page';
+import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
+import useGetServices from 'src/hooks/useGetServices';
+import useRegisterShop from 'src/hooks/useRegisterShop';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 店舗登録ページ */

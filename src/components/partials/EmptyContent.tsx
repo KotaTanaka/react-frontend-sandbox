@@ -1,9 +1,7 @@
-import { useCallback } from 'react';
 import styled from '@emotion/styled';
 import { Link, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-
-// from app
+import { useCallback } from 'react';
 import usePageTransition from 'src/hooks/usePageTransition';
 import { flexColumnCenter } from 'src/styles/mixin';
 

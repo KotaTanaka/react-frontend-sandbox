@@ -1,4 +1,3 @@
-// from app
 import { IShop } from 'src/interfaces/api/response/Shop';
 
 /** Wi-Fiサービス情報 */

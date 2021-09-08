@@ -1,14 +1,12 @@
-import { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-// from app
-import { useGlobalState } from 'src/Context';
-import { IconButtonType } from 'src/constants/enums';
-import InformationGrid from 'src/components/partials/InformationGrid';
-import EditButton from 'src/components/partials/Button/EditButton';
+import { useMemo } from 'react';
 import DeleteButton from 'src/components/partials/Button/DeleteButton';
+import EditButton from 'src/components/partials/Button/EditButton';
+import InformationGrid from 'src/components/partials/InformationGrid';
+import { IconButtonType } from 'src/constants/enums';
+import { useGlobalState } from 'src/Context';
 import { IInformationGridItem } from 'src/interfaces/View';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 

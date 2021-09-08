@@ -1,20 +1,18 @@
+import styled from '@emotion/styled';
 import { useCallback, useState } from 'react';
 import { useParams } from 'react-router';
-import styled from '@emotion/styled';
-
-// from app
+import ShopDetail from 'src/components/pages/Shop/ShopDetail';
+import ShopEditModal from 'src/components/pages/Shop/ShopEditModal';
+import ConfirmDialog from 'src/components/partials/ConfirmDialog';
+import PageHeading from 'src/components/partials/PageHeading';
+import SuccessPopup from 'src/components/partials/SuccessPopup';
 import { PAGES } from 'src/constants/page';
-import usePageTransition from 'src/hooks/usePageTransition';
-import useGetShopDetail from 'src/hooks/useGetShopDetail';
-import useUpdateShop from 'src/hooks/useUpdateShop';
 import useDeleteShop from 'src/hooks/useDeleteShop';
 import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
 import useGetServices from 'src/hooks/useGetServices';
-import PageHeading from 'src/components/partials/PageHeading';
-import SuccessPopup from 'src/components/partials/SuccessPopup';
-import ConfirmDialog from 'src/components/partials/ConfirmDialog';
-import ShopDetail from 'src/components/pages/Shop/ShopDetail';
-import ShopEditModal from 'src/components/pages/Shop/ShopEditModal';
+import useGetShopDetail from 'src/hooks/useGetShopDetail';
+import usePageTransition from 'src/hooks/usePageTransition';
+import useUpdateShop from 'src/hooks/useUpdateShop';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 店舗詳細ページ */

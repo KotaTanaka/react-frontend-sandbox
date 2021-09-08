@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
-
-// from app
+import ShopList from 'src/components/pages/Shop/ShopList';
+import PageHeading from 'src/components/partials/PageHeading';
 import { PAGES } from 'src/constants/page';
 import useGetShops from 'src/hooks/useGetShops';
-import PageHeading from 'src/components/partials/PageHeading';
-import ShopList from 'src/components/pages/Shop/ShopList';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 店舗一覧ページ */

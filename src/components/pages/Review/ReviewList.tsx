@@ -1,5 +1,3 @@
-import { useCallback, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import styled from '@emotion/styled';
 import {
   Button,
@@ -11,13 +9,13 @@ import {
   TableHead,
   TableRow,
 } from '@material-ui/core';
-
-// from app
+import { makeStyles } from '@material-ui/core/styles';
+import { useCallback, useState } from 'react';
+import ConfirmDialog from 'src/components/partials/ConfirmDialog';
+import EmptyContent from 'src/components/partials/EmptyContent';
+import SuccessPopup from 'src/components/partials/SuccessPopup';
 import { useGlobalState } from 'src/Context';
 import useDeleteReview from 'src/hooks/useDeleteReview';
-import EmptyContent from 'src/components/partials/EmptyContent';
-import ConfirmDialog from 'src/components/partials/ConfirmDialog';
-import SuccessPopup from 'src/components/partials/SuccessPopup';
 
 interface Props {
   loading: boolean;

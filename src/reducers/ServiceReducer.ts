@@ -1,8 +1,7 @@
-// from app
 import { ActionType } from 'src/constants/enums';
 import {
-  IServiceListElement,
   IServiceDetail,
+  IServiceListElement,
 } from 'src/interfaces/api/response/Service';
 
 /** Action */

@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import { Chip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-// from app
 import DeleteButton from 'src/components/partials/Button/DeleteButton';
 import { IArea } from 'src/interfaces/api/response/Area';
 

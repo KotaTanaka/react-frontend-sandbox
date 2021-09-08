@@ -1,4 +1,3 @@
-// from app
 import { ActionType } from 'src/constants/enums';
 import { IReviewListElement } from 'src/interfaces/api/response/Review';
 

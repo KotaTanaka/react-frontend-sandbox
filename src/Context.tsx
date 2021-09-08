@@ -1,31 +1,29 @@
-import { createContext, useReducer, useContext } from 'react';
-
-// from app
+import { createContext, useContext, useReducer } from 'react';
 import areaReducer, {
-  IAreaState,
-  IAreaAction,
   areaInitialState,
+  IAreaAction,
+  IAreaState,
 } from 'src/reducers/AreaReducer';
+import counterReducer, {
+  counterInitialState,
+  ICounterAction,
+  ICounterState,
+} from 'src/reducers/CounterReducer';
+import reviewReducer, {
+  IReviewAction,
+  IReviewState,
+  reviewInitialState,
+} from 'src/reducers/ReviewReducer';
 import serviceReducer, {
-  IServiceState,
   IServiceAction,
+  IServiceState,
   serviceInitialState,
 } from 'src/reducers/ServiceReducer';
 import shopReducer, {
-  IShopState,
   IShopAction,
+  IShopState,
   shopInitialState,
 } from 'src/reducers/ShopReducer';
-import reviewReducer, {
-  IReviewState,
-  IReviewAction,
-  reviewInitialState,
-} from 'src/reducers/ReviewReducer';
-import counterReducer, {
-  ICounterState,
-  ICounterAction,
-  counterInitialState,
-} from 'src/reducers/CounterReducer';
 
 /** Action */
 export interface IGlobalAction {

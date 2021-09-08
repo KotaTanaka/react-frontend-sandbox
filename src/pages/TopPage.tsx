@@ -1,6 +1,4 @@
 import styled from '@emotion/styled';
-
-// from app
 import PageHeading from 'src/components/partials/PageHeading';
 import { flexColumnCenter } from 'src/styles/mixin';
 

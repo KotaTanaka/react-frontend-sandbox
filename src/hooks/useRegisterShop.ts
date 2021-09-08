@@ -1,7 +1,5 @@
-import { useCallback, useState } from 'react';
 import axios from 'axios';
-
-// from app
+import { useCallback, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
 import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
 import { handleError } from 'src/utils/ApiUtil';

@@ -1,8 +1,6 @@
-import { useState, useEffect, useCallback } from 'react';
-
-// from app
-import { useDispatch, useGlobalState } from 'src/Context';
+import { useCallback, useEffect, useState } from 'react';
 import { ActionType } from 'src/constants/enums';
+import { useDispatch, useGlobalState } from 'src/Context';
 
 /** カウンターアプリ */
 const CounterPage: React.FC = () => {

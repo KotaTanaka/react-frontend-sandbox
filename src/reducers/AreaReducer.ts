@@ -1,4 +1,3 @@
-// from app
 import { ActionType } from 'src/constants/enums';
 import { IArea } from 'src/interfaces/api/response/Area';
 

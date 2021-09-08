@@ -7,8 +7,6 @@ import {
   Toolbar,
 } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core/styles';
-
-// from app
 import { PAGES } from 'src/constants/page';
 import usePageTransition from 'src/hooks/usePageTransition';
 

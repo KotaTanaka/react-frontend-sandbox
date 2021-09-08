@@ -1,8 +1,6 @@
 import { Dialog } from '@material-ui/core';
-
-// from app
-import { FormType } from 'src/constants/enums';
 import ServiceForm from 'src/components/pages/Service/ServiceForm';
+import { FormType } from 'src/constants/enums';
 import { IUpdateServiceBody } from 'src/interfaces/api/request/Service';
 
 interface Props {

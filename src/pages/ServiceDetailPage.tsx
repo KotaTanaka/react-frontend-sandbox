@@ -1,18 +1,16 @@
+import styled from '@emotion/styled';
 import { useCallback, useState } from 'react';
 import { useParams } from 'react-router';
-import styled from '@emotion/styled';
-
-// from app
-import { PAGES } from 'src/constants/page';
-import usePageTransition from 'src/hooks/usePageTransition';
-import useGetServiceDetail from 'src/hooks/useGetServiceDetail';
-import useUpdateService from 'src/hooks/useUpdateService';
-import useDeleteService from 'src/hooks/useDeleteService';
-import PageHeading from 'src/components/partials/PageHeading';
-import SuccessPopup from 'src/components/partials/SuccessPopup';
-import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 import ServiceDetail from 'src/components/pages/Service/ServiceDetail';
 import ServiceEditModal from 'src/components/pages/Service/ServiceEditModal';
+import ConfirmDialog from 'src/components/partials/ConfirmDialog';
+import PageHeading from 'src/components/partials/PageHeading';
+import SuccessPopup from 'src/components/partials/SuccessPopup';
+import { PAGES } from 'src/constants/page';
+import useDeleteService from 'src/hooks/useDeleteService';
+import useGetServiceDetail from 'src/hooks/useGetServiceDetail';
+import usePageTransition from 'src/hooks/usePageTransition';
+import useUpdateService from 'src/hooks/useUpdateService';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス詳細ページ */

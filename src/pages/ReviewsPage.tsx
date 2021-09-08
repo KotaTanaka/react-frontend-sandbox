@@ -1,10 +1,8 @@
 import styled from '@emotion/styled';
-
-// from app
+import ReviewList from 'src/components/pages/Review/ReviewList';
+import PageHeading from 'src/components/partials/PageHeading';
 import { PAGES } from 'src/constants/page';
 import useGetReviews from 'src/hooks/useGetReviews';
-import PageHeading from 'src/components/partials/PageHeading';
-import ReviewList from 'src/components/pages/Review/ReviewList';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** レビュー一覧ページ */

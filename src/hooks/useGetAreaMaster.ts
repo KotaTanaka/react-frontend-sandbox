@@ -1,10 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
 import axios, { CancelTokenSource } from 'axios';
-
-// from app
-import { useDispatch } from 'src/Context';
+import { useCallback, useEffect, useState } from 'react';
 import { CLIENT_API_ENDPOINT } from 'src/constants/api';
 import { ActionType } from 'src/constants/enums';
+import { useDispatch } from 'src/Context';
 import { IAreaMaster } from 'src/interfaces/api/response/Area';
 import { handleError } from 'src/utils/ApiUtil';
 

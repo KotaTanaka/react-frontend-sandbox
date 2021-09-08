@@ -9,7 +9,7 @@ import useGetAreaMaster from 'src/hooks/useGetAreaMaster';
 import useGetServices from 'src/hooks/useGetServices';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
-import ShopForm from 'src/components/pages/shops/ShopForm';
+import ShopForm from 'src/components/pages/Shop/ShopForm';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** 店舗登録ページ */

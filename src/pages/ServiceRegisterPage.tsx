@@ -7,7 +7,7 @@ import { FormType } from 'src/constants/enums';
 import useRegisterService from 'src/hooks/useRegisterService';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
-import ServiceForm from 'src/components/pages/services/ServiceForm';
+import ServiceForm from 'src/components/pages/Service/ServiceForm';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** Wi-Fiサービス登録ページ */

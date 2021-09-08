@@ -6,7 +6,7 @@ import { PAGES } from 'src/constants/page';
 import useRegisterArea from 'src/hooks/useRegisterArea';
 import PageHeading from 'src/components/partials/PageHeading';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
-import AreaRegisterForm from 'src/components/pages/areas/AreaRegisterForm';
+import AreaRegisterForm from 'src/components/pages/Area/AreaRegisterForm';
 import { flexColumnCenter } from 'src/styles/mixin';
 
 /** エリア登録ページ */

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useParams } from 'react-router';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 // from app
 import { PAGES } from 'src/constants/page';

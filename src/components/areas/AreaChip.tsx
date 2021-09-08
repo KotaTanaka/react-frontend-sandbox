@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Chip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 

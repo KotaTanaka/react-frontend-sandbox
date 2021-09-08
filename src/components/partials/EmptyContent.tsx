@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Link, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 

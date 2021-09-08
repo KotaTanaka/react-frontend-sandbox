@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // from app

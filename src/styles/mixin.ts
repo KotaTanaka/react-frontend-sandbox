@@ -1,9 +1,9 @@
-import { css } from 'styled-components';
+import { css } from '@emotion/react';
 
 // from app
 import { muiBaseFont } from 'src/styles/muiStyles';
 
-/** MaterialUI と styled-components で基本フォントを合わせる */
+/** MaterialUI と Emotion で基本フォントを合わせる */
 export const baseFont = css(muiBaseFont);
 
 /** 上下左右中央寄せ */

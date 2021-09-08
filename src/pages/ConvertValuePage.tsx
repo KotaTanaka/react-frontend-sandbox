@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useMemo,
-  useCallback,
-  ChangeEvent,
-  ReactText,
-} from 'react';
+import { useState, useMemo, useCallback, ChangeEvent, ReactText } from 'react';
 
 /** 型変換 */
 const ConvertValuePage: React.FC = () => {

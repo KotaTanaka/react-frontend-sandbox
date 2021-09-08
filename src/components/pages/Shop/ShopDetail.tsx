@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 // from app
 import { useDispatch, useGlobalState } from 'src/Context';

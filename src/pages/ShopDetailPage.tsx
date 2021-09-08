@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useParams } from 'react-router';
 import styled from '@emotion/styled';
 

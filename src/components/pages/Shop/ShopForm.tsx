@@ -11,7 +11,7 @@ import {
   IUpdateShopBody,
 } from 'src/interfaces/api/request/Shop';
 import { IFormSelectMenuItem } from 'src/interfaces/View';
-import { useGlobalState } from 'src/states/Context';
+import { useStore } from 'src/states/Context';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
@@ -52,8 +52,8 @@ const ShopForm: React.FC<Props> = (props: Props) => {
     onSave,
   } = props;
 
-  const { serviceList } = useGlobalState('service');
-  const { areaList } = useGlobalState('area');
+  const { serviceList } = useStore('service');
+  const { areaList } = useStore('area');
 
   /** サービスプルダウンリスト */
   const serviceMenuList = useMemo((): IFormSelectMenuItem[] => {

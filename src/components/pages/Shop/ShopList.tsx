@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import EmptyContent from 'src/components/partials/EmptyContent';
 import { PAGES } from 'src/constants/page';
 import usePageTransition from 'src/hooks/usePageTransition';
-import { useGlobalState } from 'src/states/Context';
+import { useStore } from 'src/states/Context';
 
 interface Props {
   loading: boolean;
@@ -23,7 +23,7 @@ interface Props {
 const ShopList: React.FC<Props> = (props: Props) => {
   const { loading } = props;
   const classes = useStyles();
-  const { shopList } = useGlobalState('shop');
+  const { shopList } = useStore('shop');
   const { moveToShopDetail } = usePageTransition();
 
   if (loading) {

@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { ActionType } from 'src/constants/enums';
-import { useDispatch, useGlobalState } from 'src/states/Context';
+import { useDispatch, useStore } from 'src/states/Context';
 
 /** カウンターアプリ */
 const CounterPage: React.FC = () => {
   const { dispatchCounter } = useDispatch();
-  const globalCounterState = useGlobalState('counter');
+  const globalCounterState = useStore('counter');
   const [count, setCount] = useState<number>(0);
   const [syobon, setSyobon] = useState<string>('');
 

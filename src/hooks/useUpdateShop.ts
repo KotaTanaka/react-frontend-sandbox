@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
 import { IUpdateShopBody } from 'src/interfaces/api/request/Shop';
-import { useGlobalState } from 'src/states/Context';
+import { useStore } from 'src/states/Context';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseUpdateShopProps {
@@ -45,7 +45,7 @@ const useUpdateShop = (): IUseUpdateShopProps => {
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
   // 現在の値をフォームの初期値に設定する
-  const { shopDetail } = useGlobalState('shop');
+  const { shopDetail } = useStore('shop');
   useEffect(() => {
     setUpdateShopParams({
       serviceId: shopDetail.shopId,

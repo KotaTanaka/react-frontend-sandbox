@@ -6,7 +6,7 @@ import EmptyContent from 'src/components/partials/EmptyContent';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import { PAGES } from 'src/constants/page';
 import useDeleteArea from 'src/hooks/useDeleteArea';
-import { useGlobalState } from 'src/states/Context';
+import { useStore } from 'src/states/Context';
 
 interface Props {
   loading: boolean;
@@ -16,7 +16,7 @@ interface Props {
 /** エリアリスト */
 const AreaList: React.FC<Props> = (props: Props) => {
   const { loading, refetch } = props;
-  const { areaList } = useGlobalState('area');
+  const { areaList } = useStore('area');
 
   const {
     requestDeleteArea,

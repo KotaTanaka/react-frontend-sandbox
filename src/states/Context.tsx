@@ -107,9 +107,9 @@ const useDispatch = () => {
 };
 
 /** GlobalState を参照するための関数 */
-const useGlobalState = <K extends keyof IGlobalState>(property: K) => {
+const useStore = <K extends keyof IGlobalState>(property: K) => {
   const state = useContext(StoreContext);
   return state[property];
 };
 
-export { StoreContext, Provider, useDispatch, useGlobalState };
+export { StoreContext, Provider, useDispatch, useStore };

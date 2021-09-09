@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
 import { IUpdateServiceBody } from 'src/interfaces/api/request/Service';
-import { useGlobalState } from 'src/states/Context';
+import { useStore } from 'src/states/Context';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseUpdateServiceProps {
@@ -25,7 +25,7 @@ const useUpdateService = (): IUseUpdateServiceProps => {
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
 
   // 現在の値をフォームの初期値に設定する
-  const { serviceDetail } = useGlobalState('service');
+  const { serviceDetail } = useStore('service');
   useEffect(() => {
     setUpdateServiceParams({
       wifiName: serviceDetail.wifiName,

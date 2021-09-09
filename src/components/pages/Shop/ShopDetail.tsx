@@ -7,7 +7,7 @@ import EditButton from 'src/components/partials/Button/EditButton';
 import InformationGrid from 'src/components/partials/InformationGrid';
 import { IconButtonType } from 'src/constants/enums';
 import { IInformationGridItem } from 'src/interfaces/View';
-import { useGlobalState } from 'src/states/Context';
+import { useStore } from 'src/states/Context';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
@@ -21,7 +21,7 @@ const ShopDetail: React.FC<Props> = (props: Props) => {
   const { loading, onClickEdit, onClickDelete } = props;
   const classes = useStyles();
 
-  const { shopDetail } = useGlobalState('shop');
+  const { shopDetail } = useStore('shop');
 
   /** 詳細データ */
   const informationGridItems = useMemo((): IInformationGridItem[] => {

@@ -15,7 +15,7 @@ import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 import EmptyContent from 'src/components/partials/EmptyContent';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import useDeleteReview from 'src/hooks/useDeleteReview';
-import { useGlobalState } from 'src/states/Context';
+import { useStore } from 'src/states/Context';
 
 interface Props {
   loading: boolean;
@@ -26,7 +26,7 @@ interface Props {
 const ReviewList: React.FC<Props> = (props: Props) => {
   const { loading, refetch } = props;
   const classes = useStyles();
-  const { reviewList } = useGlobalState('review');
+  const { reviewList } = useStore('review');
 
   const {
     requestDeleteReview,

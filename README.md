@@ -9,14 +9,14 @@ Wi-Fi検索システムの管理UI
 
 ## Technology
 
-| Dependency | Version |
+| Dependency | Purpose |
 | --- | --- |
-| [TypeScript](https://www.typescriptlang.org) | `4.1.x` |
-| [React](https://ja.reactjs.org) | `17.0.x` |
-| react-scripts<br>([Create React App](https://create-react-app.dev/docs/getting-started)) | `4.0.x` |
-| [React Router](https://reacttraining.com/react-router/web/guides/quick-start) | `5.1.x` |
-| [Material UI](https://material-ui.com) | `4.11.x` |
-| [Styled Components](https://styled-components.com) | `5.2.x` |
+| [TypeScript](https://www.typescriptlang.org) | Language |
+| [React](https://ja.reactjs.org) | Framework |
+| react-scripts<br>([Create React App](https://create-react-app.dev/docs/getting-started)) | Framework |
+| [React Router](https://reacttraining.com/react-router/web/guides/quick-start) | Page Routing |
+| [Material UI](https://material-ui.com) | UI Components |
+| [Emotion](https://emotion.sh) | Styling (CSS in JS) |
 
 ## Requirement
 

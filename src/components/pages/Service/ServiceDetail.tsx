@@ -6,8 +6,8 @@ import DeleteButton from 'src/components/partials/Button/DeleteButton';
 import EditButton from 'src/components/partials/Button/EditButton';
 import InformationGrid from 'src/components/partials/InformationGrid';
 import { IconButtonType } from 'src/constants/enums';
-import { useGlobalState } from 'src/Context';
 import { IInformationGridItem } from 'src/interfaces/View';
+import { useGlobalState } from 'src/states/Context';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {

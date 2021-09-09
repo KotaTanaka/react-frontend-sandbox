@@ -5,8 +5,8 @@ import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 import EmptyContent from 'src/components/partials/EmptyContent';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import { PAGES } from 'src/constants/page';
-import { useGlobalState } from 'src/Context';
 import useDeleteArea from 'src/hooks/useDeleteArea';
+import { useGlobalState } from 'src/states/Context';
 
 interface Props {
   loading: boolean;

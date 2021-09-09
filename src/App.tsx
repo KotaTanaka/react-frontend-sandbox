@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from 'src/components/partials/Header';
 import SideBar from 'src/components/partials/SideBar';
 import { PAGES } from 'src/constants/page';
-import { Provider } from 'src/Context';
 import AreaRegisterPage from 'src/pages/AreaRegisterPage';
 import AreasPage from 'src/pages/AreasPage';
 import ConvertValuePage from 'src/pages/ConvertValuePage';
@@ -16,6 +15,7 @@ import ShopDetailPage from 'src/pages/ShopDetailPage';
 import ShopRegisterPage from 'src/pages/ShopRegisterPage';
 import ShopsPage from 'src/pages/ShopsPage';
 import TopPage from 'src/pages/TopPage';
+import { Provider } from 'src/states/Context';
 
 const App: React.FC = () => {
   // prettier-ignore

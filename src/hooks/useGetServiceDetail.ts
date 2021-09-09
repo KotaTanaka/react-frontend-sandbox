@@ -2,8 +2,8 @@ import axios, { CancelTokenSource } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
 import { ActionType } from 'src/constants/enums';
-import { useDispatch } from 'src/Context';
 import { IServiceDetail } from 'src/interfaces/api/response/Service';
+import { useDispatch } from 'src/states/Context';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseGetServiceDetailProps {

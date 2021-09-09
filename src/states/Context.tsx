@@ -3,27 +3,27 @@ import areaReducer, {
   areaInitialState,
   IAreaAction,
   IAreaState,
-} from 'src/reducers/AreaReducer';
+} from 'src/states/reducers/AreaReducer';
 import counterReducer, {
   counterInitialState,
   ICounterAction,
   ICounterState,
-} from 'src/reducers/CounterReducer';
+} from 'src/states/reducers/CounterReducer';
 import reviewReducer, {
   IReviewAction,
   IReviewState,
   reviewInitialState,
-} from 'src/reducers/ReviewReducer';
+} from 'src/states/reducers/ReviewReducer';
 import serviceReducer, {
   IServiceAction,
   IServiceState,
   serviceInitialState,
-} from 'src/reducers/ServiceReducer';
+} from 'src/states/reducers/ServiceReducer';
 import shopReducer, {
   IShopAction,
   IShopState,
   shopInitialState,
-} from 'src/reducers/ShopReducer';
+} from 'src/states/reducers/ShopReducer';
 
 /** Action */
 export interface IGlobalAction {

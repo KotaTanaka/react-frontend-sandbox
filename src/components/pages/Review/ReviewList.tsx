@@ -14,8 +14,8 @@ import { useCallback, useState } from 'react';
 import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 import EmptyContent from 'src/components/partials/EmptyContent';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
-import { useGlobalState } from 'src/Context';
 import useDeleteReview from 'src/hooks/useDeleteReview';
+import { useGlobalState } from 'src/states/Context';
 
 interface Props {
   loading: boolean;

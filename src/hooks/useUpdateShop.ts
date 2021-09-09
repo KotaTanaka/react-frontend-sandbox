@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
-import { useGlobalState } from 'src/Context';
 import { IUpdateShopBody } from 'src/interfaces/api/request/Shop';
+import { useGlobalState } from 'src/states/Context';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseUpdateShopProps {

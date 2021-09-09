@@ -6,12 +6,12 @@ import FormInput from 'src/components/partials/Form/FormInput';
 import FormSelect from 'src/components/partials/Form/FormSelect';
 import FormSwitch from 'src/components/partials/Form/FormSwitch';
 import { FormType } from 'src/constants/enums';
-import { useGlobalState } from 'src/Context';
 import {
   IRegisterShopBody,
   IUpdateShopBody,
 } from 'src/interfaces/api/request/Shop';
 import { IFormSelectMenuItem } from 'src/interfaces/View';
+import { useGlobalState } from 'src/states/Context';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {

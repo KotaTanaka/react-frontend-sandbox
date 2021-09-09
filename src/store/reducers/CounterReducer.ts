@@ -1,6 +1,6 @@
 import { ActionType } from 'src/constants/enums';
 
-/** アクション */
+/** Action */
 export interface ICounterAction {
   type: ActionType.SET_COUNT;
   payload: any;

@@ -1,64 +1,44 @@
 import { createContext, useContext, useReducer } from 'react';
-import areaReducer, {
-  areaInitialState,
-  IAreaAction,
-  IAreaState,
-} from 'src/store/reducers/AreaReducer';
-import counterReducer, {
-  counterInitialState,
-  ICounterAction,
-  ICounterState,
-} from 'src/store/reducers/CounterReducer';
-import reviewReducer, {
-  IReviewAction,
-  IReviewState,
-  reviewInitialState,
-} from 'src/store/reducers/ReviewReducer';
-import serviceReducer, {
-  IServiceAction,
-  IServiceState,
-  serviceInitialState,
-} from 'src/store/reducers/ServiceReducer';
-import shopReducer, {
-  IShopAction,
-  IShopState,
-  shopInitialState,
-} from 'src/store/reducers/ShopReducer';
+import * as AreaReducer from 'src/store/reducers/AreaReducer';
+import * as CounterReducer from 'src/store/reducers/CounterReducer';
+import * as ReviewReducer from 'src/store/reducers/ReviewReducer';
+import * as ServiceReducer from 'src/store/reducers/ServiceReducer';
+import * as ShopReducer from 'src/store/reducers/ShopReducer';
 
-/** Action */
-export interface IGlobalAction {
-  area: IAreaAction;
-  service: IServiceAction;
-  shop: IShopAction;
-  review: IReviewAction;
-  counter: ICounterAction;
+/** StoreAction */
+interface IStoreAction {
+  area: AreaReducer.IAreaAction;
+  service: ServiceReducer.IServiceAction;
+  shop: ShopReducer.IShopAction;
+  review: ReviewReducer.IReviewAction;
+  counter: CounterReducer.ICounterAction;
 }
 
 /** StoreState */
-export interface IStoreState {
-  area: IAreaState;
-  service: IServiceState;
-  shop: IShopState;
-  review: IReviewState;
-  counter: ICounterState;
+interface IStoreState {
+  area: AreaReducer.IAreaState;
+  service: ServiceReducer.IServiceState;
+  shop: ShopReducer.IShopState;
+  review: ReviewReducer.IReviewState;
+  counter: CounterReducer.ICounterState;
 }
 
-/** Store */
+/** StoreContext */
 const StoreContext = createContext<IStoreState>({
-  area: areaInitialState,
-  service: serviceInitialState,
-  shop: shopInitialState,
-  review: reviewInitialState,
-  counter: counterInitialState,
+  area: AreaReducer.areaInitialState,
+  service: ServiceReducer.serviceInitialState,
+  shop: ShopReducer.shopInitialState,
+  review: ReviewReducer.reviewInitialState,
+  counter: CounterReducer.counterInitialState,
 });
 
-/** Dispatch */
+/** DispatchContext */
 const DispatchContext = createContext<{
-  dispatchArea: React.Dispatch<IAreaAction>;
-  dispatchService: React.Dispatch<IServiceAction>;
-  dispatchShop: React.Dispatch<IShopAction>;
-  dispatchReview: React.Dispatch<IReviewAction>;
-  dispatchCounter: React.Dispatch<ICounterAction>;
+  dispatchArea: React.Dispatch<IStoreAction['area']>;
+  dispatchService: React.Dispatch<IStoreAction['service']>;
+  dispatchShop: React.Dispatch<IStoreAction['shop']>;
+  dispatchReview: React.Dispatch<IStoreAction['review']>;
+  dispatchCounter: React.Dispatch<IStoreAction['counter']>;
 }>({
   dispatchArea: () => true,
   dispatchService: () => true,
@@ -69,30 +49,30 @@ const DispatchContext = createContext<{
 
 /** Provider */
 // prettier-ignore
-const Provider = ({ children }: { children: any }) => {
-  const [areaState, areaDispatch] = useReducer(areaReducer, areaInitialState);
-  const [serviceState, serviceDispatch] = useReducer(serviceReducer, serviceInitialState);
-  const [shopState, shopDispatch] = useReducer(shopReducer, shopInitialState);
-  const [reviewState, reviewDispatch] = useReducer(reviewReducer, reviewInitialState);
-  const [counterState, counterDispatch] = useReducer(counterReducer, counterInitialState);
+const Provider = ({ children }: { children: React.ReactNode }) => {
+  const [area, dispatchArea] = useReducer(AreaReducer.default, AreaReducer.areaInitialState);
+  const [service, dispatchService] = useReducer(ServiceReducer.default, ServiceReducer.serviceInitialState);
+  const [shop, dispatchShop] = useReducer(ShopReducer.default, ShopReducer.shopInitialState);
+  const [review, dispatchReview] = useReducer(ReviewReducer.default, ReviewReducer.reviewInitialState);
+  const [counter, dispatchCounter] = useReducer(CounterReducer.default, CounterReducer.counterInitialState);
 
   return (
     <StoreContext.Provider
       value={{
-        area: areaState,
-        service: serviceState,
-        shop: shopState,
-        review: reviewState,
-        counter: counterState,
+        area,
+        service,
+        shop,
+        review,
+        counter,
       }}
     >
       <DispatchContext.Provider
         value={{
-          dispatchArea: areaDispatch,
-          dispatchService: serviceDispatch,
-          dispatchShop: shopDispatch,
-          dispatchReview: reviewDispatch,
-          dispatchCounter: counterDispatch,
+          dispatchArea,
+          dispatchService,
+          dispatchShop,
+          dispatchReview,
+          dispatchCounter,
         }}
       >
         {children}
@@ -101,12 +81,12 @@ const Provider = ({ children }: { children: any }) => {
   );
 };
 
-/** GlobalState を更新するための関数 */
+/** StoreState を更新するための関数 */
 const useDispatch = () => {
   return useContext(DispatchContext);
 };
 
-/** GlobalState を参照するための関数 */
+/** StoreState を参照するための関数 */
 const useStore = <K extends keyof IStoreState>(property: K) => {
   const state = useContext(StoreContext);
   return state[property];

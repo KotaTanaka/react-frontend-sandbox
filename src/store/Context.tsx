@@ -34,8 +34,8 @@ export interface IGlobalAction {
   counter: ICounterAction;
 }
 
-/** GlobalState */
-export interface IGlobalState {
+/** StoreState */
+export interface IStoreState {
   area: IAreaState;
   service: IServiceState;
   shop: IShopState;
@@ -44,7 +44,7 @@ export interface IGlobalState {
 }
 
 /** Store */
-const StoreContext = createContext<IGlobalState>({
+const StoreContext = createContext<IStoreState>({
   area: areaInitialState,
   service: serviceInitialState,
   shop: shopInitialState,
@@ -107,7 +107,7 @@ const useDispatch = () => {
 };
 
 /** GlobalState を参照するための関数 */
-const useStore = <K extends keyof IGlobalState>(property: K) => {
+const useStore = <K extends keyof IStoreState>(property: K) => {
   const state = useContext(StoreContext);
   return state[property];
 };

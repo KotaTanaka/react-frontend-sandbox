@@ -15,7 +15,7 @@ import ShopDetailPage from 'src/pages/ShopDetailPage';
 import ShopRegisterPage from 'src/pages/ShopRegisterPage';
 import ShopsPage from 'src/pages/ShopsPage';
 import TopPage from 'src/pages/TopPage';
-import { Provider } from 'src/states/Context';
+import { Provider } from 'src/store/Context';
 
 const App: React.FC = () => {
   // prettier-ignore

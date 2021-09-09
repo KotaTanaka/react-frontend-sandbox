@@ -6,7 +6,7 @@ import EmptyContent from 'src/components/partials/EmptyContent';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import { PAGES } from 'src/constants/page';
 import useDeleteArea from 'src/hooks/useDeleteArea';
-import { useStore } from 'src/states/Context';
+import { useStore } from 'src/store/Context';
 
 interface Props {
   loading: boolean;

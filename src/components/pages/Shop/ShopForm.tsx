@@ -11,7 +11,7 @@ import {
   IUpdateShopBody,
 } from 'src/interfaces/api/request/Shop';
 import { IFormSelectMenuItem } from 'src/interfaces/View';
-import { useStore } from 'src/states/Context';
+import { useStore } from 'src/store/Context';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {

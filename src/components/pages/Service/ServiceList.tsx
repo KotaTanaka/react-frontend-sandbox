@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import EmptyContent from 'src/components/partials/EmptyContent';
 import { PAGES } from 'src/constants/page';
 import usePageTransition from 'src/hooks/usePageTransition';
-import { useStore } from 'src/states/Context';
+import { useStore } from 'src/store/Context';
 
 interface Props {
   loading: boolean;

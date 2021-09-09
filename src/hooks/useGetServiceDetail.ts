@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
 import { ActionType } from 'src/constants/enums';
 import { IServiceDetail } from 'src/interfaces/api/response/Service';
-import { useDispatch } from 'src/states/Context';
+import { useDispatch } from 'src/store/Context';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseGetServiceDetailProps {

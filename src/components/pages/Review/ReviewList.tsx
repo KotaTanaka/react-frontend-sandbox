@@ -15,7 +15,7 @@ import ConfirmDialog from 'src/components/partials/ConfirmDialog';
 import EmptyContent from 'src/components/partials/EmptyContent';
 import SuccessPopup from 'src/components/partials/SuccessPopup';
 import useDeleteReview from 'src/hooks/useDeleteReview';
-import { useStore } from 'src/states/Context';
+import { useStore } from 'src/store/Context';
 
 interface Props {
   loading: boolean;

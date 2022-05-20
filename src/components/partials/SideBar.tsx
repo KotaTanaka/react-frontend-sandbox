@@ -69,6 +69,7 @@ const SideBar: React.FC = () => {
 const useStyles = makeStyles((theme: Theme) => ({
   drawerPaper: {
     width: 240,
+    background: 'rgba(200, 200, 200, 0.1)',
   },
 }));
 

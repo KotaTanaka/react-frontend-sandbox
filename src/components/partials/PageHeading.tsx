@@ -23,7 +23,12 @@ const PageHeading: React.FC<Props> = (props: Props) => {
 // styles
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    heading: {},
+    heading: {
+      padding: '0 8px',
+      fontSize: 24,
+      letterSpacing: 1,
+      background: 'linear-gradient(transparent 75%, #b0e0e6 75%)',
+    },
   }),
 );
 const Container = styled.div`

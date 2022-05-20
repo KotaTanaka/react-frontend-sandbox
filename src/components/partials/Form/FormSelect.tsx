@@ -57,7 +57,7 @@ const useStyles = makeStyles({
     paddingLeft: 14,
   },
   select: {
-    width: 320,
+    width: 360,
   },
   help: {
     marginLeft: 14,

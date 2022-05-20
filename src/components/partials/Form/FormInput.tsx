@@ -37,7 +37,7 @@ const FormInput: React.FC<Props> = (props: Props) => {
 // styles
 const useStyles = makeStyles({
   textField: {
-    width: 320,
+    width: 360,
     marginBottom: 16,
   },
 });

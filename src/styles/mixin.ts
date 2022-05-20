@@ -22,5 +22,5 @@ export const flexColumnCenter = css`
 export const baseContainer = css`
   border-radius: 8px;
   box-shadow: 0 0 4px grey;
-  padding: 48px 80px;
+  padding: 48px;
 `;

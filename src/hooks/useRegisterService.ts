@@ -1,13 +1,15 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
-import { IRegisterServiceBody } from 'src/interfaces/api/request/Service';
+import type { IRegisterServiceBody } from 'src/interfaces/api/request/Service';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseRegisterServiceProps {
-  registerServiceParams: IRegisterServiceBody;
-  changeWifiName: (value: string) => void;
-  changeLink: (value: string) => void;
+  values: IRegisterServiceBody;
+  changeValue: (
+    name: keyof IRegisterServiceBody,
+    value: IRegisterServiceBody[keyof IRegisterServiceBody],
+  ) => void;
   requestRegisterService: () => Promise<void>;
   isShowSuccessPopup: boolean;
   closeSuccessPopup: () => void;
@@ -15,36 +17,30 @@ interface IUseRegisterServiceProps {
 
 /** Wi-Fiサービス登録カスタムフック */
 const useRegisterService = (): IUseRegisterServiceProps => {
-  // prettier-ignore
-  const [registerServiceParams, setRegisterServiceParams] = useState<IRegisterServiceBody>({
+  const [values, setValues] = useState<IRegisterServiceBody>({
     wifiName: '',
-    link: ''
+    link: '',
   });
 
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
+  const closeSuccessPopup = () => setIsShowSuccessPopup(false);
 
-  /** サービス名を変更する */
-  const changeWifiName = useCallback((value: string): void => {
-    setRegisterServiceParams((currentState) => ({
+  const changeValue = (
+    name: keyof IRegisterServiceBody,
+    value: IRegisterServiceBody[keyof IRegisterServiceBody],
+  ) => {
+    setValues((currentState) => ({
       ...currentState,
-      wifiName: value,
+      [name]: value,
     }));
-  }, []);
-
-  /** リンクを変更する */
-  const changeLink = useCallback((value: string): void => {
-    setRegisterServiceParams((currentState) => ({
-      ...currentState,
-      link: value,
-    }));
-  }, []);
+  };
 
   /** Wi-Fiサービス登録APIリクエスト */
-  const requestRegisterService = useCallback(async (): Promise<void> => {
+  const requestRegisterService = useCallback(async () => {
     try {
-      await axios.post(API_ENDPOINT.SERVICES, registerServiceParams);
+      await axios.post(API_ENDPOINT.SERVICES, values);
 
-      setRegisterServiceParams({
+      setValues({
         wifiName: '',
         link: '',
       });
@@ -53,17 +49,11 @@ const useRegisterService = (): IUseRegisterServiceProps => {
     } catch (err) {
       handleError(err);
     }
-  }, [registerServiceParams]);
-
-  /** ポップアップを閉じる */
-  const closeSuccessPopup = useCallback(() => {
-    setIsShowSuccessPopup(false);
-  }, []);
+  }, [values]);
 
   return {
-    registerServiceParams,
-    changeWifiName,
-    changeLink,
+    values,
+    changeValue,
     requestRegisterService,
     isShowSuccessPopup,
     closeSuccessPopup,

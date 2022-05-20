@@ -24,18 +24,10 @@ const ShopDetailPage: React.FC = () => {
     Number(shopId),
   );
   const {
-    updateShopParams,
+    values,
+    changeInputValue,
     ssidValue,
-    changeServiceId,
-    changeShopName,
-    changeArea,
-    changeDescription,
-    changeAddress,
-    changeAccess,
     changeSSID,
-    changeShopType,
-    changeOpeningHours,
-    changeSeatsNum,
     changeHasPower,
     requestUpdateShop,
     isShowSuccessPopup,
@@ -69,6 +61,7 @@ const ShopDetailPage: React.FC = () => {
     moveToShopList();
   }, [shopId, requestDeleteShop, closeDeleteDialog, moveToShopList]);
 
+  // prettier-ignore
   return (
     <Container>
       <PageHeading heading={PAGES.SHOPS_DETAIL.name} />
@@ -79,18 +72,18 @@ const ShopDetailPage: React.FC = () => {
       />
       <ShopEditModal
         isOpen={isEditModalOpen}
-        params={updateShopParams}
+        values={values}
         ssid={ssidValue}
-        onChangeServiceId={changeServiceId}
-        onChangeShopName={changeShopName}
-        onChangeArea={changeArea}
-        onChangeDescription={changeDescription}
-        onChangeAddress={changeAddress}
-        onChangeAccess={changeAccess}
+        onChangeServiceId={(value: number) => changeInputValue('serviceId', value)}
+        onChangeShopName={(value: string) => changeInputValue('shopName', value)}
+        onChangeArea={(value: string) => changeInputValue('area', value)}
+        onChangeDescription={(value: string) => changeInputValue('description', value)}
+        onChangeAddress={(value: string) => changeInputValue('address', value)}
+        onChangeAccess={(value: string) => changeInputValue('access', value)}
         onChangeSSID={changeSSID}
-        onChangeShopType={changeShopType}
-        onChangeOpeningHours={changeOpeningHours}
-        onChangeSeatsNum={changeSeatsNum}
+        onChangeShopType={(value: string) => changeInputValue('shopType', value)}
+        onChangeOpeningHours={(value: string) => changeInputValue('openingHours', value)}
+        onChangeSeatsNum={(value: number) => changeInputValue('seatsNum', value)}
         onChangeHasPower={changeHasPower}
         onSave={updateShop}
         onCancel={closeEditModal}

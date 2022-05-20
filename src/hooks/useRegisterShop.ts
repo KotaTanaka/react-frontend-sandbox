@@ -1,22 +1,17 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
-import { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
+import type { IRegisterShopBody } from 'src/interfaces/api/request/Shop';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseRegisterShopProps {
-  registerShopParams: IRegisterShopBody;
+  values: IRegisterShopBody;
   ssidValue: string;
-  changeServiceId: (value: number) => void;
-  changeShopName: (value: string) => void;
-  changeArea: (value: string) => void;
-  changeDescription: (value: string) => void;
-  changeAddress: (value: string) => void;
-  changeAccess: (value: string) => void;
+  changeInputValue: (
+    name: keyof IRegisterShopBody,
+    value: IRegisterShopBody[keyof IRegisterShopBody],
+  ) => void;
   changeSSID: (value: string) => void;
-  changeShopType: (value: string) => void;
-  changeOpeningHours: (value: string) => void;
-  changeSeatsNum: (value: number) => void;
   changeHasPower: () => void;
   requestRegisterShop: () => Promise<void>;
   isShowSuccessPopup: boolean;
@@ -25,8 +20,7 @@ interface IUseRegisterShopProps {
 
 /** 店舗登録カスタムフック */
 const useRegisterShop = (): IUseRegisterShopProps => {
-  // prettier-ignore
-  const [registerShopParams, setRegisterShopParams] = useState<IRegisterShopBody>({
+  const [values, setValues] = useState<IRegisterShopBody>({
     serviceId: 0,
     shopName: '',
     area: '',
@@ -39,105 +33,41 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     seatsNum: 0,
     hasPower: false,
   });
-
   const [ssidValue, setSsidValue] = useState<string>('');
+
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
+  const closeSuccessPopup = () => setIsShowSuccessPopup(false);
 
-  /** サービスIDを変更する */
-  const changeServiceId = useCallback((value: number): void => {
-    setRegisterShopParams((currentState) => ({
+  const changeInputValue = (
+    name: keyof IRegisterShopBody,
+    value: IRegisterShopBody[keyof IRegisterShopBody],
+  ) => {
+    setValues((currentState) => ({
       ...currentState,
-      serviceId: value,
+      [name]: value,
     }));
-  }, []);
-
-  /** 店舗名を変更する */
-  const changeShopName = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      shopName: value,
-    }));
-  }, []);
-
-  /** エリアを変更する  */
-  const changeArea = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      area: value,
-    }));
-  }, []);
-
-  /** 説明を変更する */
-  const changeDescription = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      description: value,
-    }));
-  }, []);
-
-  /** 住所を変更する */
-  const changeAddress = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      address: value,
-    }));
-  }, []);
-
-  /** アクセスを変更する */
-  const changeAccess = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      access: value,
-    }));
-  }, []);
+  };
 
   /** SSIDを変更する */
-  const changeSSID = useCallback((value: string): void => {
-    setSsidValue(value);
-  }, []);
-
-  /** 店舗種別を変更する */
-  const changeShopType = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      shopType: value,
-    }));
-  }, []);
-
-  /** 営業時間を変更する */
-  const changeOpeningHours = useCallback((value: string): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      openingHours: value,
-    }));
-  }, []);
-
-  /** 座席数を変更する */
-  const changeSeatsNum = useCallback((value: number): void => {
-    setRegisterShopParams((currentState) => ({
-      ...currentState,
-      seatsNum: value,
-    }));
-  }, []);
+  const changeSSID = (value: string) => setSsidValue(value);
 
   /** 電源有無を変更する */
-  const changeHasPower = useCallback((): void => {
-    setRegisterShopParams((currentState) => ({
+  const changeHasPower = () =>
+    setValues((currentState) => ({
       ...currentState,
       hasPower: !currentState.hasPower,
     }));
-  }, []);
 
   /** 店舗登録APIリクエスト */
-  const requestRegisterShop = useCallback(async (): Promise<void> => {
+  const requestRegisterShop = useCallback(async () => {
     try {
       await axios.post(API_ENDPOINT.SHOPS, {
-        ...registerShopParams,
+        ...values,
         ssid: ssidValue.split(','),
       } as IRegisterShopBody);
 
       setSsidValue('');
-      setRegisterShopParams({
+      setValues({
         serviceId: 0,
         shopName: '',
         area: '',
@@ -155,26 +85,13 @@ const useRegisterShop = (): IUseRegisterShopProps => {
     } catch (err) {
       handleError(err);
     }
-  }, [registerShopParams, ssidValue]);
-
-  /** ポップアップを閉じる */
-  const closeSuccessPopup = useCallback(() => {
-    setIsShowSuccessPopup(false);
-  }, []);
+  }, [values, ssidValue]);
 
   return {
-    registerShopParams,
+    values,
     ssidValue,
-    changeServiceId,
-    changeShopName,
-    changeArea,
-    changeDescription,
-    changeAddress,
-    changeAccess,
+    changeInputValue,
     changeSSID,
-    changeShopType,
-    changeOpeningHours,
-    changeSeatsNum,
     changeHasPower,
     requestRegisterShop,
     isShowSuccessPopup,

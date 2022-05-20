@@ -12,18 +12,10 @@ import { flexColumnCenter } from 'src/styles/mixin';
 /** 店舗登録ページ */
 const ShopRegisterPage: React.FC = () => {
   const {
-    registerShopParams,
+    values,
     ssidValue,
-    changeServiceId,
-    changeShopName,
-    changeArea,
-    changeDescription,
-    changeAddress,
-    changeAccess,
+    changeInputValue,
     changeSSID,
-    changeShopType,
-    changeOpeningHours,
-    changeSeatsNum,
     changeHasPower,
     requestRegisterShop,
     isShowSuccessPopup,
@@ -34,23 +26,24 @@ const ShopRegisterPage: React.FC = () => {
   useGetAreaMaster();
   useGetServices();
 
+  // prettier-ignore
   return (
     <Container>
       <PageHeading heading={PAGES.SHOPS_REGISTER.name} />
       <ShopForm
         formType={FormType.REGISTER}
-        params={registerShopParams}
+        values={values}
         ssid={ssidValue}
-        onChangeServiceId={changeServiceId}
-        onChangeShopName={changeShopName}
-        onChangeArea={changeArea}
-        onChangeDescription={changeDescription}
-        onChangeAddress={changeAddress}
-        onChangeAccess={changeAccess}
+        onChangeServiceId={(value: number) => changeInputValue('serviceId', value)}
+        onChangeShopName={(value: string) => changeInputValue('shopName', value)}
+        onChangeArea={(value: string) => changeInputValue('area', value)}
+        onChangeDescription={(value: string) => changeInputValue('description', value)}
+        onChangeAddress={(value: string) => changeInputValue('address', value)}
+        onChangeAccess={(value: string) => changeInputValue('access', value)}
         onChangeSSID={changeSSID}
-        onChangeShopType={changeShopType}
-        onChangeOpeningHours={changeOpeningHours}
-        onChangeSeatsNum={changeSeatsNum}
+        onChangeShopType={(value: string) => changeInputValue('shopType', value)}
+        onChangeOpeningHours={(value: string) => changeInputValue('openingHours', value)}
+        onChangeSeatsNum={(value: number) => changeInputValue('seatsNum', value)}
         onChangeHasPower={changeHasPower}
         onSave={requestRegisterShop}
       />

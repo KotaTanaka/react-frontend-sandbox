@@ -1,11 +1,11 @@
 import { Dialog } from '@material-ui/core';
 import ShopForm from 'src/components/pages/Shop/ShopForm';
 import { FormType } from 'src/constants/enums';
-import { IUpdateShopBody } from 'src/interfaces/api/request/Shop';
+import type { IUpdateShopBody } from 'src/interfaces/api/request/Shop';
 
 interface Props {
   isOpen: boolean;
-  params: IUpdateShopBody;
+  values: IUpdateShopBody;
   ssid: string;
   onChangeServiceId: (value: number) => void;
   onChangeShopName: (value: string) => void;
@@ -26,7 +26,7 @@ interface Props {
 const ShopEditModal: React.FC<Props> = (props: Props) => {
   const {
     isOpen,
-    params,
+    values,
     ssid,
     onChangeServiceId,
     onChangeShopName,
@@ -47,7 +47,7 @@ const ShopEditModal: React.FC<Props> = (props: Props) => {
     <Dialog open={isOpen} onClose={onCancel}>
       <ShopForm
         formType={FormType.UPDATE}
-        params={params}
+        values={values}
         ssid={ssid}
         onChangeServiceId={onChangeServiceId}
         onChangeShopName={onChangeShopName}

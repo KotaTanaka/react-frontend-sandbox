@@ -25,10 +25,8 @@ const AreaList: React.FC<Props> = (props: Props) => {
   } = useDeleteArea();
 
   const [targetDeleteAreaKey, setTargetDeleteAreaKey] = useState<string>('');
-  // prettier-ignore
-  const openDeleteDialog = useCallback((key: string) => setTargetDeleteAreaKey(key), []);
-  // prettier-ignore
-  const closeDeleteDialog = useCallback(() => setTargetDeleteAreaKey(''), []);
+  const openDeleteDialog = (key: string) => setTargetDeleteAreaKey(key);
+  const closeDeleteDialog = () => setTargetDeleteAreaKey('');
 
   /** エリア削除 */
   const deleteArea = useCallback(async () => {

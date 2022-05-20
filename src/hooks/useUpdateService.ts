@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
-import { IUpdateServiceBody } from 'src/interfaces/api/request/Service';
+import type { IUpdateServiceBody } from 'src/interfaces/api/request/Service';
 import { useStore } from 'src/store/Context';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseUpdateServiceProps {
-  updateServiceParams: IUpdateServiceBody;
-  changeWifiName: (value: string) => void;
-  changeLink: (value: string) => void;
+  values: IUpdateServiceBody;
+  changeValue: (
+    name: keyof IUpdateServiceBody,
+    value: IUpdateServiceBody[keyof IUpdateServiceBody],
+  ) => void;
   requestUpdateService: (id: number) => Promise<void>;
   isShowSuccessPopup: boolean;
   closeSuccessPopup: () => void;
@@ -16,52 +18,43 @@ interface IUseUpdateServiceProps {
 
 /** Wi-Fiサービス編集カスタムフック */
 const useUpdateService = (): IUseUpdateServiceProps => {
-  // prettier-ignore
-  const [updateServiceParams, setUpdateServiceParams] = useState<IUpdateServiceBody>({
+  const [values, setValues] = useState<IUpdateServiceBody>({
     wifiName: '',
-    link: ''
+    link: '',
   });
 
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
+  const closeSuccessPopup = () => setIsShowSuccessPopup(false);
 
   // 現在の値をフォームの初期値に設定する
   const { serviceDetail } = useStore('service');
   useEffect(() => {
-    setUpdateServiceParams({
+    setValues({
       wifiName: serviceDetail.wifiName,
       link: serviceDetail.link,
     });
   }, [serviceDetail.wifiName, serviceDetail.link]);
 
-  /** サービス名を変更する */
-  const changeWifiName = useCallback((value: string): void => {
-    setUpdateServiceParams((currentState) => ({
+  const changeValue = (
+    name: keyof IUpdateServiceBody,
+    value: IUpdateServiceBody[keyof IUpdateServiceBody],
+  ) => {
+    setValues((currentState) => ({
       ...currentState,
-      wifiName: value,
+      [name]: value,
     }));
-  }, []);
-
-  /** リンクを変更する */
-  const changeLink = useCallback((value: string): void => {
-    setUpdateServiceParams((currentState) => ({
-      ...currentState,
-      link: value,
-    }));
-  }, []);
+  };
 
   /**
    * Wi-Fiサービス編集APIリクエスト
    * @param id サービスID
    */
   const requestUpdateService = useCallback(
-    async (id: number): Promise<void> => {
+    async (id: number) => {
       try {
-        await axios.put(
-          API_ENDPOINT.SERVICE.replace('$id', `${id}`),
-          updateServiceParams,
-        );
+        await axios.put(API_ENDPOINT.SERVICE.replace('$id', `${id}`), values);
 
-        setUpdateServiceParams({
+        setValues({
           wifiName: '',
           link: '',
         });
@@ -71,18 +64,12 @@ const useUpdateService = (): IUseUpdateServiceProps => {
         handleError(err);
       }
     },
-    [updateServiceParams],
+    [values],
   );
 
-  /** ポップアップを閉じる */
-  const closeSuccessPopup = useCallback(() => {
-    setIsShowSuccessPopup(false);
-  }, []);
-
   return {
-    updateServiceParams,
-    changeWifiName,
-    changeLink,
+    values,
+    changeValue,
     requestUpdateService,
     isShowSuccessPopup,
     closeSuccessPopup,

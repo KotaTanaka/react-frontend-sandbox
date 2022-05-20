@@ -1,23 +1,18 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { API_ENDPOINT } from 'src/constants/api';
-import { IUpdateShopBody } from 'src/interfaces/api/request/Shop';
+import type { IUpdateShopBody } from 'src/interfaces/api/request/Shop';
 import { useStore } from 'src/store/Context';
 import { handleError } from 'src/utils/ApiUtil';
 
 interface IUseUpdateShopProps {
-  updateShopParams: IUpdateShopBody;
+  values: IUpdateShopBody;
   ssidValue: string;
-  changeServiceId: (value: number) => void;
-  changeShopName: (value: string) => void;
-  changeArea: (value: string) => void;
-  changeDescription: (value: string) => void;
-  changeAddress: (value: string) => void;
-  changeAccess: (value: string) => void;
+  changeInputValue: (
+    name: keyof IUpdateShopBody,
+    value: IUpdateShopBody[keyof IUpdateShopBody],
+  ) => void;
   changeSSID: (value: string) => void;
-  changeShopType: (value: string) => void;
-  changeOpeningHours: (value: string) => void;
-  changeSeatsNum: (value: number) => void;
   changeHasPower: () => void;
   requestUpdateShop: (id: number) => Promise<void>;
   isShowSuccessPopup: boolean;
@@ -26,8 +21,7 @@ interface IUseUpdateShopProps {
 
 /** 店舗編集カスタムフック */
 const useUpdateShop = (): IUseUpdateShopProps => {
-  // prettier-ignore
-  const [updateShopParams, setUpdateShopParams] = useState<IUpdateShopBody>({
+  const [values, setValues] = useState<IUpdateShopBody>({
     serviceId: 0,
     shopName: '',
     area: '',
@@ -40,14 +34,15 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     seatsNum: 0,
     hasPower: false,
   });
-
   const [ssidValue, setSsidValue] = useState<string>('');
+
   const [isShowSuccessPopup, setIsShowSuccessPopup] = useState<boolean>(false);
+  const closeSuccessPopup = () => setIsShowSuccessPopup(false);
 
   // 現在の値をフォームの初期値に設定する
   const { shopDetail } = useStore('shop');
   useEffect(() => {
-    setUpdateShopParams({
+    setValues({
       serviceId: shopDetail.shopId,
       shopName: shopDetail.shopName,
       area: shopDetail.area,
@@ -74,105 +69,40 @@ const useUpdateShop = (): IUseUpdateShopProps => {
     shopDetail.hasPower,
   ]);
 
-  /** サービスIDを変更する */
-  const changeServiceId = useCallback((value: number): void => {
-    setUpdateShopParams((currentState) => ({
+  const changeInputValue = (
+    name: keyof IUpdateShopBody,
+    value: IUpdateShopBody[keyof IUpdateShopBody],
+  ) => {
+    setValues((currentState) => ({
       ...currentState,
-      serviceId: value,
+      [name]: value,
     }));
-  }, []);
-
-  /** 店舗名を変更する */
-  const changeShopName = useCallback((value: string): void => {
-    setUpdateShopParams((currentState) => ({
-      ...currentState,
-      shopName: value,
-    }));
-  }, []);
-
-  /** エリアを変更する */
-  const changeArea = useCallback((value: string): void => {
-    setUpdateShopParams((currentState) => ({
-      ...currentState,
-      area: value,
-    }));
-  }, []);
-
-  /** 説明を変更する */
-  const changeDescription = useCallback((value: string): void => {
-    setUpdateShopParams((currentState) => ({
-      ...currentState,
-      description: value,
-    }));
-  }, []);
-
-  /** 住所を変更する */
-  const changeAddress = useCallback((value: string): void => {
-    setUpdateShopParams((currentState) => ({
-      ...currentState,
-      address: value,
-    }));
-  }, []);
-
-  /** アクセスを変更する */
-  const changeAccess = useCallback((value: string): void => {
-    setUpdateShopParams((currentState) => ({
-      ...currentState,
-      access: value,
-    }));
-  }, []);
+  };
 
   /** SSIDを変更する */
-  const changeSSID = useCallback((value: string): void => {
-    setSsidValue(value);
-  }, []);
-
-  /** 店舗種別を変更する */
-  const changeShopType = useCallback((value: string): void => {
-    setUpdateShopParams((currentState) => ({
-      ...currentState,
-      shopType: value,
-    }));
-  }, []);
-
-  /** 営業時間を変更する */
-  const changeOpeningHours = useCallback((value: string): void => {
-    setUpdateShopParams((currentState) => ({
-      ...currentState,
-      openingHours: value,
-    }));
-  }, []);
-
-  /** 座席数を変更する */
-  const changeSeatsNum = useCallback((value: number): void => {
-    setUpdateShopParams((currentState) => ({
-      ...currentState,
-      seatsNum: value,
-    }));
-  }, []);
+  const changeSSID = (value: string) => setSsidValue(value);
 
   /** 電源有無を変更する */
-  const changeHasPower = useCallback((): void => {
-    setUpdateShopParams((currentState) => ({
+  const changeHasPower = () =>
+    setValues((currentState) => ({
       ...currentState,
       hasPower: !currentState.hasPower,
     }));
-  }, []);
 
   /**
    * 店舗登録APIリクエスト
    * @param id 店舗ID
    */
   const requestUpdateShop = useCallback(
-    async (id: number): Promise<void> => {
+    async (id: number) => {
       try {
         await axios.put(API_ENDPOINT.SHOP.replace('$id', `${id}`), {
-          ...updateShopParams,
+          ...values,
           ssid: ssidValue.split(','),
         } as IUpdateShopBody);
 
         setSsidValue('');
-        setUpdateShopParams({
+        setValues({
           serviceId: 0,
           shopName: '',
           area: '',
@@ -191,27 +121,14 @@ const useUpdateShop = (): IUseUpdateShopProps => {
         handleError(err);
       }
     },
-    [updateShopParams, ssidValue],
+    [values, ssidValue],
   );
 
-  /** ポップアップを閉じる */
-  const closeSuccessPopup = useCallback(() => {
-    setIsShowSuccessPopup(false);
-  }, []);
-
   return {
-    updateShopParams,
+    values,
     ssidValue,
-    changeServiceId,
-    changeShopName,
-    changeArea,
-    changeDescription,
-    changeAddress,
-    changeAccess,
+    changeInputValue,
     changeSSID,
-    changeShopType,
-    changeOpeningHours,
-    changeSeatsNum,
     changeHasPower,
     requestUpdateShop,
     isShowSuccessPopup,

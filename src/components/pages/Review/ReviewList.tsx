@@ -35,10 +35,8 @@ const ReviewList: React.FC<Props> = (props: Props) => {
   } = useDeleteReview();
 
   const [targetDeleteReviewId, setTargetDeleteReviewId] = useState<number>();
-  // prettier-ignore
-  const openDeleteDialog = useCallback((id: number) => setTargetDeleteReviewId(id), []);
-  // prettier-ignore
-  const closeDeleteDialog = useCallback(() => setTargetDeleteReviewId(undefined), []);
+  const openDeleteDialog = (id: number) => setTargetDeleteReviewId(id);
+  const closeDeleteDialog = () => setTargetDeleteReviewId(undefined);
 
   /** レビュー削除 */
   const deleteReview = useCallback(async () => {

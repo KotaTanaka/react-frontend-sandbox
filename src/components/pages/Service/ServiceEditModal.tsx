@@ -1,11 +1,11 @@
 import { Dialog } from '@material-ui/core';
 import ServiceForm from 'src/components/pages/Service/ServiceForm';
 import { FormType } from 'src/constants/enums';
-import { IUpdateServiceBody } from 'src/interfaces/api/request/Service';
+import type { IUpdateServiceBody } from 'src/interfaces/api/request/Service';
 
 interface Props {
   isOpen: boolean;
-  params: IUpdateServiceBody;
+  values: IUpdateServiceBody;
   onChangeWifiName: (value: string) => void;
   onChangeLink: (value: string) => void;
   onSave: () => Promise<void>;
@@ -14,14 +14,14 @@ interface Props {
 
 /** Wi-Fiサービス編集フォームモーダル */
 const ServiceEditModal: React.FC<Props> = (props: Props) => {
-  const { isOpen, params, onChangeWifiName, onChangeLink, onSave, onCancel } =
+  const { isOpen, values, onChangeWifiName, onChangeLink, onSave, onCancel } =
     props;
 
   return (
     <Dialog open={isOpen} onClose={onCancel}>
       <ServiceForm
         formType={FormType.UPDATE}
-        params={params}
+        values={values}
         onChangeWifiName={onChangeWifiName}
         onChangeLink={onChangeLink}
         onSave={onSave}

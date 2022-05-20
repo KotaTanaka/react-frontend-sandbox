@@ -21,9 +21,8 @@ const ServiceDetailPage: React.FC = () => {
   // prettier-ignore
   const { isServiceDetailLoading, fetchServiceDetail } = useGetServiceDetail(Number(serviceId));
   const {
-    updateServiceParams,
-    changeWifiName,
-    changeLink,
+    values,
+    changeValue,
     requestUpdateService,
     isShowSuccessPopup,
     closeSuccessPopup,
@@ -62,9 +61,9 @@ const ServiceDetailPage: React.FC = () => {
       />
       <ServiceEditModal
         isOpen={isEditModalOpen}
-        params={updateServiceParams}
-        onChangeWifiName={changeWifiName}
-        onChangeLink={changeLink}
+        values={values}
+        onChangeWifiName={(value: string) => changeValue('wifiName', value)}
+        onChangeLink={(value: string) => changeValue('link', value)}
         onSave={updateService}
         onCancel={closeEditModal}
       />

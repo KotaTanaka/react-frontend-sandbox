@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import ButtonPrimary from 'src/components/partials/Button/ButtonPrimary';
 import FormInput from 'src/components/partials/Form/FormInput';
 import { FormType } from 'src/constants/enums';
-import {
+import type {
   IRegisterServiceBody,
   IUpdateServiceBody,
 } from 'src/interfaces/api/request/Service';
@@ -12,7 +12,7 @@ import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
   formType: FormType;
-  params: IRegisterServiceBody | IUpdateServiceBody;
+  values: IRegisterServiceBody | IUpdateServiceBody;
   onChangeWifiName: (value: string) => void;
   onChangeLink: (value: string) => void;
   onSave: () => Promise<void>;
@@ -20,7 +20,7 @@ interface Props {
 
 /** Wi-Fiサービス登録フォーム */
 const ServiceForm: React.FC<Props> = (props: Props) => {
-  const { formType, params, onChangeWifiName, onChangeLink, onSave } = props;
+  const { formType, values, onChangeWifiName, onChangeLink, onSave } = props;
 
   const buttonLabel = useMemo(() => {
     switch (formType) {
@@ -38,13 +38,13 @@ const ServiceForm: React.FC<Props> = (props: Props) => {
       <FormInput
         label="サービス名"
         help="Wi-Fiのサービス名称を入力"
-        value={params.wifiName || ''}
+        value={values.wifiName || ''}
         onChange={onChangeWifiName}
       />
       <FormInput
         label="リンク"
         help="公式サイトのURL等を入力"
-        value={params.link || ''}
+        value={values.link || ''}
         onChange={onChangeLink}
       />
       <ButtonPrimary label={buttonLabel} icon={<Save />} onClick={onSave} />

@@ -10,9 +10,8 @@ import { flexColumnCenter } from 'src/styles/mixin';
 /** Wi-Fiサービス登録ページ */
 const ServiceRegisterPage: React.FC = () => {
   const {
-    registerServiceParams,
-    changeWifiName,
-    changeLink,
+    values,
+    changeValue,
     requestRegisterService,
     isShowSuccessPopup,
     closeSuccessPopup,
@@ -23,9 +22,9 @@ const ServiceRegisterPage: React.FC = () => {
       <PageHeading heading={PAGES.SERVICES_REGISTER.name} />
       <ServiceForm
         formType={FormType.REGISTER}
-        params={registerServiceParams}
-        onChangeWifiName={changeWifiName}
-        onChangeLink={changeLink}
+        values={values}
+        onChangeWifiName={(value: string) => changeValue('wifiName', value)}
+        onChangeLink={(value: string) => changeValue('link', value)}
         onSave={requestRegisterService}
       />
       <SuccessPopup

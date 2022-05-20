@@ -6,17 +6,17 @@ import FormInput from 'src/components/partials/Form/FormInput';
 import FormSelect from 'src/components/partials/Form/FormSelect';
 import FormSwitch from 'src/components/partials/Form/FormSwitch';
 import { FormType } from 'src/constants/enums';
-import {
+import type {
   IRegisterShopBody,
   IUpdateShopBody,
 } from 'src/interfaces/api/request/Shop';
-import { IFormSelectMenuItem } from 'src/interfaces/View';
+import type { IFormSelectMenuItem } from 'src/interfaces/View';
 import { useStore } from 'src/store/Context';
 import { baseContainer, flexColumnCenter } from 'src/styles/mixin';
 
 interface Props {
   formType: FormType;
-  params: IRegisterShopBody | IUpdateShopBody;
+  values: IRegisterShopBody | IUpdateShopBody;
   ssid: string;
   onChangeServiceId: (value: number) => void;
   onChangeShopName: (value: string) => void;
@@ -36,7 +36,7 @@ interface Props {
 const ShopForm: React.FC<Props> = (props: Props) => {
   const {
     formType,
-    params,
+    values,
     ssid,
     onChangeServiceId,
     onChangeShopName,
@@ -86,37 +86,37 @@ const ShopForm: React.FC<Props> = (props: Props) => {
       <FormSelect
         help="サービスを選択"
         items={serviceMenuList}
-        value={params.serviceId || ''}
+        value={values.serviceId || ''}
         onChange={onChangeServiceId}
       />
       <FormInput
         label="店舗名"
         help="店舗名称を入力"
-        value={params.shopName || ''}
+        value={values.shopName || ''}
         onChange={onChangeShopName}
       />
       <FormSelect
         help="エリアを選択"
         items={areaMenuList}
-        value={params.area || ''}
+        value={values.area || ''}
         onChange={onChangeArea}
       />
       <FormInput
         label="店舗説明"
         help="店舗の説明を入力"
-        value={params.description || ''}
+        value={values.description || ''}
         onChange={onChangeDescription}
       />
       <FormInput
         label="住所"
         help="店舗住所を入力"
-        value={params.address || ''}
+        value={values.address || ''}
         onChange={onChangeAddress}
       />
       <FormInput
         label="アクセス"
         help="店舗アクセスを入力"
-        value={params.access || ''}
+        value={values.access || ''}
         onChange={onChangeAccess}
       />
       <FormInput
@@ -128,25 +128,25 @@ const ShopForm: React.FC<Props> = (props: Props) => {
       <FormInput
         label="店舗種別"
         help="店舗種別を入力"
-        value={params.shopType || ''}
+        value={values.shopType || ''}
         onChange={onChangeShopType}
       />
       <FormInput
         label="営業時間"
         help="営業時間を入力"
-        value={params.openingHours || ''}
+        value={values.openingHours || ''}
         onChange={onChangeOpeningHours}
       />
       <FormInput
         label="座席数"
         help="座席数を入力"
         number
-        value={params.seatsNum || 0}
+        value={values.seatsNum || 0}
         onChange={onChangeSeatsNum}
       />
       <FormSwitch
         label="電源の有無"
-        on={params.hasPower || false}
+        on={values.hasPower || false}
         onChange={onChangeHasPower}
       />
       <ButtonPrimary label={buttonLabel} icon={<Save />} onClick={onSave} />

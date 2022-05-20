@@ -3,7 +3,7 @@
 ## About
 
 React (Create React App) + TypeScript + CSS in JS でのフロントエンド開発の素振り  
-Wi-Fi検索システムの管理UI
+Wi-Fi検索システムの Admin UI
 
 *[Backend - echo-api-sandbox](https://github.com/KotaTanaka/echo-api-sandbox)*
 
@@ -20,21 +20,21 @@ Wi-Fi検索システムの管理UI
 
 ## Requirement
 
-* Node `v15`
-* Yarn
+- Node `v16`
+- Yarn
 
 ## Getting Started
 
 #### Install
 
 ```bash
-$ yarn
+yarn
 ```
 
 #### Run
 
 ```bash
-$ yarn start
+yarn start
 ```
 
 → Serve at http://localhost:3010
@@ -42,7 +42,7 @@ $ yarn start
 #### Build
 
 ```bash
-$ yarn build
+yarn build
 ```
 
 → Generate to `build` directory.

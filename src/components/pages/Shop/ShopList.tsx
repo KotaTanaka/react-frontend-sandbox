@@ -40,25 +40,27 @@ const ShopList: React.FC<Props> = (props: Props) => {
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>店舗名</TableCell>
-              <TableCell>サービス名</TableCell>
-              <TableCell>エリア</TableCell>
-              <TableCell>住所</TableCell>
-              <TableCell>レビュー数</TableCell>
-              <TableCell>評価</TableCell>
+              <TableCell className={classes.cell}>店舗名</TableCell>
+              <TableCell className={classes.cell}>サービス名</TableCell>
+              <TableCell className={classes.cell}>エリア</TableCell>
+              <TableCell className={classes.cell}>住所</TableCell>
+              <TableCell className={classes.cell}>レビュー数</TableCell>
+              <TableCell className={classes.cell}>評価</TableCell>
               <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
             {shopList.map((shop) => (
               <TableRow key={shop.shopId}>
-                <TableCell>{shop.shopName}</TableCell>
-                <TableCell>{shop.wifiName}</TableCell>
-                <TableCell>{shop.area}</TableCell>
-                <TableCell>{shop.address}</TableCell>
-                <TableCell>{shop.reviewCount}</TableCell>
-                <TableCell>{shop.average}</TableCell>
-                <TableCell>
+                <TableCell className={classes.cell}>{shop.shopName}</TableCell>
+                <TableCell className={classes.cell}>{shop.wifiName}</TableCell>
+                <TableCell className={classes.cell}>{shop.area}</TableCell>
+                <TableCell className={classes.cell}>{shop.address}</TableCell>
+                <TableCell className={classes.cell}>
+                  {shop.reviewCount}
+                </TableCell>
+                <TableCell className={classes.cell}>{shop.average}</TableCell>
+                <TableCell className={classes.cell}>
                   <Button
                     color="primary"
                     className={classes.button}
@@ -81,8 +83,12 @@ const useStyles = makeStyles({
   table: {
     minWidth: 640,
   },
+  cell: {
+    fontSize: 12,
+  },
   button: {
     padding: 0,
+    fontSize: 12,
   },
 });
 const Container = styled.div``;

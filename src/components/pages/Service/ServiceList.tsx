@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import {
   Button,
+  Link,
   Paper,
   Table,
   TableBody,
@@ -40,19 +41,27 @@ const ServiceList: React.FC<Props> = (props: Props) => {
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>サービス名</TableCell>
-              <TableCell>リンク</TableCell>
-              <TableCell>店舗数</TableCell>
+              <TableCell className={classes.cell}>サービス名</TableCell>
+              <TableCell className={classes.cell}>リンク</TableCell>
+              <TableCell className={classes.cell}>店舗数</TableCell>
               <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
             {serviceList.map((service) => (
               <TableRow key={service.serviceId}>
-                <TableCell>{service.wifiName}</TableCell>
-                <TableCell>{service.link}</TableCell>
-                <TableCell>{service.shopCount}</TableCell>
-                <TableCell>
+                <TableCell className={classes.cell}>
+                  {service.wifiName}
+                </TableCell>
+                <TableCell className={classes.cell}>
+                  <Link href={service.link} target="_blank">
+                    {service.link}
+                  </Link>
+                </TableCell>
+                <TableCell className={classes.cell}>
+                  {service.shopCount}
+                </TableCell>
+                <TableCell className={classes.cell}>
                   <Button
                     color="primary"
                     className={classes.button}
@@ -75,8 +84,12 @@ const useStyles = makeStyles({
   table: {
     minWidth: 640,
   },
+  cell: {
+    fontSize: 12,
+  },
   button: {
     padding: 0,
+    fontSize: 12,
   },
 });
 const Container = styled.div``;

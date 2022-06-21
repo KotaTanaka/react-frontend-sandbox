@@ -60,23 +60,29 @@ const ReviewList: React.FC<Props> = (props: Props) => {
         <Table className={classes.table}>
           <TableHead>
             <TableRow>
-              <TableCell>店舗</TableCell>
-              <TableCell>Wi-Fiサービス</TableCell>
-              <TableCell>コメント</TableCell>
-              <TableCell>評価</TableCell>
-              <TableCell>ステータス</TableCell>
+              <TableCell className={classes.cell}>店舗</TableCell>
+              <TableCell className={classes.cell}>Wi-Fiサービス</TableCell>
+              <TableCell className={classes.cell}>コメント</TableCell>
+              <TableCell className={classes.cell}>評価</TableCell>
+              <TableCell className={classes.cell}>ステータス</TableCell>
               <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
             {reviewList.map((review) => (
               <TableRow key={review.reviewId}>
-                <TableCell>{review.shopName}</TableCell>
-                <TableCell>{review.wifiName}</TableCell>
-                <TableCell>{review.comment}</TableCell>
-                <TableCell>{review.evaluation}</TableCell>
-                <TableCell>{review.status}</TableCell>
-                <TableCell>
+                <TableCell className={classes.cell}>
+                  {review.shopName}
+                </TableCell>
+                <TableCell className={classes.cell}>
+                  {review.wifiName}
+                </TableCell>
+                <TableCell className={classes.cell}>{review.comment}</TableCell>
+                <TableCell className={classes.cell}>
+                  {review.evaluation}
+                </TableCell>
+                <TableCell className={classes.cell}>{review.status}</TableCell>
+                <TableCell className={classes.cell}>
                   <Button
                     color="primary"
                     className={classes.button}
@@ -110,8 +116,12 @@ const useStyles = makeStyles({
   table: {
     minWidth: 640,
   },
+  cell: {
+    fontSize: 12,
+  },
   button: {
     padding: 0,
+    fontSize: 12,
   },
 });
 const Container = styled.div``;

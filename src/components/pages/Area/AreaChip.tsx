@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Chip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteButton from 'src/components/partials/Button/DeleteButton';
-import { IArea } from 'src/interfaces/api/response/Area';
+import type { IArea } from 'src/interfaces/api/response/Area';
 
 interface Props {
   area: IArea;
@@ -32,25 +32,31 @@ const AreaChip: React.FC<Props> = (props: Props) => {
 const useStyles = makeStyles({
   chip: {
     width: 120,
+    fontSize: 12,
   },
 });
 const Container = styled.div`
-  margin: 8px;
+  &:not(:first-child) {
+    margin-top: 16px;
+  }
 `;
 const AreaContent = styled.div`
   display: flex;
   align-items: center;
 `;
 const AreaInfo = styled.div`
+  width: 120px;
   margin: 0 8px;
 `;
 const AreaKeyText = styled.p`
-  font-size: 8px;
+  line-height: 1;
+  font-size: 12px;
   margin: 0;
 `;
 const ShopCountText = styled.p`
-  font-size: 8px;
-  margin: 0;
+  line-height: 1;
+  font-size: 12px;
+  margin: 4px 0 0;
   color: #aaa;
 `;
 

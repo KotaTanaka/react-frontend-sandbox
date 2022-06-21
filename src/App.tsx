@@ -7,6 +7,7 @@ import AreaRegisterPage from 'src/pages/AreaRegisterPage';
 import AreasPage from 'src/pages/AreasPage';
 import ConvertValuePage from 'src/pages/ConvertValuePage';
 import CounterPage from 'src/pages/CounterPage';
+import NotFoundPage from 'src/pages/NotFoundPage';
 import ReviewsPage from 'src/pages/ReviewsPage';
 import ServiceDetailPage from 'src/pages/ServiceDetailPage';
 import ServiceRegisterPage from 'src/pages/ServiceRegisterPage';
@@ -39,6 +40,7 @@ const App: React.FC = () => {
               <Route exact path={PAGES.REVIEWS.path} component={ReviewsPage} />
               <Route exact path="/counter" component={CounterPage} />
               <Route exact path="/convert" component={ConvertValuePage} />
+              <Route component={NotFoundPage} />
             </Switch>
           </Body>
         </AppContainer>
